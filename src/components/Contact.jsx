@@ -127,8 +127,8 @@ export default function Contact() {
     {
       icon: <Phone className="text-purple" size={22} />,
       label: 'Phone Contact',
-      value: '+91 XXXXX XXXXX',
-      href: 'tel:+910000000000'
+      value: '+91 87506 88748',
+      href: 'tel:+918750688748'
     },
     {
       icon: <MapPin className="text-cyan" size={22} />,
@@ -140,7 +140,7 @@ export default function Contact() {
 
   const socialLinks = [
     { icon: <GithubIcon size={20} />, href: 'https://github.com/Tanushyadav9', label: 'GitHub' },
-    { icon: <LinkedinIcon size={20} />, href: 'https://linkedin.com/in/your-linkedin', label: 'LinkedIn' }
+    { icon: <LinkedinIcon size={20} />, href: 'https://www.linkedin.com/in/tanush-yadav-1893b338b', label: 'LinkedIn' }
   ];
 
   return (

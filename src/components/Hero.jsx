@@ -154,7 +154,7 @@ export default function Hero() {
                 <GithubIcon size={18} />
               </a>
               <a 
-                href="https://linkedin.com/in/your-linkedin" 
+                href="https://www.linkedin.com/in/tanush-yadav-1893b338b" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
