@@ -1,20 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, GraduationCap, MapPin, Code2 } from 'lucide-react';
+import { BookOpen, GraduationCap, MapPin, Code2, Award, Briefcase, Cpu, CheckSquare } from 'lucide-react';
 import Tilt from './Tilt';
 
-const stats = [
-  { label: 'Major', value: 'AI & Data Science' },
-  { label: 'Education', value: 'B.Tech VIPS' },
-  { label: 'Focus', value: 'Full Stack & IoT' },
+const statsData = [
+  { value: '5+', label: 'Projects Completed', icon: <CheckSquare className="text-cyan" size={24} /> },
+  { value: '10+', label: 'Technologies', icon: <Cpu className="text-purple" size={24} /> },
+  { value: 'AI & IoT', label: 'Developer Focus', icon: <Award className="text-cyan" size={24} /> },
+  { value: 'Startup', label: 'Experience', icon: <Briefcase className="text-purple" size={24} /> }
 ];
 
 const learningTech = [
-  { name: 'Next.js', level: 'Intermediate' },
-  { name: 'TypeScript', level: 'Intermediate' },
-  { name: 'Docker', level: 'Basic' },
-  { name: 'ROS (Robot OS)', level: 'Exploring' },
-  { name: 'Cloud Native APIs', level: 'Advanced' }
+  { name: 'Next.js', icon: '🌐', desc: 'Modern Server-Side Rendered framework' },
+  { name: 'TypeScript', icon: '🟦', desc: 'Secure strongly-typed development' },
+  { name: 'Docker', icon: '🐋', desc: 'Containerized application deployment' },
+  { name: 'Cloud Computing', icon: '☁️', desc: 'Scalable REST APIs & serverless apps' },
+  { name: 'Advanced React', icon: '⚛️', desc: 'High performance state optimization' }
 ];
 
 export default function About() {
@@ -30,7 +31,7 @@ export default function About() {
           <h2 className="text-3xl sm:text-4xl font-black text-white">
             About Me
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-[#915EFF] to-[#00E5FF] mx-auto mt-4 rounded-full" />
+          <div className="w-16 h-1 bg-gradient-to-r from-purple to-cyan mx-auto mt-4 rounded-full" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -70,20 +71,17 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Simple Stats grid */}
-              <div className="grid grid-cols-3 gap-2 mt-2">
-                {stats.map((stat, i) => (
-                  <div key={i} className="p-3 bg-white-5 rounded-xl border border-white-5 text-center">
-                    <p className="text-xs text-muted truncate">{stat.label}</p>
-                    <p className="text-xs font-bold text-white truncate mt-1">{stat.value}</p>
-                  </div>
-                ))}
-              </div>
+              <div className="w-full h-px bg-white-10" />
+
+              {/* Quick credential footnote */}
+              <p className="text-xs text-muted leading-relaxed text-left">
+                Specialized in hardware prototyping, machine learning integrations, and clean user dashboards.
+              </p>
 
             </Tilt>
           </div>
 
-          {/* Right Side: Bio & Skills Learning */}
+          {/* Right Side: Bio, Stats & Skills Learning */}
           <div className="lg:col-span-7 flex flex-col gap-8 text-left">
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -93,37 +91,53 @@ export default function About() {
               className="flex flex-col gap-6"
             >
               <p className="text-lg text-white/90 leading-relaxed font-light">
-                I am currently pursuing my <strong className="text-white font-semibold">B.Tech in Artificial Intelligence & Data Science</strong> at <span className="text-cyan font-medium">Vivekananda Institute of Professional Studies (VIPS), Delhi</span>.
+                I am <strong className="text-white font-semibold">Tanush Yadav</strong>, a B.Tech student specializing in <strong className="text-white font-semibold">Artificial Intelligence & Data Science</strong>. I enjoy building modern web applications, AI-powered solutions, and IoT systems that solve real-world problems. My goal is to create innovative, accessible, and scalable products while continuously learning emerging technologies.
               </p>
               
-              <p className="text-muted leading-relaxed">
-                I enjoy building impactful products combining Artificial Intelligence, IoT, and modern web technologies. My key technical interests include Embedded Systems engineering, Computer Vision, Cloud Applications, and Smart Automation.
-              </p>
+              <div className="w-full h-px bg-white-10 my-2" />
 
-              <p className="text-muted leading-relaxed">
-                I love turning innovative ideas into practical, scalable solutions that improve people's lives and simplify daily tasks.
-              </p>
+              {/* Statistics Counters Section */}
+              <div>
+                <h4 className="text-xl font-bold text-white font-heading mb-6 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-cyan animate-pulse" />
+                  Professional Statistics
+                </h4>
+                
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  {statsData.map((stat, idx) => (
+                    <Tilt key={idx} className="p-4 flex flex-col items-center text-center justify-center">
+                      <div className="mb-2 p-2.5 bg-white-5 rounded-full border border-white-10">
+                        {stat.icon}
+                      </div>
+                      <h5 className="text-2xl font-black text-white font-heading">{stat.value}</h5>
+                      <p className="text-[11px] font-bold text-muted uppercase tracking-wider mt-1">{stat.label}</p>
+                    </Tilt>
+                  ))}
+                </div>
+              </div>
 
               <div className="w-full h-px bg-white-10 my-2" />
 
               {/* Currently Learning Section */}
               <div>
-                <h4 className="text-xl font-bold text-white font-heading mb-4 flex items-center gap-2">
+                <h4 className="text-xl font-bold text-white font-heading mb-6 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-cyan animate-pulse" />
-                  Currently Exploring & Learning
+                  Currently Learning
                 </h4>
                 
-                <div className="flex flex-wrap gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {learningTech.map((tech, idx) => (
-                    <div 
+                    <motion.div 
                       key={idx} 
-                      className="px-4 py-2 bg-white-5 border border-white-10 rounded-full hover-border-cyan transition-colors flex items-center gap-2"
+                      whileHover={{ scale: 1.02 }}
+                      className="p-4 bg-white-5 border border-white-10 rounded-2xl flex items-start gap-4 transition-all"
                     >
-                      <span className="text-sm font-semibold text-white">{tech.name}</span>
-                      <span className="text-[10px] uppercase font-bold text-cyan bg-cyan-10 px-2 py-0.5 rounded-full">
-                        {tech.level}
-                      </span>
-                    </div>
+                      <span className="text-2xl mt-1 shrink-0">{tech.icon}</span>
+                      <div className="text-left">
+                        <span className="text-sm font-bold text-white block">{tech.name}</span>
+                        <span className="text-xs text-muted leading-relaxed mt-0.5 block">{tech.desc}</span>
+                      </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>

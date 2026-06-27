@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import emailjs from '@emailjs/browser';
 import Tilt from './Tilt';
 
 const GithubIcon = ({ size = 24, ...props }) => (
@@ -62,31 +63,66 @@ export default function Contact() {
 
     setLoading(true);
 
-    // Simulate database API send latency
-    setTimeout(() => {
-      setLoading(false);
-      setSuccess(true);
-      setForm({ name: '', email: '', message: '' });
-      
-      // Blast celebratory confetti on form success
-      confetti({
-        particleCount: 80,
-        spread: 60,
-        origin: { y: 0.8 },
-        colors: ['#00E5FF', '#915EFF', '#ffffff']
-      });
+    // EmailJS API configurations.
+    // Replace these placeholder strings with your actual credentials from EmailJS Dashboard.
+    const serviceId = 'YOUR_SERVICE_ID';
+    const templateId = 'YOUR_TEMPLATE_ID';
+    const publicKey = 'YOUR_PUBLIC_KEY';
 
-      // Clear success notification after 5 seconds
-      setTimeout(() => setSuccess(false), 5000);
-    }, 1500);
+    if (serviceId === 'YOUR_SERVICE_ID' || templateId === 'YOUR_TEMPLATE_ID' || publicKey === 'YOUR_PUBLIC_KEY') {
+      // Fallback simulation if credentials are not configured yet
+      setTimeout(() => {
+        setLoading(false);
+        setSuccess(true);
+        setForm({ name: '', email: '', message: '' });
+        
+        confetti({
+          particleCount: 80,
+          spread: 60,
+          origin: { y: 0.8 },
+          colors: ['#00E5FF', '#915EFF', '#ffffff']
+        });
+
+        setTimeout(() => setSuccess(false), 5000);
+      }, 1200);
+      return;
+    }
+
+    const templateParams = {
+      from_name: form.name,
+      from_email: form.email,
+      message: form.message,
+      to_name: 'Tanush Yadav',
+    };
+
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then(() => {
+        setLoading(false);
+        setSuccess(true);
+        setForm({ name: '', email: '', message: '' });
+        
+        confetti({
+          particleCount: 80,
+          spread: 60,
+          origin: { y: 0.8 },
+          colors: ['#00E5FF', '#915EFF', '#ffffff']
+        });
+
+        setTimeout(() => setSuccess(false), 5000);
+      })
+      .catch((err) => {
+        setLoading(false);
+        setError('Failed to send message. Please try again or use direct email links.');
+        console.error('EmailJS submit error:', err);
+      });
   };
 
   const contactDetails = [
     {
       icon: <Mail className="text-cyan" size={22} />,
       label: 'Email Address',
-      value: 'tanushyadav.work@gmail.com', // custom professional placeholder
-      href: 'mailto:tanushyadav.work@gmail.com'
+      value: 'tanushyada0987@gmail.com', // custom professional placeholder
+      href: 'mailto:tanushyada0987@gmail.com'
     },
     {
       icon: <Phone className="text-purple" size={22} />,
@@ -103,8 +139,8 @@ export default function Contact() {
   ];
 
   const socialLinks = [
-    { icon: <GithubIcon size={20} />, href: 'https://github.com', label: 'GitHub' },
-    { icon: <LinkedinIcon size={20} />, href: 'https://linkedin.com', label: 'LinkedIn' }
+    { icon: <GithubIcon size={20} />, href: 'https://github.com/Tanushyadav9', label: 'GitHub' },
+    { icon: <LinkedinIcon size={20} />, href: 'https://linkedin.com/in/your-linkedin', label: 'LinkedIn' }
   ];
 
   return (

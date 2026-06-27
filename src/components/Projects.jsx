@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Cpu, Eye, BarChart3, Building } from 'lucide-react';
+import { ExternalLink, Cpu, Eye, BarChart3, Building, BookOpen, Laptop } from 'lucide-react';
 import Tilt from './Tilt';
 
 const GithubIcon = ({ size = 24, ...props }) => (
@@ -27,17 +27,26 @@ const projects = [
     title: 'NoteNetra',
     description: 'Smart currency detection hardware module with cloud synchronization. Uses camera modules, intelligent cloud OCR, and auditory outputs, enabling visually impaired users to recognize paper currencies seamlessly.',
     tech: ['ESP32', 'Firebase', 'IoT', 'Cloud Dashboard'],
-    github: 'https://github.com',
-    demo: 'https://demo.com',
+    github: 'https://github.com/Tanushyadav9/NoteNetra',
+    demo: 'https://github.com/Tanushyadav9/NoteNetra', // placeholder demo
     featured: true,
-    icon: <Cpu size={40} className="text-[#00E5FF]" />,
-    vectorBg: (
-      <svg viewBox="0 0 100 100" className="w-full h-full opacity-10 absolute right-0 bottom-0 pointer-events-none">
-        <rect x="20" y="20" width="60" height="40" rx="4" fill="none" stroke="currentColor" strokeWidth="2" />
-        <circle cx="50" cy="40" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
-        <line x1="20" y1="70" x2="80" y2="70" stroke="currentColor" strokeWidth="3" />
-        <circle cx="35" cy="70" r="5" fill="currentColor" />
-        <circle cx="65" cy="70" r="5" fill="currentColor" />
+    icon: <Cpu size={32} className="text-[#00E5FF]" />,
+    screenshotMock: (
+      <svg viewBox="0 0 400 156" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        <rect width="400" height="156" fill="#0b0e1e"/>
+        {/* ESP32 block */}
+        <rect x="50" y="38" width="80" height="80" rx="10" fill="#1b233d" stroke="#915EFF" strokeWidth="2" />
+        <text x="65" y="80" fill="#915EFF" fontSize="12" fontFamily="monospace" fontWeight="bold">ESP-32</text>
+        <circle cx="170" cy="78" r="16" fill="#00E5FF" opacity="0.2" />
+        <circle cx="170" cy="78" r="8" fill="#00E5FF" />
+        <path d="M 130,78 L 154,78" stroke="#915EFF" strokeWidth="2" strokeDasharray="3 3" />
+        {/* Scanner overlay */}
+        <path d="M 230,30 L 330,30" stroke="#00E5FF" strokeWidth="2" />
+        <path d="M 230,126 L 330,126" stroke="#00E5FF" strokeWidth="2" />
+        <rect x="240" y="48" width="80" height="60" rx="4" fill="#0f172a" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+        <text x="250" y="83" fill="#aaa6c3" fontSize="10" fontFamily="sans-serif">SCANNING...</text>
+        {/* Connection rays */}
+        <path d="M 186,78 L 230,78" stroke="#00E5FF" strokeWidth="2" strokeDasharray="3 3" />
       </svg>
     )
   },
@@ -46,16 +55,53 @@ const projects = [
     title: 'VisionPay',
     description: 'Camera-based UPI payment app built to help visually impaired individuals run independent transactions safely. Complete with custom voice guidance, text-to-speech directions, and secure Firebase auth.',
     tech: ['React.js', 'Firebase', 'Computer Vision', 'Speech Synthesis'],
-    github: 'https://github.com',
-    demo: 'https://demo.com',
+    github: 'https://github.com/Tanushyadav9/VisionPay',
+    demo: 'https://github.com/Tanushyadav9/VisionPay',
     featured: false,
-    icon: <Eye size={30} className="text-[#915EFF]" />,
-    vectorBg: (
-      <svg viewBox="0 0 100 100" className="w-full h-full opacity-10 absolute right-0 bottom-0 pointer-events-none">
-        <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" strokeWidth="2" />
-        <circle cx="50" cy="50" r="10" fill="currentColor" />
-        <path d="M10 50 Q50 90 90 50" fill="none" stroke="currentColor" strokeWidth="2" />
-        <path d="M10 50 Q50 10 90 50" fill="none" stroke="currentColor" strokeWidth="2" />
+    icon: <Eye size={24} className="text-[#915EFF]" />,
+    screenshotMock: (
+      <svg viewBox="0 0 400 156" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        <rect width="400" height="156" fill="#0b0e1e"/>
+        {/* Phone shell */}
+        <rect x="150" y="15" width="100" height="126" rx="14" fill="#1e293b" stroke="#00E5FF" strokeWidth="2" />
+        {/* Scanning grid */}
+        <rect x="165" y="35" width="70" height="70" rx="6" fill="#0f172a" stroke="#915EFF" strokeWidth="1.5" />
+        <path d="M 180,70 L 220,70" stroke="#00E5FF" strokeWidth="2" className="animate-pulse" />
+        {/* Voice indicator */}
+        <path d="M 270,78 C 275,68 285,68 290,78" stroke="#915EFF" strokeWidth="2" strokeLinecap="round" />
+        <path d="M 265,78 C 275,58 295,58 305,78" stroke="#915EFF" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    )
+  },
+  {
+    id: 'preschool',
+    title: 'Little Learners Preschool Website',
+    description: 'A modern responsive website designed for a preschool with admissions, gallery, contact form, teacher information, and mobile-friendly design.',
+    tech: ['React', 'HTML', 'CSS', 'JavaScript'],
+    github: 'https://github.com/Tanushyadav9/kindergarten',
+    demo: 'https://github.com/Tanushyadav9/kindergarten',
+    featured: false,
+    icon: <Laptop size={24} className="text-[#00E5FF]" />,
+    screenshotMock: (
+      <svg viewBox="0 0 400 156" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        <rect width="400" height="156" fill="#0b0e1e"/>
+        {/* Browser outline */}
+        <rect x="40" y="20" width="320" height="116" rx="6" fill="#1b233d" stroke="#00E5FF" strokeWidth="1.5" />
+        {/* Dashboard visuals */}
+        <rect x="60" y="45" width="130" height="30" rx="4" fill="#ffbd2e" opacity="0.8" />
+        <text x="70" y="64" fill="#050816" fontSize="10" fontWeight="bold">Little Learners</text>
+        
+        <rect x="210" y="45" width="60" height="30" rx="4" fill="#915EFF" />
+        <text x="218" y="64" fill="white" fontSize="9">Admissions</text>
+        
+        <rect x="280" y="45" width="60" height="30" rx="4" fill="#00E5FF" />
+        <text x="295" y="64" fill="#050816" fontSize="9">Gallery</text>
+        
+        <rect x="60" y="88" width="280" height="35" rx="4" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" />
+        <circle cx="85" cy="105" r="10" fill="#915EFF" />
+        <circle cx="115" cy="105" r="10" fill="#00E5FF" />
+        <circle cx="145" cy="105" r="10" fill="#ffbd2e" />
+        <text x="175" y="110" fill="#aaa6c3" fontSize="9">Welcome to Preschool Enrollment</text>
       </svg>
     )
   },
@@ -64,18 +110,23 @@ const projects = [
     title: 'Hotel Management System',
     description: 'A complete desktop administration system for tracking hospitality bookings, database room availability, records processing, customer invoices, and employee shift rotas.',
     tech: ['Java', 'Python', 'MySQL', 'Database UI'],
-    github: 'https://github.com',
+    github: 'https://github.com/Tanushyadav9/Hotel-Management-System',
+    demo: 'https://github.com/Tanushyadav9/Hotel-Management-System',
     featured: false,
-    icon: <Building size={30} className="text-[#00E5FF]" />,
-    vectorBg: (
-      <svg viewBox="0 0 100 100" className="w-full h-full opacity-10 absolute right-0 bottom-0 pointer-events-none">
-        <rect x="25" y="15" width="50" height="70" rx="3" fill="none" stroke="currentColor" strokeWidth="2" />
-        <line x1="37" y1="30" x2="47" y2="30" stroke="currentColor" strokeWidth="2" />
-        <line x1="53" y1="30" x2="63" y2="30" stroke="currentColor" strokeWidth="2" />
-        <line x1="37" y1="45" x2="47" y2="45" stroke="currentColor" strokeWidth="2" />
-        <line x1="53" y1="45" x2="63" y2="45" stroke="currentColor" strokeWidth="2" />
-        <line x1="37" y1="60" x2="47" y2="60" stroke="currentColor" strokeWidth="2" />
-        <line x1="53" y1="60" x2="63" y2="60" stroke="currentColor" strokeWidth="2" />
+    icon: <Building size={24} className="text-[#00E5FF]" />,
+    screenshotMock: (
+      <svg viewBox="0 0 400 156" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        <rect width="400" height="156" fill="#0b0e1e"/>
+        {/* Room grid */}
+        <rect x="80" y="30" width="240" height="96" rx="6" fill="#1b233d" stroke="#915EFF" strokeWidth="1.5" />
+        <rect x="100" y="45" width="50" height="28" rx="4" fill="#27c93f" opacity="0.8" />
+        <text x="110" y="62" fill="white" fontSize="9">Room 101</text>
+        <rect x="175" y="45" width="50" height="28" rx="4" fill="#ff5f56" opacity="0.8" />
+        <text x="185" y="62" fill="white" fontSize="9">Room 102</text>
+        <rect x="250" y="45" width="50" height="28" rx="4" fill="#27c93f" opacity="0.8" />
+        <text x="260" y="62" fill="white" fontSize="9">Room 103</text>
+        <rect x="100" y="85" width="200" height="28" rx="4" fill="rgba(255,255,255,0.05)" />
+        <text x="115" y="102" fill="#aaa6c3" fontSize="9">Database Status: 32 Rooms Occupied / 10 Free</text>
       </svg>
     )
   },
@@ -84,16 +135,22 @@ const projects = [
     title: 'Student Performance Analyzer',
     description: 'An intelligent analytical engine that parses student test grids, extracts score percentiles, automatically tracks grade classifications, and outputs graphic trend charts.',
     tech: ['Python', 'Pandas', 'Matplotlib', 'Numpy'],
-    github: 'https://github.com',
+    github: 'https://github.com/Tanushyadav9/Student-Performance-Analyzer',
+    demo: 'https://github.com/Tanushyadav9/Student-Performance-Analyzer',
     featured: false,
-    icon: <BarChart3 size={30} className="text-[#915EFF]" />,
-    vectorBg: (
-      <svg viewBox="0 0 100 100" className="w-full h-full opacity-10 absolute right-0 bottom-0 pointer-events-none">
-        <line x1="15" y1="15" x2="15" y2="85" stroke="currentColor" strokeWidth="2" />
-        <line x1="15" y1="85" x2="85" y2="85" stroke="currentColor" strokeWidth="2" />
-        <rect x="25" y="55" width="12" height="30" fill="currentColor" />
-        <rect x="45" y="35" width="12" height="50" fill="currentColor" />
-        <rect x="65" y="20" width="12" height="65" fill="currentColor" />
+    icon: <BarChart3 size={24} className="text-[#915EFF]" />,
+    screenshotMock: (
+      <svg viewBox="0 0 400 156" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        <rect width="400" height="156" fill="#0b0e1e"/>
+        {/* Graphs visual */}
+        <line x1="80" y1="30" x2="80" y2="120" stroke="white" strokeWidth="2" />
+        <line x1="80" y1="120" x2="320" y2="120" stroke="white" strokeWidth="2" />
+        <rect x="100" y="70" width="30" height="50" fill="#915EFF" rx="3" />
+        <rect x="150" y="50" width="30" height="70" fill="#00E5FF" rx="3" />
+        <rect x="200" y="40" width="30" height="80" fill="#915EFF" rx="3" />
+        <rect x="250" y="20" width="30" height="100" fill="#00E5FF" rx="3" />
+        <path d="M 115,70 L 165,50 L 215,40 L 265,20" stroke="#ffbd2e" strokeWidth="2.5" fill="none" />
+        <circle cx="265" cy="20" r="4" fill="#ffbd2e" />
       </svg>
     )
   }
@@ -131,19 +188,28 @@ export default function Projects() {
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
                 <Tilt 
-                  className={`p-8 h-full flex flex-col justify-between group ${
+                  className={`p-6 h-full flex flex-col justify-between group ${
                     isFeatured ? 'featured-project-card' : 'standard-project-card'
                   }`}
                 >
-                  {/* Backdrop subtle vector details */}
-                  <div className={`text-${isFeatured ? 'cyan' : 'purple'} opacity-5`}>
-                    {project.vectorBg}
+                  
+                  {/* Browser Mockup Image Container */}
+                  <div className="project-screenshot-container">
+                    <div className="browser-bar">
+                      <span className="dot dot-red"></span>
+                      <span className="dot dot-yellow"></span>
+                      <span className="dot dot-green"></span>
+                      <span className="text-[10px] text-white/30 ml-2 font-mono">{project.title.toLowerCase().replace(/\s+/g, '-')}.local</span>
+                    </div>
+                    <div className="screenshot-illustration">
+                      {project.screenshotMock}
+                    </div>
                   </div>
 
                   <div>
                     {/* Top Header Badge Row */}
-                    <div className="flex justify-between items-start mb-6">
-                      <div className="p-3 bg-white-5 rounded-2xl border border-white-10">
+                    <div className="flex justify-between items-center mb-4">
+                      <div className="p-2.5 bg-white-5 rounded-2xl border border-white-10">
                         {project.icon}
                       </div>
                       
@@ -155,29 +221,29 @@ export default function Projects() {
                     </div>
 
                     {/* Title and Description */}
-                    <h3 className="text-2xl font-bold text-white font-heading mb-3 group-hover:text-gradient transition-colors">
+                    <h3 className="text-xl font-bold text-white font-heading mb-2 group-hover:text-gradient transition-colors">
                       {project.title}
                     </h3>
                     
-                    <p className="text-muted text-sm leading-relaxed mb-6 max-w-3xl">
+                    <p className="text-muted text-xs leading-relaxed mb-6">
                       {project.description}
                     </p>
                   </div>
 
                   <div>
                     {/* Technologies Badges */}
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-1.5 mb-5">
                       {project.tech.map((t, tIdx) => (
                         <span 
                           key={tIdx} 
-                          className="text-[11px] font-bold text-white/70 bg-white-5 border border-white-10 px-3 py-1 rounded-full hover-border-cyan transition-colors"
+                          className="text-[10px] font-bold text-white/70 bg-white-5 border border-white-10 px-2.5 py-0.5 rounded-full hover-border-cyan transition-colors"
                         >
                           {t}
                         </span>
                       ))}
                     </div>
 
-                    <div className="w-full h-px bg-white-5 mb-6" />
+                    <div className="w-full h-px bg-white-5 mb-5" />
 
                     {/* Action Links */}
                     <div className="flex gap-4">
@@ -186,10 +252,10 @@ export default function Projects() {
                           href={project.github} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-xs font-bold text-muted hover:text-white transition-colors"
+                          className="flex items-center gap-2 text-xs font-bold text-muted hover:text-white transition-colors decoration-transparent"
                         >
                           <GithubIcon size={16} />
-                          <span>GitHub</span>
+                          <span>GitHub Repo</span>
                         </a>
                       )}
                       
@@ -198,7 +264,7 @@ export default function Projects() {
                           href={project.demo} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-xs font-bold text-cyan hover:text-white transition-colors"
+                          className="flex items-center gap-2 text-xs font-bold text-cyan hover:text-white transition-colors decoration-transparent"
                         >
                           <ExternalLink size={16} />
                           <span>Live Demo</span>
