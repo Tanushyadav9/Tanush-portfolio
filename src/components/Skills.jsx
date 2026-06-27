@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Server, Cpu, Cloud, Settings, Brain } from 'lucide-react';
+import { Code, Monitor, Server, Database, Brain, Cpu, Settings } from 'lucide-react';
 import Tilt from './Tilt';
 
 const skillCategories = [
@@ -8,55 +8,67 @@ const skillCategories = [
     title: 'Programming',
     icon: <Code size={22} className="text-purple" />,
     skills: [
-      { name: 'Python', level: 90 },
-      { name: 'C++', level: 80 },
-      { name: 'JavaScript', level: 85 },
-      { name: 'HTML5 & CSS3', level: 90 }
+      { name: 'Python', styleClass: 'text-cyan bg-cyan-10 border-cyan-20' },
+      { name: 'C++', styleClass: 'text-purple bg-purple-10 border-purple-20' },
+      { name: 'JavaScript', styleClass: 'text-cyan bg-cyan-10 border-cyan-20' },
+      { name: 'HTML5 & CSS3', styleClass: 'text-purple bg-purple-10 border-purple-20' }
     ]
   },
   {
-    title: 'Frameworks',
-    icon: <Server size={22} className="text-cyan" />,
+    title: 'Frontend',
+    icon: <Monitor size={22} className="text-cyan" />,
     skills: [
-      { name: 'React.js', level: 80 },
-      { name: 'FastAPI', level: 75 },
-      { name: 'Firebase SDK', level: 85 }
+      { name: 'React.js', styleClass: 'text-cyan bg-cyan-10 border-cyan-20' },
+      { name: 'Next.js', styleClass: 'text-purple bg-purple-10 border-purple-20' },
+      { name: 'Redux', styleClass: 'text-cyan bg-cyan-10 border-cyan-20' },
+      { name: 'TailwindCSS', styleClass: 'text-purple bg-purple-10 border-purple-20' }
     ]
   },
   {
-    title: 'IoT & Embedded',
-    icon: <Cpu size={22} className="text-purple" />,
+    title: 'Backend',
+    icon: <Server size={22} className="text-purple" />,
     skills: [
-      { name: 'ESP32', level: 85 },
-      { name: 'Arduino Platform', level: 90 },
-      { name: 'Sensor Integration', level: 85 }
+      { name: 'Node.js', styleClass: 'text-purple bg-purple-10 border-purple-20' },
+      { name: 'Express.js', styleClass: 'text-cyan bg-cyan-10 border-cyan-20' },
+      { name: 'FastAPI', styleClass: 'text-purple bg-purple-10 border-purple-20' }
     ]
   },
   {
-    title: 'Cloud & Database',
-    icon: <Cloud size={22} className="text-cyan" />,
+    title: 'Database',
+    icon: <Database size={22} className="text-cyan" />,
     skills: [
-      { name: 'Firebase Database', level: 80 },
-      { name: 'REST APIs', level: 85 },
-      { name: 'JSON Databases', level: 80 }
+      { name: 'MongoDB', styleClass: 'text-cyan bg-cyan-10 border-cyan-20' },
+      { name: 'PostgreSQL', styleClass: 'text-purple bg-purple-10 border-purple-20' },
+      { name: 'Firebase', styleClass: 'text-cyan bg-cyan-10 border-cyan-20' }
     ]
   },
   {
-    title: 'Development Tools',
+    title: 'AI & Machine Learning',
+    icon: <Brain size={22} className="text-purple" />,
+    skills: [
+      { name: 'Scikit-Learn', styleClass: 'text-purple bg-purple-10 border-purple-20' },
+      { name: 'TensorFlow', styleClass: 'text-cyan bg-cyan-10 border-cyan-20' },
+      { name: 'OpenCV', styleClass: 'text-purple bg-purple-10 border-purple-20' }
+    ]
+  },
+  {
+    title: 'IoT',
+    icon: <Cpu size={22} className="text-cyan" />,
+    skills: [
+      { name: 'ESP32', styleClass: 'text-cyan bg-cyan-10 border-cyan-20' },
+      { name: 'Arduino', styleClass: 'text-purple bg-purple-10 border-purple-20' },
+      { name: 'Raspberry Pi', styleClass: 'text-cyan bg-cyan-10 border-cyan-20' },
+      { name: 'Sensors Grid', styleClass: 'text-purple bg-purple-10 border-purple-20' }
+    ]
+  },
+  {
+    title: 'Tools',
     icon: <Settings size={22} className="text-purple" />,
     skills: [
-      { name: 'Git & GitHub', level: 85 },
-      { name: 'VS Code', level: 90 },
-      { name: 'Arduino IDE', level: 85 }
-    ]
-  },
-  {
-    title: 'Domains',
-    icon: <Brain size={22} className="text-cyan" />,
-    skills: [
-      { name: 'Artificial Intelligence', level: 80 },
-      { name: 'Machine Learning', level: 75 },
-      { name: 'Smart Automation', level: 85 }
+      { name: 'Git & GitHub', styleClass: 'text-purple bg-purple-10 border-purple-20' },
+      { name: 'Docker', styleClass: 'text-cyan bg-cyan-10 border-cyan-20' },
+      { name: 'Postman', styleClass: 'text-purple bg-purple-10 border-purple-20' },
+      { name: 'VS Code', styleClass: 'text-cyan bg-cyan-10 border-cyan-20' }
     ]
   }
 ];
@@ -85,7 +97,7 @@ export default function Skills() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: catIdx * 0.1 }}
+              transition={{ duration: 0.5, delay: catIdx * 0.08 }}
             >
               <Tilt className="p-6 h-full flex flex-col justify-between">
                 <div>
@@ -94,31 +106,21 @@ export default function Skills() {
                     <div className="p-2.5 bg-white-5 rounded-xl border border-white-10">
                       {category.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-white font-heading">
+                    <h3 className="text-xl font-bold text-white font-heading text-left">
                       {category.title}
                     </h3>
                   </div>
 
-                  {/* Skills Progress Lines */}
-                  <div className="flex flex-col gap-5">
+                  {/* Skills Badges Grid */}
+                  <div className="flex flex-wrap gap-3 justify-start">
                     {category.skills.map((skill, skillIdx) => (
-                      <div key={skillIdx} className="flex flex-col gap-1.5 text-left">
-                        <div className="flex justify-between items-center text-sm">
-                          <span className="text-white/80 font-medium">{skill.name}</span>
-                          <span className="text-cyan font-bold">{skill.level}%</span>
-                        </div>
-                        
-                        {/* Custom Animated Track */}
-                        <div className="w-full h-1.5 bg-white-5 rounded-full overflow-hidden">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.level}%` }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.2, ease: "easeOut", delay: skillIdx * 0.1 }}
-                            className="h-full bg-gradient-to-r from-purple to-cyan rounded-full"
-                          />
-                        </div>
-                      </div>
+                      <motion.div
+                        key={skillIdx}
+                        whileHover={{ scale: 1.05 }}
+                        className={`px-4 py-2 border rounded-xl font-medium text-sm transition-all flex items-center gap-1.5 ${skill.styleClass}`}
+                      >
+                        <span>{skill.name}</span>
+                      </motion.div>
                     ))}
                   </div>
                 </div>

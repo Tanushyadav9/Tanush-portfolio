@@ -1,21 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, GraduationCap, MapPin, Code2, Award, Briefcase, Cpu, CheckSquare } from 'lucide-react';
+import { BookOpen, GraduationCap, MapPin, Code2, Cpu, CheckSquare, Award, Cloud } from 'lucide-react';
 import Tilt from './Tilt';
 
-const statsData = [
-  { value: '5+', label: 'Projects Completed', icon: <CheckSquare className="text-cyan" size={24} /> },
-  { value: '10+', label: 'Technologies', icon: <Cpu className="text-purple" size={24} /> },
-  { value: 'AI & IoT', label: 'Developer Focus', icon: <Award className="text-cyan" size={24} /> },
-  { value: 'Startup', label: 'Experience', icon: <Briefcase className="text-purple" size={24} /> }
+const factsData = [
+  { label: 'Location', value: 'Delhi, India', icon: <MapPin className="text-cyan" size={20} /> },
+  { label: 'Education', value: 'B.Tech AI & Data Science', icon: <GraduationCap className="text-purple" size={20} /> },
+  { label: 'Web Developer', value: 'Full Stack Dev', icon: <Code2 className="text-cyan" size={20} /> },
+  { label: 'IoT Developer', value: 'Embedded Systems', icon: <Cpu className="text-purple" size={20} /> },
+  { label: 'Track Record', value: '6+ Projects Completed', icon: <CheckSquare className="text-cyan" size={20} /> }
 ];
 
 const learningTech = [
-  { name: 'Next.js', icon: '🌐', desc: 'Modern Server-Side Rendered framework' },
-  { name: 'TypeScript', icon: '🟦', desc: 'Secure strongly-typed development' },
-  { name: 'Docker', icon: '🐋', desc: 'Containerized application deployment' },
-  { name: 'Cloud Computing', icon: '☁️', desc: 'Scalable REST APIs & serverless apps' },
-  { name: 'Advanced React', icon: '⚛️', desc: 'High performance state optimization' }
+  { name: 'Next.js', icon: '🌐', desc: 'Server-Side Rendering & App Routing' },
+  { name: 'TypeScript', icon: '🟦', desc: 'Type-safe scalable programming' },
+  { name: 'Docker', icon: '🐋', desc: 'Containerized deployment infrastructure' },
+  { name: 'Cloud Computing', icon: '☁️', desc: 'Serverless APIs, hosting & cloud database' }
 ];
 
 export default function About() {
@@ -36,7 +36,7 @@ export default function About() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Left Side: Detail Card */}
+          {/* Left Side: Photo Detail Card */}
           <div className="lg:col-span-5 w-full flex justify-center">
             <Tilt 
               className="w-full p-8 flex flex-col gap-6"
@@ -50,7 +50,7 @@ export default function About() {
 
               <div>
                 <h3 className="text-2xl font-bold text-white font-heading mb-1">Tanush Yadav</h3>
-                <p className="text-cyan text-sm font-medium tracking-wide">AI & IoT Solutions Architect</p>
+                <p className="text-cyan text-sm font-medium tracking-wide">AI & Full Stack Developer</p>
               </div>
 
               <div className="w-full h-px bg-white-10" />
@@ -63,25 +63,24 @@ export default function About() {
                 </div>
                 <div className="flex items-center gap-3">
                   <BookOpen size={18} className="text-purple" />
-                  <span>B.Tech in Artificial Intelligence & Data Science</span>
+                  <span>VIPS, Delhi</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Code2 size={18} className="text-cyan" />
-                  <span>Full Stack & Embedded IoT Systems</span>
+                  <span>AI & Data Science Specialty</span>
                 </div>
               </div>
 
               <div className="w-full h-px bg-white-10" />
 
-              {/* Quick credential footnote */}
               <p className="text-xs text-muted leading-relaxed text-left">
-                Specialized in hardware prototyping, machine learning integrations, and clean user dashboards.
+                Building accessible software solutions combining embedded hardware, cloud computing, and responsive user web interfaces.
               </p>
 
             </Tilt>
           </div>
 
-          {/* Right Side: Bio, Stats & Skills Learning */}
+          {/* Right Side: Bio, Facts & Currently Learning */}
           <div className="lg:col-span-7 flex flex-col gap-8 text-left">
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -90,27 +89,30 @@ export default function About() {
               transition={{ duration: 0.6 }}
               className="flex flex-col gap-6"
             >
+              {/* Professional Introduction Bio */}
               <p className="text-lg text-white/90 leading-relaxed font-light">
-                I am <strong className="text-white font-semibold">Tanush Yadav</strong>, a B.Tech student specializing in <strong className="text-white font-semibold">Artificial Intelligence & Data Science</strong>. I enjoy building modern web applications, AI-powered solutions, and IoT systems that solve real-world problems. My goal is to create innovative, accessible, and scalable products while continuously learning emerging technologies.
+                I am <strong className="text-white font-semibold">Tanush Yadav</strong>, a B.Tech student specializing in <strong className="text-white font-semibold">Artificial Intelligence & Data Science</strong> at <span className="text-cyan font-medium font-semibold">Vivekananda Institute of Professional Studies (VIPS), Delhi</span>. I enjoy building modern web applications, AI-powered solutions, and IoT systems that solve real-world problems. My goal is to create innovative, accessible, and scalable products while continuously learning emerging technologies.
               </p>
               
               <div className="w-full h-px bg-white-10 my-2" />
 
-              {/* Statistics Counters Section */}
+              {/* Quick Facts Section */}
               <div>
                 <h4 className="text-xl font-bold text-white font-heading mb-6 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-cyan animate-pulse" />
-                  Professional Statistics
+                  Quick Facts
                 </h4>
                 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  {statsData.map((stat, idx) => (
-                    <Tilt key={idx} className="p-4 flex flex-col items-center text-center justify-center">
-                      <div className="mb-2 p-2.5 bg-white-5 rounded-full border border-white-10">
-                        {stat.icon}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                  {factsData.map((fact, idx) => (
+                    <Tilt key={idx} className="p-4 flex items-center gap-4">
+                      <div className="p-2.5 bg-white-5 rounded-xl border border-white-10 shrink-0">
+                        {fact.icon}
                       </div>
-                      <h5 className="text-2xl font-black text-white font-heading">{stat.value}</h5>
-                      <p className="text-[11px] font-bold text-muted uppercase tracking-wider mt-1">{stat.label}</p>
+                      <div className="text-left">
+                        <p className="text-[10px] font-bold text-muted uppercase tracking-wider">{fact.label}</p>
+                        <p className="text-sm font-bold text-white mt-0.5">{fact.value}</p>
+                      </div>
                     </Tilt>
                   ))}
                 </div>

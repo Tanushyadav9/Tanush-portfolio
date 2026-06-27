@@ -4,9 +4,11 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import GithubStats from './components/GithubStats';
 import Experience from './components/Experience';
 import Achievements from './components/Achievements';
 import Education from './components/Education';
+import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CursorGlow from './components/CursorGlow';
@@ -55,6 +57,12 @@ export default function App() {
           <div className="w-full h-px bg-white/5" />
         </div>
 
+        <GithubStats />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="w-full h-px bg-white/5" />
+        </div>
+
         <Experience />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -68,6 +76,12 @@ export default function App() {
         </div>
 
         <Education />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="w-full h-px bg-white/5" />
+        </div>
+
+        <Certifications />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="w-full h-px bg-white/5" />

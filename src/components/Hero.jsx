@@ -42,8 +42,8 @@ const LinkedinIcon = ({ size = 24, ...props }) => (
 const titles = [
   "AI & Data Science Student",
   "Full Stack Developer",
-  "IoT Innovator",
-  "Embedded Systems Enthusiast"
+  "IoT Enthusiast",
+  "React Developer"
 ];
 
 export default function Hero() {
@@ -85,8 +85,17 @@ export default function Hero() {
     }
   };
 
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      const yOffset = -80;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
   const triggerResumeDownload = () => {
-    // Generate a beautiful, print-friendly profile snapshot or open window print dialog
+    // Print window triggers
     window.print();
   };
 
@@ -108,7 +117,7 @@ export default function Hero() {
               WELCOME TO MY PORTFOLIO
             </p>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-tight mb-4">
               Hi, I'm <span className="text-gradient">Tanush Yadav</span>
             </h1>
             
@@ -124,50 +133,56 @@ export default function Hero() {
               A passionate developer building AI, IoT and Web applications that solve real-world problems through intelligent technology.
             </p>
             
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 items-center">
               <a 
                 href="/Tanush_Yadav_Resume.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="btn btn-primary decoration-transparent"
+                className="btn btn-primary decoration-transparent hover:scale-105 transition-transform shadow-[0_0_15px_rgba(145,94,255,0.3)]"
               >
                 📄 View Resume
               </a>
               <a 
                 href="/Tanush_Yadav_Resume.pdf" 
                 download="Tanush_Yadav_Resume.pdf"
-                className="btn btn-secondary decoration-transparent"
+                className="btn btn-secondary decoration-transparent hover:scale-105 transition-transform"
               >
                 ⬇ Download Resume
               </a>
+              <button 
+                onClick={scrollToContact} 
+                className="btn btn-primary decoration-transparent bg-gradient-to-r from-cyan-500 to-blue-500 hover:scale-105 transition-transform shadow-[0_0_15px_rgba(0,229,255,0.3)]"
+              >
+                ✉ Hire Me
+              </button>
             </div>
 
             {/* Social Connection Row */}
-            <div className="flex gap-4 mt-6 items-center">
+            <div className="flex gap-4 mt-8 items-center">
               <a 
                 href="https://github.com/Tanushyadav9" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-purple hover-bg-purple-10 text-white hover:text-cyan transition-all"
+                className="w-12 h-12 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-cyan hover-bg-cyan-10 text-white hover:text-cyan transition-all social-icon-glow"
               >
-                <GithubIcon size={18} />
+                <GithubIcon size={22} />
               </a>
               <a 
                 href="https://www.linkedin.com/in/tanush-yadav-1893b338b" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-purple hover-bg-purple-10 text-white hover:text-cyan transition-all"
+                className="w-12 h-12 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-purple hover-bg-purple-10 text-white hover:text-purple transition-all social-icon-glow"
               >
-                <LinkedinIcon size={18} />
+                <LinkedinIcon size={22} />
               </a>
               <a 
                 href="mailto:tanushyada0987@gmail.com" 
                 aria-label="Email"
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-purple hover-bg-purple-10 text-white hover:text-cyan transition-all"
+                className="w-12 h-12 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-cyan hover-bg-cyan-10 text-white hover:text-cyan transition-all social-icon-glow"
               >
-                <Mail size={18} />
+                <Mail size={22} />
               </a>
             </div>
           </motion.div>

@@ -1,7 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Cpu, Eye, BarChart3, Building, BookOpen, Laptop } from 'lucide-react';
+import { ExternalLink, Cpu, Eye, Building, Laptop, Sprout, Heart } from 'lucide-react';
 import Tilt from './Tilt';
+
+import notenetraImg from '../assets/notenetra.png';
+import visionpayImg from '../assets/visionpay.png';
+import hotelImg from '../assets/hotel_management.png';
+import kindergartenImg from '../assets/kindergarten.png';
+import farmerImg from '../assets/farmer_website.png';
+import petImg from '../assets/pet_website.png';
 
 const GithubIcon = ({ size = 24, ...props }) => (
   <svg
@@ -25,134 +32,68 @@ const projects = [
   {
     id: 'notenetra',
     title: 'NoteNetra',
-    description: 'Smart currency detection hardware module with cloud synchronization. Uses camera modules, intelligent cloud OCR, and auditory outputs, enabling visually impaired users to recognize paper currencies seamlessly.',
+    description: 'An ESP32-based smart currency detection hardware module with cloud synchronization. Uses camera modules, intelligent cloud OCR, and auditory outputs, enabling visually impaired users to recognize paper currencies seamlessly.',
     tech: ['ESP32', 'Firebase', 'IoT', 'Cloud Dashboard'],
     github: 'https://github.com/Tanushyadav9/NoteNetra',
-    demo: 'https://github.com/Tanushyadav9/NoteNetra', // placeholder demo
+    demo: 'https://github.com/Tanushyadav9/NoteNetra',
+    image: notenetraImg,
     featured: true,
-    icon: <Cpu size={32} className="text-[#00E5FF]" />,
-    screenshotMock: (
-      <svg viewBox="0 0 400 156" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-        <rect width="400" height="156" fill="#0b0e1e"/>
-        {/* ESP32 block */}
-        <rect x="50" y="38" width="80" height="80" rx="10" fill="#1b233d" stroke="#915EFF" strokeWidth="2" />
-        <text x="65" y="80" fill="#915EFF" fontSize="12" fontFamily="monospace" fontWeight="bold">ESP-32</text>
-        <circle cx="170" cy="78" r="16" fill="#00E5FF" opacity="0.2" />
-        <circle cx="170" cy="78" r="8" fill="#00E5FF" />
-        <path d="M 130,78 L 154,78" stroke="#915EFF" strokeWidth="2" strokeDasharray="3 3" />
-        {/* Scanner overlay */}
-        <path d="M 230,30 L 330,30" stroke="#00E5FF" strokeWidth="2" />
-        <path d="M 230,126 L 330,126" stroke="#00E5FF" strokeWidth="2" />
-        <rect x="240" y="48" width="80" height="60" rx="4" fill="#0f172a" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
-        <text x="250" y="83" fill="#aaa6c3" fontSize="10" fontFamily="sans-serif">SCANNING...</text>
-        {/* Connection rays */}
-        <path d="M 186,78 L 230,78" stroke="#00E5FF" strokeWidth="2" strokeDasharray="3 3" />
-      </svg>
-    )
+    icon: <Cpu size={24} className="text-[#00E5FF]" />
   },
   {
     id: 'visionpay',
     title: 'VisionPay',
-    description: 'Camera-based UPI payment app built to help visually impaired individuals run independent transactions safely. Complete with custom voice guidance, text-to-speech directions, and secure Firebase auth.',
+    description: 'Camera-based accessible UPI payment system with voice assistance enabling visually impaired users to complete secure QR code transactions independently.',
     tech: ['React.js', 'Firebase', 'Computer Vision', 'Speech Synthesis'],
     github: 'https://github.com/Tanushyadav9/VisionPay',
     demo: 'https://github.com/Tanushyadav9/VisionPay',
+    image: visionpayImg,
     featured: false,
-    icon: <Eye size={24} className="text-[#915EFF]" />,
-    screenshotMock: (
-      <svg viewBox="0 0 400 156" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-        <rect width="400" height="156" fill="#0b0e1e"/>
-        {/* Phone shell */}
-        <rect x="150" y="15" width="100" height="126" rx="14" fill="#1e293b" stroke="#00E5FF" strokeWidth="2" />
-        {/* Scanning grid */}
-        <rect x="165" y="35" width="70" height="70" rx="6" fill="#0f172a" stroke="#915EFF" strokeWidth="1.5" />
-        <path d="M 180,70 L 220,70" stroke="#00E5FF" strokeWidth="2" className="animate-pulse" />
-        {/* Voice indicator */}
-        <path d="M 270,78 C 275,68 285,68 290,78" stroke="#915EFF" strokeWidth="2" strokeLinecap="round" />
-        <path d="M 265,78 C 275,58 295,58 305,78" stroke="#915EFF" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    )
+    icon: <Eye size={24} className="text-[#915EFF]" />
   },
   {
-    id: 'preschool',
-    title: 'Little Learners Preschool Website',
-    description: 'A modern responsive website designed for a preschool with admissions, gallery, contact form, teacher information, and mobile-friendly design.',
+    id: 'kindergarten',
+    title: 'Kindergarten Website',
+    description: 'A modern responsive website designed for a preschool with admissions boards, image gallery grid, contact form, teacher information, and mobile-friendly design.',
     tech: ['React', 'HTML', 'CSS', 'JavaScript'],
     github: 'https://github.com/Tanushyadav9/kindergarten',
     demo: 'https://github.com/Tanushyadav9/kindergarten',
+    image: kindergartenImg,
     featured: false,
-    icon: <Laptop size={24} className="text-[#00E5FF]" />,
-    screenshotMock: (
-      <svg viewBox="0 0 400 156" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-        <rect width="400" height="156" fill="#0b0e1e"/>
-        {/* Browser outline */}
-        <rect x="40" y="20" width="320" height="116" rx="6" fill="#1b233d" stroke="#00E5FF" strokeWidth="1.5" />
-        {/* Dashboard visuals */}
-        <rect x="60" y="45" width="130" height="30" rx="4" fill="#ffbd2e" opacity="0.8" />
-        <text x="70" y="64" fill="#050816" fontSize="10" fontWeight="bold">Little Learners</text>
-        
-        <rect x="210" y="45" width="60" height="30" rx="4" fill="#915EFF" />
-        <text x="218" y="64" fill="white" fontSize="9">Admissions</text>
-        
-        <rect x="280" y="45" width="60" height="30" rx="4" fill="#00E5FF" />
-        <text x="295" y="64" fill="#050816" fontSize="9">Gallery</text>
-        
-        <rect x="60" y="88" width="280" height="35" rx="4" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" />
-        <circle cx="85" cy="105" r="10" fill="#915EFF" />
-        <circle cx="115" cy="105" r="10" fill="#00E5FF" />
-        <circle cx="145" cy="105" r="10" fill="#ffbd2e" />
-        <text x="175" y="110" fill="#aaa6c3" fontSize="9">Welcome to Preschool Enrollment</text>
-      </svg>
-    )
+    icon: <Laptop size={24} className="text-[#00E5FF]" />
   },
   {
     id: 'hms',
     title: 'Hotel Management System',
-    description: 'A complete desktop administration system for tracking hospitality bookings, database room availability, records processing, customer invoices, and employee shift rotas.',
+    description: 'A complete room occupancy scheduling and booking administration desktop dashboard system for processing guest checkout statements, invoice processing, and logs.',
     tech: ['Java', 'Python', 'MySQL', 'Database UI'],
     github: 'https://github.com/Tanushyadav9/Hotel-Management-System',
     demo: 'https://github.com/Tanushyadav9/Hotel-Management-System',
+    image: hotelImg,
     featured: false,
-    icon: <Building size={24} className="text-[#00E5FF]" />,
-    screenshotMock: (
-      <svg viewBox="0 0 400 156" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-        <rect width="400" height="156" fill="#0b0e1e"/>
-        {/* Room grid */}
-        <rect x="80" y="30" width="240" height="96" rx="6" fill="#1b233d" stroke="#915EFF" strokeWidth="1.5" />
-        <rect x="100" y="45" width="50" height="28" rx="4" fill="#27c93f" opacity="0.8" />
-        <text x="110" y="62" fill="white" fontSize="9">Room 101</text>
-        <rect x="175" y="45" width="50" height="28" rx="4" fill="#ff5f56" opacity="0.8" />
-        <text x="185" y="62" fill="white" fontSize="9">Room 102</text>
-        <rect x="250" y="45" width="50" height="28" rx="4" fill="#27c93f" opacity="0.8" />
-        <text x="260" y="62" fill="white" fontSize="9">Room 103</text>
-        <rect x="100" y="85" width="200" height="28" rx="4" fill="rgba(255,255,255,0.05)" />
-        <text x="115" y="102" fill="#aaa6c3" fontSize="9">Database Status: 32 Rooms Occupied / 10 Free</text>
-      </svg>
-    )
+    icon: <Building size={24} className="text-[#915EFF]" />
   },
   {
-    id: 'analyzer',
-    title: 'Student Performance Analyzer',
-    description: 'An intelligent analytical engine that parses student test grids, extracts score percentiles, automatically tracks grade classifications, and outputs graphic trend charts.',
-    tech: ['Python', 'Pandas', 'Matplotlib', 'Numpy'],
-    github: 'https://github.com/Tanushyadav9/Student-Performance-Analyzer',
-    demo: 'https://github.com/Tanushyadav9/Student-Performance-Analyzer',
+    id: 'farmer_website',
+    title: 'Farmer Website',
+    description: 'Smart farming agriculture platform monitoring local soil parameters charts, weather forecast trackers, nutrient calculators, and crop yields recommendation lists.',
+    tech: ['HTML', 'CSS', 'JavaScript', 'IoT Datastreams'],
+    github: 'https://github.com/Tanushyadav9',
+    demo: 'https://github.com/Tanushyadav9',
+    image: farmerImg,
     featured: false,
-    icon: <BarChart3 size={24} className="text-[#915EFF]" />,
-    screenshotMock: (
-      <svg viewBox="0 0 400 156" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-        <rect width="400" height="156" fill="#0b0e1e"/>
-        {/* Graphs visual */}
-        <line x1="80" y1="30" x2="80" y2="120" stroke="white" strokeWidth="2" />
-        <line x1="80" y1="120" x2="320" y2="120" stroke="white" strokeWidth="2" />
-        <rect x="100" y="70" width="30" height="50" fill="#915EFF" rx="3" />
-        <rect x="150" y="50" width="30" height="70" fill="#00E5FF" rx="3" />
-        <rect x="200" y="40" width="30" height="80" fill="#915EFF" rx="3" />
-        <rect x="250" y="20" width="30" height="100" fill="#00E5FF" rx="3" />
-        <path d="M 115,70 L 165,50 L 215,40 L 265,20" stroke="#ffbd2e" strokeWidth="2.5" fill="none" />
-        <circle cx="265" cy="20" r="4" fill="#ffbd2e" />
-      </svg>
-    )
+    icon: <Sprout size={24} className="text-[#00E5FF]" />
+  },
+  {
+    id: 'pet_website',
+    title: 'Pet Website',
+    description: 'Modern pet adoption listings index containing adoptable animal profiles cards, veterinarian checkups scheduling calendar, and pet parameters tracker databases.',
+    tech: ['React', 'CSS', 'Firebase', 'State Store'],
+    github: 'https://github.com/Tanushyadav9',
+    demo: 'https://github.com/Tanushyadav9',
+    image: petImg,
+    featured: false,
+    icon: <Heart size={24} className="text-[#915EFF]" />
   }
 ];
 
@@ -173,7 +114,7 @@ export default function Projects() {
         </div>
 
         {/* Projects Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           
           {projects.map((project, idx) => {
             const isFeatured = project.featured;
@@ -181,11 +122,10 @@ export default function Projects() {
             return (
               <motion.div
                 key={project.id}
-                className={`col-span-1 md:col-span-${isFeatured ? '12' : '6'}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                transition={{ duration: 0.6, delay: idx * 0.08 }}
               >
                 <Tilt 
                   className={`p-6 h-full flex flex-col justify-between group ${
@@ -201,8 +141,12 @@ export default function Projects() {
                       <span className="dot dot-green"></span>
                       <span className="text-[10px] text-white/30 ml-2 font-mono">{project.title.toLowerCase().replace(/\s+/g, '-')}.local</span>
                     </div>
-                    <div className="screenshot-illustration">
-                      {project.screenshotMock}
+                    <div className="screenshot-illustration overflow-hidden">
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                      />
                     </div>
                   </div>
 
@@ -221,18 +165,18 @@ export default function Projects() {
                     </div>
 
                     {/* Title and Description */}
-                    <h3 className="text-xl font-bold text-white font-heading mb-2 group-hover:text-gradient transition-colors">
+                    <h3 className="text-xl font-bold text-white font-heading mb-2 group-hover:text-gradient transition-colors text-left">
                       {project.title}
                     </h3>
                     
-                    <p className="text-muted text-xs leading-relaxed mb-6">
+                    <p className="text-muted text-xs leading-relaxed mb-6 text-left">
                       {project.description}
                     </p>
                   </div>
 
                   <div>
                     {/* Technologies Badges */}
-                    <div className="flex flex-wrap gap-1.5 mb-5">
+                    <div className="flex flex-wrap gap-1.5 mb-5 justify-start">
                       {project.tech.map((t, tIdx) => (
                         <span 
                           key={tIdx} 

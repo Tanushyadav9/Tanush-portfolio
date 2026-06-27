@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar, MapPin, CheckCircle } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, CheckCircle, Cpu } from 'lucide-react';
 import Tilt from './Tilt';
 
 const experiences = [
@@ -9,12 +9,14 @@ const experiences = [
     company: 'Kenet Technologies',
     location: 'Delhi',
     duration: '2024 – Present',
+    companyLogo: <Cpu size={28} className="text-[#00E5FF]" />,
     details: [
-      'Building innovative Artificial Intelligence and Internet of Things (IoT) products.',
-      'Developed NoteNetra, a smart currency detection system for visually impaired individuals.',
-      'Designed VisionPay, a camera-based, accessible QR code payment interface with voice assistance.',
-      'Leading overall technical hardware prototyping and software deployment from concept to production.'
-    ]
+      'Building innovative Artificial Intelligence and Internet of Things (IoT) products focused on high accessibility.',
+      'Developed NoteNetra, a smart currency detection system featuring a real-time cloud data synchronizer for visually impaired users.',
+      'Designed VisionPay, a camera-based, accessible QR code transaction system complete with voice instructions feedback.',
+      'Lead hardware layout designs, ESP32 firmware development, and React cloud analytics dashboard integration from concept to production.'
+    ],
+    techStack: ['ESP32', 'Arduino IDE', 'React.js', 'Firebase', 'Python', 'IoT Sensors']
   }
 ];
 
@@ -43,7 +45,7 @@ export default function Experience() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6 }}
-              className="relative pl-12 md:pl-16 mb-8 text-left"
+              className="relative pl-12 md:pl-16 mb-12 text-left"
             >
               {/* Pulse timeline node indicator */}
               <div className="timeline-dot">
@@ -54,13 +56,18 @@ export default function Experience() {
               <Tilt className="p-8">
                 {/* Header Information */}
                 <div className="flex flex-wrap justify-between items-start gap-4 mb-6">
-                  <div>
-                    <h3 className="text-2xl font-bold text-white font-heading mb-1">
-                      {exp.role}
-                    </h3>
-                    <h4 className="text-lg font-medium text-gradient">
-                      {exp.company}
-                    </h4>
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-white-5 rounded-2xl border border-white-10 shrink-0">
+                      {exp.companyLogo}
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white font-heading mb-1">
+                        {exp.role}
+                      </h3>
+                      <h4 className="text-lg font-medium text-gradient">
+                        {exp.company}
+                      </h4>
+                    </div>
                   </div>
                   
                   {/* Meta items */}
@@ -79,16 +86,33 @@ export default function Experience() {
                 <div className="w-full h-px bg-white-10 mb-6" />
 
                 {/* Description Bullets */}
-                <ul className="flex flex-col gap-4 list-none">
+                <ul className="flex flex-col gap-4 list-none mb-6">
                   {exp.details.map((detail, dIdx) => (
                     <li key={dIdx} className="flex items-start gap-3 text-base text-muted leading-relaxed">
-                      <span className="mt-1 text-cyan shrink-0">
+                      <span className="mt-1.5 text-cyan shrink-0">
                         <CheckCircle size={16} />
                       </span>
                       <span>{detail}</span>
                     </li>
                   ))}
                 </ul>
+
+                <div className="w-full h-px bg-white-10 mb-6" />
+
+                {/* Technologies Badges */}
+                <div>
+                  <p className="text-xs font-bold text-white/50 uppercase tracking-wider mb-3">Key Technologies Used:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {exp.techStack.map((tech, tIdx) => (
+                      <span 
+                        key={tIdx} 
+                        className="px-3 py-1 bg-white-5 border border-white-10 rounded-lg text-xs font-bold text-cyan"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
               </Tilt>
             </motion.div>
