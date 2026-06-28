@@ -3,8 +3,10 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
+import Services from './components/Services';
 import Projects from './components/Projects';
 import GithubStats from './components/GithubStats';
+import Workstation from './components/Workstation';
 import Experience from './components/Experience';
 import Achievements from './components/Achievements';
 import Education from './components/Education';
@@ -16,7 +18,7 @@ import ParticlesBackground from './components/ParticlesBackground';
 
 export default function App() {
   return (
-    <div className="relative bg-[#050816] min-h-screen text-white overflow-hidden select-none">
+    <div className="relative bg-[#0B0F19] min-h-screen text-white overflow-hidden select-none">
       {/* Interactive Cursor Glow */}
       <CursorGlow />
 
@@ -51,6 +53,12 @@ export default function App() {
           <div className="w-full h-px bg-white/5" />
         </div>
 
+        <Services />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="w-full h-px bg-white/5" />
+        </div>
+
         <Projects />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -58,6 +66,12 @@ export default function App() {
         </div>
 
         <GithubStats />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="w-full h-px bg-white/5" />
+        </div>
+
+        <Workstation />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="w-full h-px bg-white/5" />

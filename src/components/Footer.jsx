@@ -44,23 +44,26 @@ export default function Footer() {
   };
 
   return (
-    <footer className="py-10 bg-[#0B0F19] border-t border-white-5 relative z-10">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer className="py-12 bg-[#0B0F19] border-t border-white-5 relative z-10 text-left">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
         
-        {/* Left Side: Brand & Copyright */}
-        <div className="text-center md:text-left">
-          <span className="text-base font-extrabold tracking-wider text-gradient font-heading block mb-1">
-            TANUSH YADAV
+        {/* Left Side: Brand Branding */}
+        <div>
+          <span className="text-lg font-extrabold tracking-wider text-gradient font-heading block mb-1">
+            Tanush Yadav
           </span>
-          <span className="text-[10px] tracking-widest uppercase font-bold text-muted block mb-3">
-            AI & Full Stack Developer
+          <span className="text-xs font-bold text-white/50 block mb-1 uppercase tracking-widest">
+            Software Engineer
           </span>
-          <p className="text-xs text-white/40">
-            Copyright &copy; 2026 Tanush Yadav. All rights reserved.
+          <span className="text-[10px] text-muted block mb-4 font-medium uppercase tracking-widest">
+            AI | Full Stack | IoT
+          </span>
+          <p className="text-[11px] text-white/30 font-medium">
+            Built with React + Vite &bull; Hosted on secure servers
           </p>
         </div>
 
-        {/* Center: Social Profile & Resume Links */}
+        {/* Center: Quick Links */}
         <div className="flex flex-wrap justify-center gap-6 text-xs text-muted">
           <a 
             href="https://github.com/Tanushyadav9" 
@@ -98,14 +101,20 @@ export default function Footer() {
           </a>
         </div>
 
-        {/* Right Side: Scroll to Top action button */}
-        <button
-          onClick={scrollToTop}
-          aria-label="Scroll to Top"
-          className="p-2.5 bg-white-5 border border-white-10 text-white rounded-full hover:bg-purple-10 hover-border-purple transition-all flex items-center justify-center cursor-pointer"
-        >
-          <ArrowUp size={16} />
-        </button>
+        {/* Right Side: Back to Top & Copyright */}
+        <div className="flex flex-col items-center md:items-end gap-4">
+          <button
+            onClick={scrollToTop}
+            aria-label="Scroll to Top"
+            className="p-2.5 bg-white-5 border border-white-10 text-white rounded-full hover:bg-purple-10 hover-border-purple transition-all flex items-center justify-center cursor-pointer"
+          >
+            <ArrowUp size={16} />
+          </button>
+          
+          <p className="text-xs text-white/40 text-center md:text-right">
+            &copy; 2026 Tanush Yadav. All rights reserved.
+          </p>
+        </div>
 
       </div>
     </footer>

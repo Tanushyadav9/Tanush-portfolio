@@ -1,6 +1,11 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowDown, FileText, Download, Send, Mail } from 'lucide-react';
+
+import notenetraImg from '../assets/notenetra.png';
+import visionpayImg from '../assets/visionpay.png';
+import hotelImg from '../assets/hotel_management.png';
+import farmerImg from '../assets/farmer_website.png';
 
 const GithubIcon = ({ size = 20, ...props }) => (
   <svg
@@ -39,7 +44,59 @@ const LinkedinIcon = ({ size = 20, ...props }) => (
   </svg>
 );
 
+const titles = [
+  "Software Engineer",
+  "AI & IoT Engineer",
+  "Full Stack Developer",
+  "AI & Data Science Student"
+];
+
+const dashboardProjects = [
+  { title: 'NoteNetra Assistive Core', image: notenetraImg, url: 'notenetra.analytics' },
+  { title: 'VisionPay CV Transaction Portal', image: visionpayImg, url: 'visionpay.secure' },
+  { title: 'Hotel Scheduling Panel', image: hotelImg, url: 'hms-dashboard.local' },
+  { title: 'Farmer Datastream Tracker', image: farmerImg, url: 'farm-soil.metrics' }
+];
+
 export default function Hero() {
+  const [index, setIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [reverse, setReverse] = useState(false);
+  const [currentText, setCurrentText] = useState("");
+  const [activeProject, setActiveProject] = useState(0);
+
+  // Typing effect cycle
+  useEffect(() => {
+    if (subIndex === titles[index].length + 1 && !reverse) {
+      const timeout = setTimeout(() => setReverse(true), 2500);
+      return () => clearTimeout(timeout);
+    }
+
+    if (subIndex === 0 && reverse) {
+      setReverse(false);
+      setIndex((prev) => (prev + 1) % titles.length);
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setSubIndex((prev) => prev + (reverse ? -1 : 1));
+    }, reverse ? 40 : 80);
+
+    return () => clearTimeout(timeout);
+  }, [subIndex, reverse, index]);
+
+  useEffect(() => {
+    setCurrentText(titles[index].substring(0, subIndex));
+  }, [subIndex, index]);
+
+  // Dashboard screenshot rotation
+  useEffect(() => {
+    const projectInterval = setInterval(() => {
+      setActiveProject((prev) => (prev + 1) % dashboardProjects.length);
+    }, 4000);
+    return () => clearInterval(projectInterval);
+  }, []);
+
   const scrollToProjects = () => {
     const element = document.getElementById('projects');
     if (element) {
@@ -59,16 +116,16 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center section-padding pt-24 md:pt-32 relative overflow-hidden">
-      {/* Background radial overlays */}
+    <section id="home" className="min-h-screen flex items-center justify-center section-padding pt-32 md:pt-40 relative overflow-hidden">
+      {/* Radial overlay */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/5 via-transparent to-transparent pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-center z-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center z-10">
         
-        {/* Left Text Block */}
-        <div className="col-span-1 md:col-span-7 flex flex-col justify-center text-left">
+        {/* Left text block */}
+        <div className="col-span-1 lg:col-span-7 flex flex-col justify-center text-left">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
@@ -77,29 +134,29 @@ export default function Hero() {
             </p>
             
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
-              <span className="block text-white">Tanush Yadav</span>
+              Tanush Yadav
             </h1>
             
-            {/* Subtitle list */}
-            <div className="flex flex-wrap gap-x-3 gap-y-1 items-center mb-6 text-sm sm:text-base font-semibold text-cyan/90 font-heading">
-              <span>AI & Data Science Student</span>
-              <span className="text-white/20 hidden sm:inline">|</span>
-              <span>Full Stack Developer</span>
-              <span className="text-white/20 hidden sm:inline">|</span>
-              <span>AI & IoT Engineer</span>
+            {/* Rotating Title */}
+            <div className="h-10 sm:h-12 flex items-center mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center font-heading">
+                <span className="border-r-2 border-cyan pr-2 mr-1 animate-pulse min-h-[30px] inline-block">
+                  {currentText}
+                </span>
+              </h2>
             </div>
             
             <p className="text-muted text-base sm:text-lg leading-relaxed mb-8 max-w-xl">
-              I build scalable web applications, AI-powered solutions, and IoT systems that solve real-world problems. My focus is on creating accessible, user-centric, and production-ready software using modern technologies.
+              I build scalable web applications, AI-powered software, and IoT solutions focused on accessibility, automation, and solving real-world engineering problems.
             </p>
             
-            {/* Action Buttons */}
+            {/* CTAs */}
             <div className="flex flex-wrap gap-4 items-center">
               <a 
                 href="/Tanush_Yadav_Resume.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="btn btn-primary decoration-transparent hover:scale-[1.02] transition-transform text-sm"
+                className="btn btn-primary decoration-transparent hover:-translate-y-0.5 text-sm"
               >
                 <FileText size={16} />
                 <span>View Resume</span>
@@ -107,14 +164,14 @@ export default function Hero() {
               <a 
                 href="/Tanush_Yadav_Resume.pdf" 
                 download="Tanush_Yadav_Resume.pdf"
-                className="btn btn-secondary decoration-transparent hover:scale-[1.02] transition-transform text-sm"
+                className="btn btn-secondary decoration-transparent hover:-translate-y-0.5 text-sm"
               >
                 <Download size={16} />
                 <span>Download Resume</span>
               </a>
               <button 
                 onClick={scrollToContact} 
-                className="btn btn-primary bg-gradient-to-r from-cyan-500 to-blue-500 hover:scale-[1.02] transition-transform text-sm"
+                className="btn btn-primary bg-gradient-to-r from-cyan-500 to-blue-500 hover:-translate-y-0.5 text-sm"
               >
                 <Send size={16} />
                 <span>Hire Me</span>
@@ -128,7 +185,7 @@ export default function Hero() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-cyan text-white hover:text-cyan transition-all social-icon-glow"
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-cyan text-white hover:text-cyan transition-all hover:-translate-y-1"
               >
                 <GithubIcon size={18} />
               </a>
@@ -137,14 +194,14 @@ export default function Hero() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-purple text-white hover:text-purple transition-all social-icon-glow"
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-purple text-white hover:text-purple transition-all hover:-translate-y-1"
               >
                 <LinkedinIcon size={18} />
               </a>
               <a 
                 href="mailto:tanushyada0987@gmail.com" 
                 aria-label="Email"
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-cyan text-white hover:text-cyan transition-all social-icon-glow"
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-cyan text-white hover:text-cyan transition-all hover:-translate-y-1"
               >
                 <Mail size={18} />
               </a>
@@ -152,111 +209,71 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right Graphical Block: Abstract AI & IoT Network Graphics */}
-        <div className="col-span-1 md:col-span-5 flex justify-center items-center">
+        {/* Right Graphical Block: Rotating Screenshots Mockup */}
+        <div className="col-span-1 lg:col-span-5 flex justify-center items-center w-full">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full aspect-square relative floating-graphic"
-            style={{ maxWidth: '400px' }}
+            className="w-full relative"
           >
-            {/* Background glowing circle */}
-            <div className="hero-glow-bg opacity-30" />
+            {/* Background minimal radial overlay */}
+            <div className="hero-glow-bg opacity-15" />
 
-            <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-              <defs>
-                <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#915EFF" />
-                  <stop offset="100%" stopColor="#7c3aed" />
-                </linearGradient>
-                <linearGradient id="secondaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#00E5FF" />
-                  <stop offset="100%" stopColor="#0083B0" />
-                </linearGradient>
-                <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="8" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-
-              {/* Concentric Rotating Network Orbits */}
-              <circle cx="250" cy="250" r="180" stroke="rgba(145, 94, 255, 0.08)" strokeWidth="1.5" strokeDasharray="6 8" />
-              <circle cx="250" cy="250" r="140" stroke="rgba(0, 229, 255, 0.08)" strokeWidth="1.5" strokeDasharray="12 6" />
-              <circle cx="250" cy="250" r="100" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1" />
-
-              {/* Data Connections / Circuit Mesh */}
-              <path d="M 120,150 L 250,250 L 380,150" stroke="rgba(145, 94, 255, 0.15)" strokeWidth="1.5" strokeLinecap="round" />
-              <path d="M 120,350 L 250,250 L 380,350" stroke="rgba(0, 229, 255, 0.15)" strokeWidth="1.5" strokeLinecap="round" />
-              <path d="M 80,250 L 420,250" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1" />
-
-              {/* Isometric Data Block / AI core core representation */}
-              <g transform="translate(250, 250)">
-                {/* Core Sphere */}
-                <circle cx="0" cy="0" r="32" fill="url(#primaryGrad)" opacity="0.1" />
-                <circle cx="0" cy="0" r="22" fill="url(#secondaryGrad)" opacity="0.15" />
-                <circle cx="0" cy="0" r="12" fill="#0B0F19" stroke="url(#secondaryGrad)" strokeWidth="2.5" filter="url(#softGlow)" />
-                <circle cx="0" cy="0" r="4" fill="#00E5FF" />
+            <div className="w-full rounded-2xl border border-white-10 bg-white-5/5 overflow-hidden shadow-2xl relative">
+              
+              {/* Browser mockup bar */}
+              <div className="bg-white-5 px-4 py-2.5 border-b border-white-10 flex items-center justify-between">
+                <div className="flex gap-1.5 shrink-0">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56] opacity-80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e] opacity-80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f] opacity-80" />
+                </div>
                 
-                {/* Tech details orbiting the core */}
-                <path d="M -45,-45 L -20,-20" stroke="#915EFF" strokeWidth="1.5" opacity="0.6" />
-                <path d="M 45,-45 L 20,-20" stroke="#00E5FF" strokeWidth="1.5" opacity="0.6" />
-                <path d="M -45,45 L -20,20" stroke="#00E5FF" strokeWidth="1.5" opacity="0.6" />
-                <path d="M 45,45 L 20,20" stroke="#915EFF" strokeWidth="1.5" opacity="0.6" />
-              </g>
+                <div className="bg-[#0B0F19]/60 px-3 py-0.5 rounded text-[10px] text-white/40 font-mono tracking-wide truncate max-w-[180px]">
+                  {dashboardProjects[activeProject].url}
+                </div>
+                
+                <div className="w-8 shrink-0" />
+              </div>
+              
+              {/* Screenshot showcase container */}
+              <div className="relative aspect-video w-full overflow-hidden bg-[#0B0F19]">
+                <AnimatePresence mode="wait">
+                  <motion.img 
+                    key={activeProject}
+                    src={dashboardProjects[activeProject].image} 
+                    alt={dashboardProjects[activeProject].title}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="w-full h-full object-cover" 
+                  />
+                </AnimatePresence>
+                
+                {/* Banner overlay */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0B0F19] via-[#0B0F19]/80 to-transparent p-4 text-left">
+                  <span className="text-[9px] text-cyan font-bold tracking-widest uppercase">Active Mockup</span>
+                  <h4 className="text-sm font-bold text-white mt-0.5">{dashboardProjects[activeProject].title}</h4>
+                </div>
+              </div>
 
-              {/* Sub-system Core Nodes (represented as small circular modules) */}
-              {/* Top AI Module */}
-              <g transform="translate(250, 80)">
-                <circle cx="0" cy="0" r="14" fill="#0B0F19" stroke="url(#primaryGrad)" strokeWidth="2" />
-                <circle cx="0" cy="0" r="4" fill="#915EFF" />
-                <text x="22" y="4" fill="rgba(255, 255, 255, 0.5)" fontSize="9" fontFamily="monospace" fontWeight="bold">AI_CORE</text>
-              </g>
-
-              {/* Bottom IoT Module */}
-              <g transform="translate(250, 420)">
-                <circle cx="0" cy="0" r="14" fill="#0B0F19" stroke="url(#secondaryGrad)" strokeWidth="2" />
-                <circle cx="0" cy="0" r="4" fill="#00E5FF" />
-                <text x="22" y="4" fill="rgba(255, 255, 255, 0.5)" fontSize="9" fontFamily="monospace" fontWeight="bold">IoT_NODE</text>
-              </g>
-
-              {/* Left Data Stack Module */}
-              <g transform="translate(80, 250)">
-                <circle cx="0" cy="0" r="14" fill="#0B0F19" stroke="rgba(255,255,255,0.15)" strokeWidth="2" />
-                <path d="M -4,-4 L 4,-4 M -4,0 L 4,0 M -4,4 L 4,4" stroke="#aaa6c3" strokeWidth="1.5" />
-                <text x="-65" y="4" fill="rgba(255, 255, 255, 0.5)" fontSize="9" fontFamily="monospace" fontWeight="bold">DATA_NET</text>
-              </g>
-
-              {/* Right Cloud / Service Module */}
-              <g transform="translate(420, 250)">
-                <circle cx="0" cy="0" r="14" fill="#0B0F19" stroke="url(#secondaryGrad)" strokeWidth="2" />
-                <circle cx="0" cy="0" r="3" fill="#00E5FF" />
-                <text x="20" y="4" fill="rgba(255, 255, 255, 0.5)" fontSize="9" fontFamily="monospace" fontWeight="bold">CLOUD.API</text>
-              </g>
-
-              {/* Technical Code / Binary Feed overlays */}
-              <text x="70" y="100" fill="rgba(0, 229, 255, 0.25)" fontSize="8" fontFamily="monospace">01001010 01010011</text>
-              <text x="350" y="100" fill="rgba(145, 94, 255, 0.25)" fontSize="8" fontFamily="monospace">SYS_HEALTH: 100%</text>
-              <text x="50" y="400" fill="rgba(145, 94, 255, 0.25)" fontSize="8" fontFamily="monospace">MODEL: CV_OCR.h5</text>
-              <text x="350" y="400" fill="rgba(0, 229, 255, 0.25)" fontSize="8" fontFamily="monospace">REST_API: OK</text>
-            </svg>
+            </div>
           </motion.div>
         </div>
 
       </div>
 
-      {/* Floating indicator */}
+      {/* Scroll indicator */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-10" onClick={scrollToProjects}>
-        <span className="text-xs text-muted tracking-widest uppercase">Scroll Down</span>
+        <span className="text-[10px] text-muted tracking-widest uppercase">Scroll Down</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
           className="text-cyan"
         >
-          <ArrowDown size={18} />
+          <ArrowDown size={16} />
         </motion.div>
       </div>
     </section>

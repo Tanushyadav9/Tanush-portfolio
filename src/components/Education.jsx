@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Calendar, BookOpen } from 'lucide-react';
+import { GraduationCap, Calendar, BookOpen, Layers } from 'lucide-react';
 import Tilt from './Tilt';
 
 const educationData = [
@@ -10,8 +10,9 @@ const educationData = [
     location: 'Delhi, India',
     duration: '2024 – Present',
     gradYear: 'Expected Graduation: 2028',
-    details: 'Acquiring deep competencies in algorithmic development, cloud configurations, intelligent computing, and internet-connected systems. Maintaining active contributions to institutional development sprints and hackathons.',
-    coursework: ['Artificial Intelligence', 'Machine Learning', 'Data Structures', 'Web Development', 'Embedded Systems'],
+    details: 'Building foundational competencies in algorithmic complexity, cloud analytics, intelligence models, and hardware-software telemetry. Contributing actively to campus developer groups and hackathon iterations.',
+    academicFocus: ['Machine Learning', 'Artificial Intelligence', 'Web Development', 'Embedded Systems', 'Cloud Computing'],
+    coursework: ['Data Structures & Algorithms', 'Machine Learning Models', 'Database Management (DBMS)', 'IoT Telemetry Prototyping', 'Full-Stack Software Architecture'],
     icon: <GraduationCap size={28} className="text-cyan" />
   }
 ];
@@ -22,28 +23,28 @@ export default function Education() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-1">
             Qualifications
           </p>
           <h2 className="text-3xl sm:text-4xl font-black text-white">
-            My Education
+            Education Profile
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-purple to-cyan mx-auto mt-4 rounded-full" />
         </div>
 
-        {/* Education Highlight Container */}
+        {/* Highlight Card */}
         <div className="max-w-3xl mx-auto">
           {educationData.map((edu, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="w-full"
             >
-              <Tilt className="p-8 md:p-10 flex flex-col gap-6 hover-border-purple text-left w-full">
+              <Tilt className="p-8 md:p-10 flex flex-col gap-6 text-left w-full">
                 
                 {/* Header Row */}
                 <div className="flex flex-wrap justify-between items-start gap-4">
@@ -71,28 +72,45 @@ export default function Education() {
 
                 {/* Subdetails and Description */}
                 <div>
-                  <p className="text-xs text-[#915EFF] font-bold uppercase tracking-wider mb-2">
+                  <span className="text-xs font-bold text-cyan uppercase tracking-widest block mb-2">
                     {edu.gradYear}
-                  </p>
-                  <p className="text-sm sm:text-base text-muted leading-relaxed">
+                  </span>
+                  <p className="text-sm text-muted leading-relaxed">
                     {edu.details}
                   </p>
                 </div>
 
+                {/* Academic Focus */}
+                <div>
+                  <span className="text-xs font-bold text-white/50 uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <Layers size={14} className="text-purple" />
+                    <span>Academic Focus Area:</span>
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {edu.academicFocus.map((focus, fIdx) => (
+                      <span 
+                        key={fIdx} 
+                        className="px-3 py-1 bg-purple-10 border border-purple-20 rounded-lg text-xs font-semibold text-white/90"
+                      >
+                        {focus}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
                 <div className="w-full h-px bg-white-10" />
 
-                {/* Coursework list */}
+                {/* Relevant Coursework */}
                 <div>
-                  <p className="text-xs font-bold text-white/50 uppercase tracking-wider mb-3 flex items-center gap-2">
+                  <span className="text-xs font-bold text-white/50 uppercase tracking-wider mb-3 flex items-center gap-2">
                     <BookOpen size={14} className="text-cyan" />
                     <span>Relevant Coursework:</span>
-                  </p>
-                  
+                  </span>
                   <div className="flex flex-wrap gap-2">
                     {edu.coursework.map((course, cIdx) => (
                       <span 
                         key={cIdx} 
-                        className="px-3.5 py-1.5 bg-white-5 border border-white-10 rounded-xl text-xs font-semibold text-white/90 hover-border-cyan transition-colors"
+                        className="px-3 py-1 bg-white-5 border border-white-10 rounded-xl text-xs font-semibold text-muted hover-border-cyan transition-all"
                       >
                         {course}
                       </span>
@@ -100,11 +118,11 @@ export default function Education() {
                   </div>
                 </div>
                 
-                {/* Visual Accent */}
-                <div className="flex gap-2 mt-4">
-                  <span className="w-2 h-2 rounded-full bg-purple" />
-                  <span className="w-2 h-2 rounded-full bg-cyan" />
-                  <span className="w-2 h-2 rounded-full bg-white/20" />
+                {/* Visual accent */}
+                <div className="flex gap-2 mt-2">
+                  <span className="w-2.5 h-1 rounded-full bg-purple" />
+                  <span className="w-2.5 h-1 rounded-full bg-cyan" />
+                  <span className="w-2.5 h-1 rounded-full bg-white/10" />
                 </div>
 
               </Tilt>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, Send, Check, FileText } from 'lucide-react';
+import { Mail, Phone, Send, Check, FileText, MapPin } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import emailjs from '@emailjs/browser';
 import Tilt from './Tilt';
@@ -117,37 +117,40 @@ export default function Contact() {
   const contactDetails = [
     {
       icon: <Mail className="text-cyan" size={20} />,
-      label: 'Email Address',
+      label: 'Email',
       value: 'tanushyada0987@gmail.com',
       href: 'mailto:tanushyada0987@gmail.com'
     },
     {
       icon: <Phone className="text-purple" size={20} />,
-      label: 'Phone Contact',
+      label: 'Phone',
       value: '+91 87506 88748',
       href: 'tel:+918750688748'
     },
     {
-      icon: <FileText className="text-cyan" size={20} />,
-      label: 'Resume / CV',
-      value: 'View PDF Document',
+      icon: <MapPin className="text-cyan" size={20} />,
+      label: 'Location',
+      value: 'Delhi, India',
+      href: '#'
+    },
+    {
+      icon: <FileText className="text-purple" size={20} />,
+      label: 'Resume Document',
+      value: 'View PDF File',
       href: '/Tanush_Yadav_Resume.pdf'
     }
   ];
 
-  const socialLinks = [
-    { icon: <GithubIcon size={18} />, href: 'https://github.com/Tanushyadav9', label: 'GitHub' },
-    { icon: <LinkedinIcon size={18} />, href: 'https://www.linkedin.com/in/tanush-yadav-1893b338b', label: 'LinkedIn' }
-  ];
+  const availabilities = ['Internships', 'Freelance Projects', 'Collaborations', 'Hackathons'];
 
   return (
     <section id="contact" className="section-padding relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-1">
-            Get In Touch
+            Communication
           </p>
           <h2 className="text-3xl sm:text-4xl font-black text-white">
             Let's Build Something Together
@@ -155,53 +158,81 @@ export default function Contact() {
           <div className="w-16 h-1 bg-gradient-to-r from-purple to-cyan mx-auto mt-4 rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start max-w-6xl mx-auto">
           
-          {/* Left Column: Contact Cards */}
-          <div className="lg:col-span-5 flex flex-col gap-6 text-left">
-            <h3 className="text-xl sm:text-2xl font-black text-white font-heading">
-              Connect Directly
-            </h3>
+          {/* Left Column: Premium Cards */}
+          <div className="lg:col-span-5 flex flex-col gap-6 text-left w-full">
             
-            <p className="text-muted text-sm leading-relaxed mb-4">
-              Feel free to reach out for project collaboration opportunities, full stack development inquiries, IoT prototyping, or just to say hello! I will do my best to respond as quickly as possible.
-            </p>
+            {/* Availability Highlights Card */}
+            <Tilt className="p-6 border border-[#22c55e]/20 bg-[#22c55e]/5">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e] animate-ping" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e] absolute" />
+                <span className="text-xs font-black uppercase text-[#22c55e] tracking-widest ml-2">
+                  Availability Status
+                </span>
+              </div>
+              <h4 className="text-lg font-bold text-white font-heading mb-3">
+                🟢 Available for:
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {availabilities.map((item, idx) => (
+                  <span 
+                    key={idx} 
+                    className="text-xs font-semibold text-white/90 bg-[#22c55e]/10 border border-[#22c55e]/20 px-3 py-1 rounded-xl"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </Tilt>
 
-            <div className="flex flex-col gap-4">
+            {/* Direct Contact Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {contactDetails.map((detail, i) => (
                 <a 
                   key={i} 
                   href={detail.href}
                   target={detail.href.endsWith('.pdf') ? '_blank' : undefined}
                   rel={detail.href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-white-5 border border-white-5 hover-border-cyan-30 transition-all group decoration-transparent"
+                  className="flex items-center gap-3.5 p-4 rounded-2xl bg-white-5 border border-white-5 hover-border-cyan transition-all group decoration-transparent"
                 >
-                  <div className="p-3 bg-white-5 rounded-xl border border-white-10 group-hover:scale-105 transition-transform text-cyan">
+                  <div className="p-2.5 bg-white-5 rounded-xl border border-white-10 text-cyan shrink-0">
                     {detail.icon}
                   </div>
-                  <div>
-                    <p className="text-xs text-muted">{detail.label}</p>
-                    <p className="text-sm font-bold text-white group-hover:text-cyan transition-colors mt-0.5">{detail.value}</p>
+                  <div className="min-w-0">
+                    <p className="text-[10px] text-muted uppercase tracking-wider">{detail.label}</p>
+                    <p className="text-xs font-bold text-white group-hover:text-cyan transition-colors mt-0.5 truncate">{detail.value}</p>
                   </div>
                 </a>
               ))}
             </div>
 
-            {/* Socials Connection Row */}
-            <div className="flex gap-4 mt-4">
-              {socialLinks.map((social, i) => (
+            {/* Socials connections row */}
+            <Tilt className="p-5 flex items-center justify-between gap-4">
+              <span className="text-xs font-bold text-muted uppercase tracking-wider">Social Channels:</span>
+              <div className="flex gap-3">
                 <a 
-                  key={i}
-                  href={social.href}
-                  target="_blank"
+                  href="https://github.com/Tanushyadav9" 
+                  target="_blank" 
                   rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-purple hover-bg-purple-10 text-white hover:text-cyan transition-all"
+                  aria-label="GitHub"
+                  className="w-9 h-9 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-cyan text-white hover:text-cyan transition-all"
                 >
-                  {social.icon}
+                  <GithubIcon size={16} />
                 </a>
-              ))}
-            </div>
+                <a 
+                  href="https://www.linkedin.com/in/tanush-yadav-1893b338b" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="w-9 h-9 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-purple text-white hover:text-purple transition-all"
+                >
+                  <LinkedinIcon size={16} />
+                </a>
+              </div>
+            </Tilt>
+
           </div>
 
           {/* Right Column: Contact Form */}
@@ -209,7 +240,6 @@ export default function Contact() {
             <Tilt className="p-8">
               <form onSubmit={handleSubmit} className="flex flex-col text-left">
                 
-                {/* Error Banner */}
                 <AnimatePresence>
                   {error && (
                     <motion.div 
@@ -223,7 +253,6 @@ export default function Contact() {
                   )}
                 </AnimatePresence>
 
-                {/* Name Group */}
                 <div className="form-group">
                   <input 
                     type="text" 
@@ -238,7 +267,6 @@ export default function Contact() {
                   <label htmlFor="name" className="form-label">Full Name</label>
                 </div>
 
-                {/* Email Group */}
                 <div className="form-group">
                   <input 
                     type="email" 
@@ -253,7 +281,6 @@ export default function Contact() {
                   <label htmlFor="email" className="form-label">Email Address</label>
                 </div>
 
-                {/* Message Group */}
                 <div className="form-group">
                   <textarea 
                     id="message"
@@ -269,7 +296,6 @@ export default function Contact() {
                   <label htmlFor="message" className="form-label">Your Message</label>
                 </div>
 
-                {/* Submit button / success banner */}
                 <div className="mt-2">
                   {success ? (
                     <div className="p-4 success-banner rounded-full flex items-center justify-center gap-2 font-bold text-sm">
