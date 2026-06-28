@@ -52,24 +52,24 @@ export default function Workstation() {
                 </span>
               </div>
 
-              <div className="bg-[#0B0F19]/40 border border-white-5 p-5 rounded-2xl flex flex-col gap-4">
+              <div className="bg-[#0B0F19]/40 border border-white-5 p-7 rounded-2xl flex flex-col gap-6">
                 <div>
-                  <span className="text-xs font-bold text-purple block mb-1">PROJECT NAME</span>
+                  <span className="text-xs font-bold text-purple block mb-2.5">PROJECT NAME</span>
                   <span className="text-base font-bold text-white font-heading">Kenet Telemetry Analytics Dashboard</span>
                 </div>
 
                 <div>
-                  <span className="text-xs font-bold text-purple block mb-1">DESCRIPTION</span>
+                  <span className="text-xs font-bold text-purple block mb-2.5">DESCRIPTION</span>
                   <p className="text-xs text-muted leading-relaxed">
                     Building a centralized, high-throughput cloud telemetry console to parse and display real-time sensor streams from deployed ESP32 microcontrollers. Incorporating automated alert triggers and anomaly visual charts.
                   </p>
                 </div>
 
                 <div>
-                  <span className="text-xs font-bold text-purple block mb-1.5">STACK INTEGRATION</span>
-                  <div className="flex flex-wrap gap-1.5">
+                  <span className="text-xs font-bold text-purple block mb-3">STACK INTEGRATION</span>
+                  <div className="flex flex-wrap gap-2.5">
                     {['React', 'Vite', 'Firebase Streams', 'ChartJS', 'FastAPI'].map((item, idx) => (
-                      <span key={idx} className="text-[9px] font-semibold text-white/70 bg-white-5 border border-white-10 px-2 py-0.5 rounded-full">
+                      <span key={idx} className="text-[9px] font-semibold text-white/70 bg-white-5 border border-white-10 px-2.5 py-0.5 rounded-full">
                         {item}
                       </span>
                     ))}
@@ -80,12 +80,12 @@ export default function Workstation() {
 
             {/* Future Goals */}
             <Tilt className="py-[36px] px-[32px]">
-              <h3 className="text-lg sm:text-xl font-bold text-white font-heading mb-6 flex items-center gap-2">
+              <h3 className="text-lg sm:text-xl font-bold text-white font-heading mb-8 flex items-center gap-2">
                 <TrendingUp size={20} className="text-purple" />
                 <span>Future Goals</span>
               </h3>
 
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-6">
                 {futureGoals.map((goal, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <span className="mt-1 text-cyan shrink-0">

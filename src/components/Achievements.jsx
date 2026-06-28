@@ -67,8 +67,8 @@ export default function Achievements() {
               </div>
 
               {/* Glassmorphic Card */}
-              <Tilt className="py-[36px] px-[32px] hover-border-cyan">
-                <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+              <Tilt className="py-[48px] px-[36px] hover-border-cyan flex flex-col justify-between h-full">
+                <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
                   <div className="flex items-center gap-4">
                     <div className="p-2.5 bg-white-5 rounded-2xl border border-white-10 shrink-0 text-cyan">
                       {item.icon}

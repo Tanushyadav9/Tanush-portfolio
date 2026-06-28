@@ -23,7 +23,7 @@ export default function Education() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-[60px]">
+        <div className="text-center mb-[80px]">
           <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-[20px]">
             Qualifications
           </p>
@@ -44,7 +44,7 @@ export default function Education() {
               transition={{ duration: 0.6 }}
               className="w-full"
             >
-              <Tilt className="py-[40px] px-[36px] flex flex-col gap-8 text-left w-full">
+              <Tilt className="py-[48px] px-[40px] flex flex-col gap-8 text-left w-full">
                 
                 {/* Header Row */}
                 <div className="flex flex-wrap justify-between items-start gap-4">

@@ -195,12 +195,12 @@ export default function Contact() {
                   href={detail.href}
                   target={detail.href.endsWith('.pdf') ? '_blank' : undefined}
                   rel={detail.href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
-                  className="flex items-center gap-[24px] p-[30px] rounded-2xl bg-white-5 border border-white-5 hover-border-cyan transition-all group decoration-transparent"
+                  className="flex items-center gap-5 p-6 rounded-2xl bg-white-5 border border-white-5 hover-border-cyan transition-all group decoration-transparent"
                 >
                   <div className="w-[56px] h-[56px] flex items-center justify-center bg-white-5 rounded-xl border border-white-10 text-cyan shrink-0">
                     {detail.icon}
                   </div>
-                  <div className="min-w-0 flex flex-col gap-[10px]">
+                  <div className="min-w-0 flex flex-col gap-[18px]">
                     <p className="text-[10px] text-muted uppercase tracking-wider">{detail.label}</p>
                     <p className="text-xs font-bold text-white group-hover:text-cyan transition-colors truncate">{detail.value}</p>
                   </div>

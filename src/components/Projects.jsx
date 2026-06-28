@@ -236,7 +236,7 @@ export default function Projects({ onBack }) {
                 >
                   <div>
                     {/* Browser Mockup screenshot */}
-                    <div className="project-screenshot-container">
+                    <div className="project-screenshot-container mb-6">
                       <div className="browser-bar">
                         <span className="dot dot-red"></span>
                         <span className="dot dot-yellow"></span>
@@ -253,7 +253,7 @@ export default function Projects({ onBack }) {
                     </div>
 
                     {/* Top Header Badge Row */}
-                    <div className="flex justify-between items-center mb-4">
+                    <div className="flex justify-between items-center mb-5">
                       <div className="p-2 bg-white-5 rounded-2xl border border-white-10 text-cyan">
                         {project.icon}
                       </div>
@@ -266,18 +266,18 @@ export default function Projects({ onBack }) {
                     </div>
 
                     {/* Title and Description */}
-                    <h3 className="text-xl font-bold text-white font-heading mb-2 group-hover:text-gradient transition-colors text-left">
+                    <h3 className="text-xl font-bold text-white font-heading mb-4 group-hover:text-gradient transition-colors text-left">
                       {project.title}
                     </h3>
                     
-                    <p className="text-muted text-xs leading-relaxed mb-6 text-left">
+                    <p className="text-muted text-xs leading-relaxed mb-8 text-left">
                       {project.description}
                     </p>
                   </div>
 
                   <div>
                     {/* Technologies Badges */}
-                    <div className="flex flex-wrap gap-1.5 mb-5 justify-start">
+                    <div className="flex flex-wrap gap-2.5 mb-6 justify-start">
                       {project.tech.slice(0, 3).map((t, tIdx) => (
                         <span 
                           key={tIdx} 
@@ -293,10 +293,10 @@ export default function Projects({ onBack }) {
                       )}
                     </div>
 
-                    <div className="w-full h-px bg-white-5 mb-5" />
+                    <div className="w-full h-px bg-white-5 mb-6" />
                     
                     {/* Primary Trigger & Links */}
-                    <div className="flex flex-col gap-2.5 mt-6">
+                    <div className="flex flex-col gap-2.5 mt-8">
                       <button
                         onClick={() => openCaseStudy(project)}
                         className="w-full flex items-center justify-center gap-1.5 text-xs font-semibold text-white bg-white-5 border border-white-10 hover-border-cyan py-2.5 px-3 rounded-xl transition-all hover:bg-cyan/5 cursor-pointer"

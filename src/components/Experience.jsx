@@ -60,13 +60,13 @@ export default function Experience() {
               {/* Glassmorphic Experience Card */}
               <Tilt className="py-[36px] px-[32px] md:px-[40px]">
                 {/* Header Info */}
-                <div className="flex flex-wrap justify-between items-start gap-4 mb-6">
+                <div className="flex flex-wrap justify-between items-start gap-4 mb-8">
                   <div className="flex items-center gap-4">
                     <div className="p-3 bg-white-5 rounded-2xl border border-white-10 shrink-0 text-cyan">
                       {exp.companyLogo}
                     </div>
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-white font-heading mb-1">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white font-heading mb-2">
                         {exp.role}
                       </h3>
                       <h4 className="text-base sm:text-lg font-medium text-gradient">
@@ -76,7 +76,7 @@ export default function Experience() {
                   </div>
                   
                   {/* Meta Details */}
-                  <div className="flex flex-col gap-2 text-xs text-muted">
+                  <div className="flex flex-col gap-2.5 text-xs text-muted">
                     <div className="flex items-center gap-2 bg-white-5 px-3 py-1 rounded-full border border-white-5">
                       <Calendar size={12} className="text-cyan" />
                       <span>{exp.duration}</span>
@@ -88,14 +88,14 @@ export default function Experience() {
                   </div>
                 </div>
 
-                <div className="w-full h-px bg-white-10 mb-6" />
+                <div className="w-full h-px bg-white-10 mb-8" />
 
                 {/* Major Contributions */}
-                <div className="mb-6">
+                <div className="mb-8">
                   <h5 className="text-xs font-black text-white/50 uppercase tracking-wider mb-3 block">
                     Major Contributions:
                   </h5>
-                  <ul className="flex flex-col gap-3 list-none">
+                  <ul className="flex flex-col gap-4 list-none">
                     {exp.contributions.map((detail, dIdx) => (
                       <li key={dIdx} className="flex items-start gap-3 text-sm text-muted leading-relaxed">
                         <span className="mt-1 text-cyan shrink-0">
@@ -108,12 +108,12 @@ export default function Experience() {
                 </div>
 
                 {/* Key Achievements */}
-                <div className="mb-6 p-4 bg-cyan-10/5 border border-cyan-40/15 rounded-2xl">
+                <div className="mb-8 p-6 bg-cyan-10/5 border border-cyan-40/15 rounded-2xl">
                   <h5 className="text-xs font-black text-cyan uppercase tracking-wider mb-3 flex items-center gap-1.5">
                     <Star size={14} className="fill-cyan" />
                     <span>Key Achievements:</span>
                   </h5>
-                  <ul className="flex flex-col gap-2.5 list-none">
+                  <ul className="flex flex-col gap-3.5 list-none">
                     {exp.achievements.map((ach, aIdx) => (
                       <li key={aIdx} className="text-xs text-white/80 leading-relaxed flex items-start gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-purple mt-1.5 shrink-0" />
@@ -123,7 +123,7 @@ export default function Experience() {
                   </ul>
                 </div>
 
-                <div className="w-full h-px bg-white-10 mb-6" />
+                <div className="w-full h-px bg-white-10 mb-8" />
 
                 {/* Key Technologies */}
                 <div>

@@ -38,7 +38,7 @@ export default function About() {
           
           {/* LEFT COLUMN: Profile Visual & Quick Facts */}
           <div className="lg:col-span-5 w-full flex flex-col gap-8 text-left">
-            <Tilt className="p-8 md:p-10 flex flex-col gap-8 w-full">
+            <Tilt className="py-[36px] px-[32px] flex flex-col gap-8 w-full">
               {/* Premium Personal Monogram Circular Avatar Logo */}
               <div className="flex justify-center items-center py-6">
                 <div className="w-[180px] h-[180px] relative group cursor-default transition-all duration-300 hover:scale-[1.05]">
@@ -132,7 +132,7 @@ export default function About() {
             </Tilt>
 
             {/* Quick Facts List */}
-            <Tilt className="p-8 md:p-10 w-full flex flex-col gap-6">
+            <Tilt className="py-[36px] px-[32px] w-full flex flex-col gap-6">
               <h4 className="text-xs font-black text-muted uppercase tracking-wider mb-2">Quick Facts</h4>
               {factsData.map((fact, idx) => (
                 <div key={idx} className="flex items-center gap-3">

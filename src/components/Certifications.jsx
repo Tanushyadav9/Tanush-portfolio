@@ -54,31 +54,31 @@ export default function Certifications() {
               transition={{ duration: 0.5, delay: idx * 0.12 }}
               className="flex"
             >
-              <Tilt className="py-[36px] px-[32px] flex flex-col justify-between items-start h-full hover-border-cyan text-left w-full">
-                <div>
-                  <div className="flex justify-between items-start mb-6">
-                    <div className="p-3 bg-white-5 rounded-2xl border border-white-10">
-                      <Award size={26} className="text-cyan" />
-                    </div>
-                    <span className="text-[10px] font-bold text-cyan bg-cyan-10 px-3 py-1 rounded-full uppercase tracking-wider">
-                      {cert.date}
-                    </span>
+            <Tilt className="py-[40px] px-[32px] flex flex-col justify-between items-start h-full hover-border-cyan text-left w-full">
+              <div>
+                <div className="flex justify-between items-start mb-8">
+                  <div className="p-3 bg-white-5 rounded-2xl border border-white-10">
+                    <Award size={26} className="text-cyan" />
                   </div>
+                  <span className="text-[10px] font-bold text-cyan bg-cyan-10 px-3 py-1 rounded-full uppercase tracking-wider">
+                    {cert.date}
+                  </span>
+                </div>
 
-                  <h3 className="text-lg font-bold text-white font-heading mb-2 leading-snug">
-                    {cert.title}
-                  </h3>
-                  
-                  <p className="text-sm font-semibold text-purple mb-4">
-                    {cert.issuer}
-                  </p>
+                <h3 className="text-lg font-bold text-white font-heading mb-4 leading-snug">
+                  {cert.title}
+                </h3>
+                
+                <p className="text-sm font-semibold text-purple mb-6">
+                  {cert.issuer}
+                </p>
                   
                   <p className="text-xs text-muted leading-relaxed">
                     {cert.details}
                   </p>
                 </div>
 
-                <div className="w-full h-px bg-white-10 my-6" />
+                <div className="w-full h-px bg-white-10 mt-8 mb-6" />
 
                 <a 
                   href={cert.link} 
