@@ -128,7 +128,7 @@ export default function Hero() {
           </p>
           
           {/* CTAs */}
-          <div className="flex flex-wrap gap-4 items-center justify-center">
+          <div className="flex flex-wrap gap-6 items-center justify-center">
             <a 
               href="/Tanush_Yadav_Resume.pdf" 
               target="_blank" 
@@ -156,13 +156,13 @@ export default function Hero() {
           </div>
 
           {/* Social Connection Row */}
-          <div className="flex gap-4 mt-12 items-center justify-center">
+          <div className="flex gap-6 mt-6 items-center justify-center">
             <a 
               href="https://github.com/Tanushyadav9" 
               target="_blank" 
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="w-10 h-10 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-cyan text-white hover:text-cyan transition-all hover:-translate-y-1"
+              className="w-11 h-11 flex items-center justify-center rounded-full bg-white-5 border border-white-10 hover-border-cyan text-white hover:text-cyan transition-all hover:-translate-y-1"
             >
               <GithubIcon size={18} />
             </a>
@@ -171,14 +171,14 @@ export default function Hero() {
               target="_blank" 
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="w-10 h-10 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-purple text-white hover:text-purple transition-all hover:-translate-y-1"
+              className="w-11 h-11 flex items-center justify-center rounded-full bg-white-5 border border-white-10 hover-border-purple text-white hover:text-purple transition-all hover:-translate-y-1"
             >
               <LinkedinIcon size={18} />
             </a>
             <a 
               href="mailto:tanushyada0987@gmail.com" 
               aria-label="Email"
-              className="w-10 h-10 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-cyan text-white hover:text-cyan transition-all hover:-translate-y-1"
+              className="w-11 h-11 flex items-center justify-center rounded-full bg-white-5 border border-white-10 hover-border-cyan text-white hover:text-cyan transition-all hover:-translate-y-1"
             >
               <Mail size={18} />
             </a>

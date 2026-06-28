@@ -116,25 +116,25 @@ export default function Contact() {
 
   const contactDetails = [
     {
-      icon: <Mail className="text-cyan" size={20} />,
+      icon: <Mail className="text-cyan" size={24} />,
       label: 'Email',
       value: 'tanushyada0987@gmail.com',
       href: 'mailto:tanushyada0987@gmail.com'
     },
     {
-      icon: <Phone className="text-purple" size={20} />,
+      icon: <Phone className="text-purple" size={24} />,
       label: 'Phone',
       value: '+91 87506 88748',
       href: 'tel:+918750688748'
     },
     {
-      icon: <MapPin className="text-cyan" size={20} />,
+      icon: <MapPin className="text-cyan" size={24} />,
       label: 'Location',
       value: 'Delhi, India',
       href: '#'
     },
     {
-      icon: <FileText className="text-purple" size={20} />,
+      icon: <FileText className="text-purple" size={24} />,
       label: 'Resume Document',
       value: 'View PDF File',
       href: '/Tanush_Yadav_Resume.pdf'
@@ -188,47 +188,54 @@ export default function Contact() {
             </Tilt>
 
             {/* Direct Contact Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[24px]">
               {contactDetails.map((detail, i) => (
                 <a 
                   key={i} 
                   href={detail.href}
                   target={detail.href.endsWith('.pdf') ? '_blank' : undefined}
                   rel={detail.href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
-                  className="flex items-center gap-3.5 p-5 md:p-6 rounded-2xl bg-white-5 border border-white-5 hover-border-cyan transition-all group decoration-transparent"
+                  className="flex items-center gap-[24px] p-[30px] rounded-2xl bg-white-5 border border-white-5 hover-border-cyan transition-all group decoration-transparent"
                 >
-                  <div className="p-2.5 bg-white-5 rounded-xl border border-white-10 text-cyan shrink-0">
+                  <div className="w-[56px] h-[56px] flex items-center justify-center bg-white-5 rounded-xl border border-white-10 text-cyan shrink-0">
                     {detail.icon}
                   </div>
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex flex-col gap-[10px]">
                     <p className="text-[10px] text-muted uppercase tracking-wider">{detail.label}</p>
-                    <p className="text-xs font-bold text-white group-hover:text-cyan transition-colors mt-0.5 truncate">{detail.value}</p>
+                    <p className="text-xs font-bold text-white group-hover:text-cyan transition-colors truncate">{detail.value}</p>
                   </div>
                 </a>
               ))}
             </div>
 
             {/* Socials connections row */}
-            <Tilt className="p-6 md:p-8 flex items-center justify-between gap-6">
-              <span className="text-xs font-bold text-muted uppercase tracking-wider">Social Channels:</span>
-              <div className="flex gap-3">
+            <Tilt className="py-[36px] px-[32px] flex flex-col items-center justify-center">
+              <span className="text-xs font-bold text-muted uppercase tracking-wider mb-6">Social Channels</span>
+              <div className="flex gap-[24px] justify-center items-center">
                 <a 
                   href="https://github.com/Tanushyadav9" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   aria-label="GitHub"
-                  className="w-9 h-9 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-cyan text-white hover:text-cyan transition-all"
+                  className="w-11 h-11 flex items-center justify-center rounded-full bg-white-5 border border-white-10 hover-border-cyan text-white hover:text-cyan transition-all hover:-translate-y-1"
                 >
-                  <GithubIcon size={16} />
+                  <GithubIcon size={18} />
                 </a>
                 <a 
                   href="https://www.linkedin.com/in/tanush-yadav-1893b338b" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
-                  className="w-9 h-9 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-purple text-white hover:text-purple transition-all"
+                  className="w-11 h-11 flex items-center justify-center rounded-full bg-white-5 border border-white-10 hover-border-purple text-white hover:text-purple transition-all hover:-translate-y-1"
                 >
-                  <LinkedinIcon size={16} />
+                  <LinkedinIcon size={18} />
+                </a>
+                <a 
+                  href="mailto:tanushyada0987@gmail.com" 
+                  aria-label="Email"
+                  className="w-11 h-11 flex items-center justify-center rounded-full bg-white-5 border border-white-10 hover-border-cyan text-white hover:text-cyan transition-all hover:-translate-y-1"
+                >
+                  <Mail size={18} />
                 </a>
               </div>
             </Tilt>

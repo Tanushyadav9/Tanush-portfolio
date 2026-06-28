@@ -13,6 +13,12 @@
   
   --font-heading: 'Sora', sans-serif;
   --font-body: 'Inter', sans-serif;
+
+  /* Premium spacing variables */
+  --gap-small: 12px;
+  --gap-medium: 20px;
+  --gap-large: 32px;
+  --gap-section: 64px;
 }
 
 html {
@@ -130,6 +136,8 @@ body {
   font-weight: 500;
   transition: color 0.3s ease;
   cursor: pointer;
+  padding: 8px 12px;
+  display: inline-block;
 }
 .nav-link:hover, .nav-link.active {
   color: var(--text-color);
@@ -139,13 +147,14 @@ body {
   position: absolute;
   width: 0%;
   height: 2px;
-  bottom: -4px;
-  left: 0;
+  bottom: 0px;
+  left: 12px;
+  right: 12px;
   background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
   transition: width 0.3s ease;
 }
 .nav-link:hover::after, .nav-link.active::after {
-  width: 100%;
+  width: calc(100% - 24px);
 }
 
 /* Glassmorphism Cards */
