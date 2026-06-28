@@ -135,7 +135,7 @@ body {
   color: var(--text-muted);
   font-size: 1rem;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: color 0.25s ease;
   cursor: pointer;
   padding: 8px 12px;
   display: inline-block;
@@ -152,7 +152,7 @@ body {
   left: 12px;
   right: 12px;
   background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  transition: width 0.3s ease;
+  transition: width 0.25s ease;
 }
 .nav-link:hover::after, .nav-link.active::after {
   width: calc(100% - 24px);

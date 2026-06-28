@@ -62,8 +62,8 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled 
-          ? 'py-5 nav-bg-scrolled' 
-          : 'py-8 bg-transparent'
+          ? 'py-[24px] nav-bg-scrolled' 
+          : 'py-[28px] bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
@@ -80,19 +80,16 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Navigation */}
-        <ul className="list-none hidden md:flex flex-row items-center">
+        <ul className="list-none hidden md:flex flex-row gap-[36px] items-center">
           {navLinks.map((link) => (
-            <React.Fragment key={link.id}>
-              <span className="text-white-30 text-xs px-[20px] select-none pointer-events-none font-semibold">•</span>
-              <li>
-                <a
-                  className={`nav-link ${active === link.id ? 'active' : ''}`}
-                  onClick={() => handleClick(link.id)}
-                >
-                  {link.label}
-                </a>
-              </li>
-            </React.Fragment>
+            <li key={link.id}>
+              <a
+                className={`nav-link ${active === link.id ? 'active' : ''}`}
+                onClick={() => handleClick(link.id)}
+              >
+                {link.label}
+              </a>
+            </li>
           ))}
         </ul>
 
