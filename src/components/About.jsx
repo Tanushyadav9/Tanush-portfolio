@@ -39,22 +39,22 @@ export default function About() {
           {/* LEFT COLUMN: Profile Visual & Quick Facts */}
           <div className="lg:col-span-5 w-full flex flex-col gap-8 text-left">
             <Tilt className="p-6 flex flex-col gap-6 w-full">
-              {/* Profile Photo Placeholder Frame */}
+              {/* Profile Photo Placeholder Frame with TY initials */}
               <div className="relative w-full aspect-square rounded-2xl bg-white-5/5 border border-white-10 overflow-hidden flex items-center justify-center group">
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#915EFF]/10 to-[#00E5FF]/10 opacity-40" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#915EFF]/10 to-[#00E5FF]/10 opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
                 
-                {/* Silhouette SVG Graphic */}
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-1/3 text-white/10 group-hover:text-cyan/20 transition-colors duration-500">
-                  <path d="M50 15 C38 15 28 25 28 37 C28 49 38 59 50 59 C62 59 72 49 72 37 C72 25 62 15 50 15 Z M50 67 C28 67 10 79 10 90 L 90 90 C 90 79 72 67 50 67 Z" fill="currentColor" />
-                </svg>
+                {/* Visual Monogram Logo TY */}
+                <div className="text-7xl md:text-8xl font-black font-heading text-white/10 group-hover:text-cyan/30 transition-colors duration-500 tracking-wider">
+                  TY
+                </div>
                 
-                <span className="absolute bottom-4 text-xs font-bold text-white/40 font-heading select-none uppercase tracking-widest">
-                  Profile Avatar Place
+                <span className="absolute bottom-4 text-[10px] font-bold text-white/30 font-heading select-none uppercase tracking-widest">
+                  Tanush Yadav &bull; Initial Logo
                 </span>
               </div>
 
               {/* Current Status banner */}
-              <div className="p-4 bg-[#00E5FF]/5 border border-[#00E5FF]/20 rounded-xl">
+              <div className="p-4 bg-[#00E5FF]/5 border border-[#00E5FF]/15 rounded-xl">
                 <span className="text-[10px] font-bold text-cyan uppercase tracking-widest block mb-1">Current Status</span>
                 <span className="text-xs sm:text-sm text-white/90 font-medium">
                   Actively available for Internships, Freelancing & Collaborations
@@ -93,18 +93,10 @@ export default function About() {
               </h3>
               
               <p className="text-base text-muted leading-relaxed">
-                I design and engineer scalable software architectures by combining artificial intelligence algorithms, modern web frameworks, and custom embedded systems. Specializing in Python, JavaScript, and C++, I build applications that bridge hardware telemetry with accessible, production-ready interfaces.
-              </p>
-              
-              <p className="text-base text-muted leading-relaxed">
-                My engineering approach is centered on writing optimized code, designing modular components, and implementing responsive layouts. I focus heavily on product accessibility, API efficiency, and robust data schema layouts to deliver clean systems.
+                I design and engineer scalable software architectures by combining artificial intelligence algorithms, modern web frameworks, and custom embedded systems. Specializing in Python, JavaScript, and C++, my engineering approach centers on code optimization, accessibility compliance, and robust API development to solve real-world problems.
               </p>
 
-              <p className="text-base text-muted leading-relaxed">
-                My long-term objectives involve leading technical teams at the intersection of computer vision, cloud computing, and IoT device networks to automate and resolve real-world logistical challenges.
-              </p>
-
-              <div className="w-full h-px bg-white-10 my-4" />
+              <div className="w-full h-px bg-white-10 my-2" />
 
               {/* Currently Learning Section */}
               <div>
