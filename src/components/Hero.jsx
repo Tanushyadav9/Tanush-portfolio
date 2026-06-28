@@ -95,7 +95,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-12 scroll-snap-align-start scroll-snap-stop-always">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-[120px] pb-[140px] scroll-snap-align-start scroll-snap-stop-always">
       {/* Radial overlay */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/5 via-transparent to-transparent pointer-events-none" />
       

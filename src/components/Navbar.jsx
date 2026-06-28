@@ -80,16 +80,21 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Navigation */}
-        <ul className="list-none hidden md:flex flex-row gap-[36px] items-center">
-          {navLinks.map((link) => (
-            <li key={link.id}>
-              <a
-                className={`nav-link ${active === link.id ? 'active' : ''}`}
-                onClick={() => handleClick(link.id)}
-              >
-                {link.label}
-              </a>
-            </li>
+        <ul className="list-none hidden md:flex flex-row items-center">
+          {navLinks.map((link, idx) => (
+            <React.Fragment key={link.id}>
+              {idx > 0 && (
+                <span className="text-white-30 text-xs px-[20px] select-none pointer-events-none font-semibold">•</span>
+              )}
+              <li>
+                <a
+                  className={`nav-link ${active === link.id ? 'active' : ''}`}
+                  onClick={() => handleClick(link.id)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            </React.Fragment>
           ))}
         </ul>
 
