@@ -40,8 +40,8 @@ export default function Achievements() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-1">
+        <div className="text-center mb-[60px]">
+          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-[20px]">
             Recognition
           </p>
           <h2 className="text-3xl sm:text-4xl font-black text-white">
@@ -59,7 +59,7 @@ export default function Achievements() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="relative pl-12 md:pl-16 mb-10 text-left"
+              className="relative pl-12 md:pl-16 mb-[60px] text-left"
             >
               {/* Pulse timeline node indicator */}
               <div className="timeline-dot">
@@ -67,7 +67,7 @@ export default function Achievements() {
               </div>
 
               {/* Glassmorphic Card */}
-              <Tilt className="p-8 md:p-10 hover-border-cyan">
+              <Tilt className="py-[36px] px-[32px] hover-border-cyan">
                 <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
                   <div className="flex items-center gap-4">
                     <div className="p-2.5 bg-white-5 rounded-2xl border border-white-10 shrink-0 text-cyan">

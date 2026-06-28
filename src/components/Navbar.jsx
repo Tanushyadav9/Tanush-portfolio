@@ -80,7 +80,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Navigation */}
-        <ul className="list-none hidden md:flex flex-row gap-8">
+        <ul className="list-none hidden md:flex flex-row gap-10 lg:gap-12">
           {navLinks.map((link) => (
             <li key={link.id}>
               <a

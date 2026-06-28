@@ -154,8 +154,8 @@ export default function Skills() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-1">
+        <div className="text-center mb-[60px]">
+          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-[20px]">
             Abilities
           </p>
           <h2 className="text-3xl sm:text-4xl font-black text-white">

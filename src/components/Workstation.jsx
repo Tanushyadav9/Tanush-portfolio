@@ -22,8 +22,8 @@ export default function Workstation() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-1">
+        <div className="text-center mb-[60px]">
+          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-[20px]">
             Workstation
           </p>
           <h2 className="text-3xl sm:text-4xl font-black text-white">
@@ -32,13 +32,13 @@ export default function Workstation() {
           <div className="w-16 h-1 bg-gradient-to-r from-purple to-cyan mx-auto mt-4 rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-[40px] items-start">
           
           {/* Left Column: Currently Building & Future Goals */}
           <div className="lg:col-span-6 flex flex-col gap-10 w-full text-left">
             
             {/* Currently Building */}
-            <Tilt className="p-8 md:p-10">
+            <Tilt className="py-[36px] px-[32px]">
               <div className="flex justify-between items-start mb-6">
                 <div>
                   <h3 className="text-lg sm:text-xl font-bold text-white font-heading">
@@ -79,7 +79,7 @@ export default function Workstation() {
             </Tilt>
 
             {/* Future Goals */}
-            <Tilt className="p-8 md:p-10">
+            <Tilt className="py-[36px] px-[32px]">
               <h3 className="text-lg sm:text-xl font-bold text-white font-heading mb-6 flex items-center gap-2">
                 <TrendingUp size={20} className="text-purple" />
                 <span>Future Goals</span>
@@ -103,7 +103,7 @@ export default function Workstation() {
 
           {/* Right Column: Tech Stack Overview */}
           <div className="lg:col-span-6 w-full text-left">
-            <Tilt className="p-8 md:p-10 h-full">
+            <Tilt className="py-[36px] px-[32px] h-full">
               <h3 className="text-lg sm:text-xl font-bold text-white font-heading mb-6 flex items-center gap-2">
                 <FileCode size={20} className="text-cyan" />
                 <span>Interactive Tech Stack</span>

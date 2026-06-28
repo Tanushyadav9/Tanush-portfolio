@@ -106,16 +106,16 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="flex flex-col items-center"
         >
-          <p className="text-cyan font-semibold text-xs tracking-widest uppercase mb-3 font-heading">
+          <p className="text-cyan font-semibold text-xs tracking-widest uppercase mb-5 font-heading">
             SOFTWARE ENGINEER PORTFOLIO
           </p>
           
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
             Tanush Yadav
           </h1>
           
           {/* Rotating Title */}
-          <div className="h-10 sm:h-12 flex items-center mb-6 justify-center">
+          <div className="h-10 sm:h-12 flex items-center mb-8 justify-center">
             <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center justify-center font-heading">
               <span className="border-r-2 border-cyan pr-2 mr-1 animate-pulse min-h-[30px] inline-block">
                 {currentText}
@@ -123,7 +123,7 @@ export default function Hero() {
             </h2>
           </div>
           
-          <p className="text-muted text-base sm:text-lg leading-relaxed mb-8 max-w-xl text-center">
+          <p className="text-muted text-base sm:text-lg leading-relaxed mb-10 max-w-xl text-center">
             I build scalable web applications, AI-powered software, and IoT solutions focused on accessibility, automation, and solving real-world engineering problems.
           </p>
           
@@ -156,7 +156,7 @@ export default function Hero() {
           </div>
 
           {/* Social Connection Row */}
-          <div className="flex gap-4 mt-8 items-center justify-center">
+          <div className="flex gap-4 mt-12 items-center justify-center">
             <a 
               href="https://github.com/Tanushyadav9" 
               target="_blank" 

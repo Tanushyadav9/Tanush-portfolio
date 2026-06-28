@@ -206,8 +206,8 @@ export default function Projects({ onBack }) {
         )}
 
         {/* Section Header */}
-        <div className="text-center mb-24 md:mb-28">
-          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-1">
+        <div className="text-center mb-[60px]">
+          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-[20px]">
             Case Studies
           </p>
           <h2 className="text-3xl sm:text-4xl font-black text-white">
@@ -217,7 +217,7 @@ export default function Projects({ onBack }) {
         </div>
 
         {/* Projects Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-[40px]">
           {projects.map((project, idx) => {
             const isFeatured = project.featured;
             
@@ -230,7 +230,7 @@ export default function Projects({ onBack }) {
                 className="flex animate-card"
               >
                 <Tilt 
-                  className={`p-8 md:p-10 h-full flex flex-col justify-between group w-full ${
+                  className={`py-[36px] px-[32px] h-full flex flex-col justify-between group w-full ${
                     isFeatured ? 'featured-project-card' : 'standard-project-card'
                   }`}
                 >
@@ -294,9 +294,9 @@ export default function Projects({ onBack }) {
                     </div>
 
                     <div className="w-full h-px bg-white-5 mb-5" />
-
+                    
                     {/* Primary Trigger & Links */}
-                    <div className="flex flex-col gap-2.5">
+                    <div className="flex flex-col gap-2.5 mt-6">
                       <button
                         onClick={() => openCaseStudy(project)}
                         className="w-full flex items-center justify-center gap-1.5 text-xs font-semibold text-white bg-white-5 border border-white-10 hover-border-cyan py-2.5 px-3 rounded-xl transition-all hover:bg-cyan/5 cursor-pointer"

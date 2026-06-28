@@ -33,8 +33,8 @@ export default function Certifications() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-1">
+        <div className="text-center mb-[60px]">
+          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-[20px]">
             Credentials
           </p>
           <h2 className="text-3xl sm:text-4xl font-black text-white">
@@ -44,7 +44,7 @@ export default function Certifications() {
         </div>
 
         {/* Certifications Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-[40px]">
           {certificationsData.map((cert, idx) => (
             <motion.div
               key={idx}
@@ -54,7 +54,7 @@ export default function Certifications() {
               transition={{ duration: 0.5, delay: idx * 0.12 }}
               className="flex"
             >
-              <Tilt className="p-8 md:p-10 flex flex-col justify-between items-start h-full hover-border-cyan text-left w-full">
+              <Tilt className="py-[36px] px-[32px] flex flex-col justify-between items-start h-full hover-border-cyan text-left w-full">
                 <div>
                   <div className="flex justify-between items-start mb-6">
                     <div className="p-3 bg-white-5 rounded-2xl border border-white-10">

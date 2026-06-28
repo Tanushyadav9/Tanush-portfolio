@@ -148,8 +148,8 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-1">
+        <div className="text-center mb-[60px]">
+          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-[20px]">
             Communication
           </p>
           <h2 className="text-3xl sm:text-4xl font-black text-white">
@@ -158,13 +158,13 @@ export default function Contact() {
           <div className="w-16 h-1 bg-gradient-to-r from-purple to-cyan mx-auto mt-4 rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-24 items-start max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-[40px] items-start max-w-6xl mx-auto">
           
           {/* Left Column: Premium Cards */}
           <div className="lg:col-span-5 flex flex-col gap-8 text-left w-full">
             
             {/* Availability Highlights Card */}
-            <Tilt className="p-8 md:p-10 border border-[#22c55e]/20 bg-[#22c55e]/5">
+            <Tilt className="py-[36px] px-[32px] border border-[#22c55e]/20 bg-[#22c55e]/5">
               <div className="flex items-center gap-2 mb-4">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e] animate-ping" />
                 <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e] absolute" />
@@ -237,7 +237,7 @@ export default function Contact() {
 
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7 w-full">
-            <Tilt className="p-8 md:p-10">
+            <Tilt className="py-[36px] px-[32px]">
               <form onSubmit={handleSubmit} className="flex flex-col text-left">
                 
                 <AnimatePresence>

@@ -31,8 +31,8 @@ export default function Experience() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-1">
+        <div className="text-center mb-[60px]">
+          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-[20px]">
             Timeline
           </p>
           <h2 className="text-3xl sm:text-4xl font-black text-white">
@@ -50,7 +50,7 @@ export default function Experience() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative pl-12 md:pl-16 mb-12 text-left"
+              className="relative pl-12 md:pl-16 mb-[60px] text-left"
             >
               {/* Pulse timeline node */}
               <div className="timeline-dot">
@@ -58,7 +58,7 @@ export default function Experience() {
               </div>
 
               {/* Glassmorphic Experience Card */}
-              <Tilt className="p-8 md:p-10">
+              <Tilt className="py-[36px] px-[32px] md:px-[40px]">
                 {/* Header Info */}
                 <div className="flex flex-wrap justify-between items-start gap-4 mb-6">
                   <div className="flex items-center gap-4">
