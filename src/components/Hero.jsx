@@ -97,8 +97,8 @@ export default function Hero() {
     return () => clearInterval(projectInterval);
   }, []);
 
-  const scrollToProjects = () => {
-    const element = document.getElementById('projects');
+  const scrollToAbout = () => {
+    const element = document.getElementById('about');
     if (element) {
       const yOffset = -80;
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
@@ -116,7 +116,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center section-padding pt-32 md:pt-40 relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-12 scroll-snap-align-start scroll-snap-stop-always">
       {/* Radial overlay */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/5 via-transparent to-transparent pointer-events-none" />
       
@@ -266,7 +266,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-10" onClick={scrollToProjects}>
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-10" onClick={scrollToAbout}>
         <span className="text-[10px] text-muted tracking-widest uppercase">Scroll Down</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
