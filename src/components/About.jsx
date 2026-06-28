@@ -39,18 +39,87 @@ export default function About() {
           {/* LEFT COLUMN: Profile Visual & Quick Facts */}
           <div className="lg:col-span-5 w-full flex flex-col gap-8 text-left">
             <Tilt className="p-6 flex flex-col gap-6 w-full">
-              {/* Profile Photo Placeholder Frame with TY initials */}
-              <div className="relative w-full aspect-square rounded-2xl bg-white-5/5 border border-white-10 overflow-hidden flex items-center justify-center group">
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#915EFF]/10 to-[#00E5FF]/10 opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
-                
-                {/* Visual Monogram Logo TY */}
-                <div className="text-7xl md:text-8xl font-black font-heading text-white/10 group-hover:text-cyan/30 transition-colors duration-500 tracking-wider">
-                  TY
+              {/* Premium Personal Monogram Circular Avatar Logo */}
+              <div className="flex justify-center items-center py-6">
+                <div className="w-[180px] h-[180px] relative group cursor-default transition-all duration-300 hover:scale-[1.05]">
+                  {/* Glowing background halo */}
+                  <div className="absolute inset-0.5 rounded-full bg-gradient-to-tr from-[#00E5FF] via-[#8B5CF6] to-[#3B82F6] opacity-25 blur-md group-hover:opacity-55 transition-opacity duration-300" />
+                  
+                  {/* Interactive Monogram SVG */}
+                  <svg viewBox="0 0 200 200" className="w-full h-full relative z-10 select-none">
+                    <defs>
+                      <linearGradient id="avatarBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#00E5FF" />
+                        <stop offset="50%" stopColor="#8B5CF6" />
+                        <stop offset="100%" stopColor="#3B82F6" />
+                      </linearGradient>
+                      <linearGradient id="avatarTextGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#FFFFFF" />
+                        <stop offset="50%" stopColor="#E0F7FA" />
+                        <stop offset="100%" stopColor="#00E5FF" />
+                      </linearGradient>
+                      <filter id="avatarTextGlow">
+                        <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                        <feMerge>
+                          <feMergeNode in="coloredBlur"/>
+                          <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                      </filter>
+                    </defs>
+
+                    {/* Faint rotating outer orbit */}
+                    <circle 
+                      cx="100" 
+                      cy="100" 
+                      r="92" 
+                      stroke="rgba(0, 229, 255, 0.15)" 
+                      strokeWidth="1.2" 
+                      strokeDasharray="6 8" 
+                      className="rotating-orbit"
+                    />
+
+                    {/* Glowing outer ring / background border */}
+                    <circle 
+                      cx="100" 
+                      cy="100" 
+                      r="84" 
+                      stroke="url(#avatarBorderGrad)" 
+                      strokeWidth="2.5" 
+                      fill="#0B1020" 
+                      className="avatar-glow"
+                    />
+
+                    {/* Radial overlay shading */}
+                    <circle cx="100" cy="100" r="82.5" fill="rgba(255, 255, 255, 0.01)" />
+
+                    {/* Centered Monogram bold letters TY */}
+                    <text 
+                      x="100" 
+                      y="118" 
+                      textAnchor="middle" 
+                      fill="url(#avatarTextGrad)" 
+                      fontSize="56" 
+                      fontWeight="900" 
+                      fontFamily="var(--font-heading)" 
+                      letterSpacing="0.5" 
+                      filter="url(#avatarTextGlow)"
+                    >
+                      TY
+                    </text>
+
+                    {/* Glass Reflection Arc Path */}
+                    <path 
+                      d="M 32,95 A 68,68 0 0,1 168,95 A 68,34 0 0,0 32,95 Z" 
+                      fill="rgba(255, 255, 255, 0.04)" 
+                    />
+
+                    {/* Tiny glowing background particles */}
+                    <circle cx="35" cy="55" r="1.5" fill="#00E5FF" opacity="0.6" />
+                    <circle cx="165" cy="145" r="1.2" fill="#8B5CF6" opacity="0.5" />
+                    <circle cx="50" cy="165" r="1.5" fill="#3B82F6" opacity="0.6" />
+                    <circle cx="160" cy="45" r="1" fill="#FFFFFF" opacity="0.7" />
+                  </svg>
                 </div>
-                
-                <span className="absolute bottom-4 text-[10px] font-bold text-white/30 font-heading select-none uppercase tracking-widest">
-                  Tanush Yadav &bull; Initial Logo
-                </span>
               </div>
 
               {/* Current Status banner */}

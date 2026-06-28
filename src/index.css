@@ -769,3 +769,21 @@ h1, h2, h3, h4 {
 .btn-primary:hover, .btn-secondary:hover {
   box-shadow: 0 4px 12px rgba(145, 94, 255, 0.2);
 }
+
+/* Premium Personal Monogram Avatar Logo styling */
+.rotating-orbit {
+  transform-origin: center;
+  animation: spin-slow 25s linear infinite;
+}
+
+.group:hover .rotating-orbit {
+  animation-duration: 8s;
+}
+
+.avatar-glow {
+  transition: filter 0.3s ease, stroke-width 0.3s ease;
+}
+
+.group:hover .avatar-glow {
+  filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.5)) drop-shadow(0 0 12px rgba(139, 92, 246, 0.3));
+}
