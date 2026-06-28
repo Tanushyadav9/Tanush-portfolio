@@ -90,7 +90,7 @@ const projects = [
       solution: 'Engineered an administrative desktop dashboard in Java and Python. Structured a normalized MySQL relational schema tracking client logs, room categories, billing ledger indices, and audits logs.',
       challenges: 'Mitigating concurrency conflicts when multiple operators checkout rooms simultaneously. Resolved by configuring transaction isolation levels and optimizing lookup query index paths.',
       features: [
-        'Real-time graphical room status grids with immediate occupancy indicators.',
+        'Room status chart grids with open vacancy layouts.',
         'Automated checkout invoice ledger generators compiling rooms and services bills.',
         'Role-based database credentials validation security layer.',
         'Comprehensive activity loggers tracking administrative check-in files.'
@@ -169,7 +169,7 @@ const projects = [
   }
 ];
 
-export default function Projects() {
+export default function Projects({ onBack }) {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const openCaseStudy = (project) => {
@@ -183,16 +183,27 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="section-padding relative">
+    <section id="projects" className="min-h-screen pt-32 md:pt-40 pb-20 relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
+        {/* Back breadcrumb link */}
+        <div className="flex justify-start mb-10">
+          <button
+            onClick={onBack}
+            className="flex items-center gap-2 text-xs font-bold text-muted hover:text-cyan border border-white-10 hover-border-cyan py-2 px-4 rounded-xl bg-white-5/5 transition-all cursor-pointer group"
+          >
+            <span className="group-hover:-translate-x-1 transition-transform">&larr;</span>
+            <span>Back to Main Page</span>
+          </button>
+        </div>
+
         {/* Section Header */}
         <div className="text-center mb-20">
           <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-1">
             Case Studies
           </p>
           <h2 className="text-3xl sm:text-4xl font-black text-white">
-            Featured Engineering Projects
+            Engineering Case Studies Index
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-purple to-cyan mx-auto mt-4 rounded-full" />
         </div>
@@ -206,10 +217,9 @@ export default function Projects() {
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.05 }}
-                className="flex"
+                className="flex animate-card"
               >
                 <Tilt 
                   className={`p-6 h-full flex flex-col justify-between group w-full ${
@@ -248,7 +258,7 @@ export default function Projects() {
                     </div>
 
                     {/* Title and Description */}
-                    <h3 className="text-lg font-bold text-white font-heading mb-2 group-hover:text-gradient transition-colors text-left">
+                    <h3 className="text-xl font-bold text-white font-heading mb-2 group-hover:text-gradient transition-colors text-left">
                       {project.title}
                     </h3>
                     

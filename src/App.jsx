@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -17,6 +17,8 @@ import CursorGlow from './components/CursorGlow';
 import ParticlesBackground from './components/ParticlesBackground';
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState('landing'); // 'landing' or 'projects'
+
   return (
     <div className="relative bg-[#0B0F19] min-h-screen text-white overflow-hidden select-none">
       {/* Interactive Cursor Glow */}
@@ -31,77 +33,77 @@ export default function App() {
       <div className="gradient-blob blob-3" />
 
       {/* Sticky Header Navbar */}
-      <Navbar />
+      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
       {/* Portfolio Main Sections */}
       <main className="relative z-10">
-        <Hero />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="w-full h-px bg-white/5" />
-        </div>
-        
-        <About />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="w-full h-px bg-white/5" />
-        </div>
+        {currentPage === 'landing' ? (
+          <>
+            <Hero />
+            
+            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
+              <div className="w-full h-px bg-white/5" />
+            </div>
+            
+            <About />
+            
+            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
+              <div className="w-full h-px bg-white/5" />
+            </div>
 
-        <Skills />
+            <Skills />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="w-full h-px bg-white/5" />
-        </div>
+            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
+              <div className="w-full h-px bg-white/5" />
+            </div>
 
-        <Services />
+            <Services />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="w-full h-px bg-white/5" />
-        </div>
+            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
+              <div className="w-full h-px bg-white/5" />
+            </div>
 
-        <Projects />
+            <GithubStats />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="w-full h-px bg-white/5" />
-        </div>
+            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
+              <div className="w-full h-px bg-white/5" />
+            </div>
 
-        <GithubStats />
+            <Workstation />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="w-full h-px bg-white/5" />
-        </div>
+            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
+              <div className="w-full h-px bg-white/5" />
+            </div>
 
-        <Workstation />
+            <Experience />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="w-full h-px bg-white/5" />
-        </div>
+            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
+              <div className="w-full h-px bg-white/5" />
+            </div>
 
-        <Experience />
+            <Achievements />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="w-full h-px bg-white/5" />
-        </div>
+            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
+              <div className="w-full h-px bg-white/5" />
+            </div>
 
-        <Achievements />
+            <Education />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="w-full h-px bg-white/5" />
-        </div>
+            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
+              <div className="w-full h-px bg-white/5" />
+            </div>
 
-        <Education />
+            <Certifications />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="w-full h-px bg-white/5" />
-        </div>
+            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
+              <div className="w-full h-px bg-white/5" />
+            </div>
 
-        <Certifications />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="w-full h-px bg-white/5" />
-        </div>
-
-        <Contact />
+            <Contact />
+          </>
+        ) : (
+          <Projects onBack={() => setCurrentPage('landing')} />
+        )}
       </main>
 
       {/* Footer Navigation */}
