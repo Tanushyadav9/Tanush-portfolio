@@ -183,23 +183,27 @@ export default function Projects({ onBack }) {
   };
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, []);
+    if (onBack) {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [onBack]);
 
   return (
     <section id="projects" className="min-h-screen pt-40 md:pt-48 pb-32 relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Back breadcrumb link */}
-        <div className="flex justify-start mb-10">
-          <button
-            onClick={onBack}
-            className="flex items-center gap-2 text-xs font-bold text-muted hover:text-cyan border border-white-10 hover-border-cyan py-2 px-4 rounded-xl bg-white-5/5 transition-all cursor-pointer group"
-          >
-            <span className="group-hover:-translate-x-1 transition-transform">&larr;</span>
-            <span>Back to Main Page</span>
-          </button>
-        </div>
+        {onBack && (
+          <div className="flex justify-start mb-10">
+            <button
+              onClick={onBack}
+              className="flex items-center gap-2 text-xs font-bold text-muted hover:text-cyan border border-white-10 hover-border-cyan py-2 px-4 rounded-xl bg-white-5/5 transition-all cursor-pointer group"
+            >
+              <span className="group-hover:-translate-x-1 transition-transform">&larr;</span>
+              <span>Back to Main Page</span>
+            </button>
+          </div>
+        )}
 
         {/* Section Header */}
         <div className="text-center mb-24 md:mb-28">

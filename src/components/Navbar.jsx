@@ -12,7 +12,7 @@ const navLinks = [
   { id: 'contact', label: 'Contact' },
 ];
 
-export default function Navbar({ currentPage, setCurrentPage }) {
+export default function Navbar() {
   const [active, setActive] = useState('home');
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -24,12 +24,6 @@ export default function Navbar({ currentPage, setCurrentPage }) {
         setScrolled(true);
       } else {
         setScrolled(false);
-      }
-
-      // If we are currently on the standalone Projects page, pin active tab to projects
-      if (currentPage === 'projects') {
-        setActive('projects');
-        return;
       }
 
       // Determine active section based on scroll position
@@ -51,43 +45,10 @@ export default function Navbar({ currentPage, setCurrentPage }) {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [currentPage]);
-
-  // Keep active link pinned if page changes from parent
-  useEffect(() => {
-    if (currentPage === 'projects') {
-      setActive('projects');
-    }
-  }, [currentPage]);
+  }, []);
 
   const handleClick = (id) => {
     setToggle(false);
-
-    if (id === 'projects') {
-      setCurrentPage('projects');
-      setActive('projects');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-
-    // If we click any other link while on Projects page
-    if (currentPage === 'projects') {
-      setCurrentPage('landing');
-      setActive(id);
-      
-      // Wait a short tick for landing components to mount, then scroll
-      setTimeout(() => {
-        const element = document.getElementById(id);
-        if (element) {
-          const yOffset = -80;
-          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          window.scrollTo({ top: y, behavior: 'smooth' });
-        }
-      }, 150);
-      return;
-    }
-
-    // Normal scrolling on landing page
     setActive(id);
     const element = document.getElementById(id);
     if (element) {

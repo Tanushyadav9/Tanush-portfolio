@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
-import Services from './components/Services';
 import Projects from './components/Projects';
+import Services from './components/Services';
 import GithubStats from './components/GithubStats';
 import Workstation from './components/Workstation';
 import Experience from './components/Experience';
@@ -17,8 +17,6 @@ import CursorGlow from './components/CursorGlow';
 import ParticlesBackground from './components/ParticlesBackground';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('landing'); // 'landing' or 'projects'
-
   return (
     <div className="relative bg-[#0B0F19] min-h-screen text-white overflow-hidden select-none">
       {/* Interactive Cursor Glow */}
@@ -33,27 +31,22 @@ export default function App() {
       <div className="gradient-blob blob-3" />
 
       {/* Sticky Header Navbar */}
-      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Navbar />
 
       {/* Portfolio Main Sections */}
       <main className="relative z-10">
-        {currentPage === 'landing' ? (
-          <>
-            <Hero />
-            <About />
-            <Skills />
-            <Services />
-            <GithubStats />
-            <Workstation />
-            <Experience />
-            <Achievements />
-            <Education />
-            <Certifications />
-            <Contact />
-          </>
-        ) : (
-          <Projects onBack={() => setCurrentPage('landing')} />
-        )}
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Services />
+        <GithubStats />
+        <Workstation />
+        <Experience />
+        <Achievements />
+        <Education />
+        <Certifications />
+        <Contact />
       </main>
 
       {/* Footer Navigation */}
