@@ -44,7 +44,7 @@ export default function Education() {
               transition={{ duration: 0.6 }}
               className="w-full"
             >
-              <Tilt className="p-8 md:p-10 flex flex-col gap-6 text-left w-full">
+              <Tilt className="p-10 md:p-12 flex flex-col gap-8 text-left w-full">
                 
                 {/* Header Row */}
                 <div className="flex flex-wrap justify-between items-start gap-4">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Cpu, Eye, Building, Laptop, Sprout, Heart, X, BookOpen, AlertCircle, Award } from 'lucide-react';
 import Tilt from './Tilt';
@@ -182,8 +182,12 @@ export default function Projects({ onBack }) {
     document.body.style.overflow = 'unset'; // restore bg scroll
   };
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
+
   return (
-    <section id="projects" className="min-h-screen pt-32 md:pt-40 pb-20 relative">
+    <section id="projects" className="min-h-screen pt-40 md:pt-48 pb-32 relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Back breadcrumb link */}
@@ -198,7 +202,7 @@ export default function Projects({ onBack }) {
         </div>
 
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-24 md:mb-28">
           <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-1">
             Case Studies
           </p>
@@ -209,7 +213,7 @@ export default function Projects({ onBack }) {
         </div>
 
         {/* Projects Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
           {projects.map((project, idx) => {
             const isFeatured = project.featured;
             
@@ -222,7 +226,7 @@ export default function Projects({ onBack }) {
                 className="flex animate-card"
               >
                 <Tilt 
-                  className={`p-6 h-full flex flex-col justify-between group w-full ${
+                  className={`p-8 md:p-10 h-full flex flex-col justify-between group w-full ${
                     isFeatured ? 'featured-project-card' : 'standard-project-card'
                   }`}
                 >

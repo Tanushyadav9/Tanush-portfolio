@@ -50,7 +50,7 @@ export default function Services() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
           {services.map((service, idx) => (
             <motion.div
               key={idx}
@@ -60,7 +60,7 @@ export default function Services() {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="flex"
             >
-              <Tilt className="p-8 flex flex-col justify-between items-start h-full hover-border-cyan text-left w-full">
+              <Tilt className="p-8 md:p-10 flex flex-col justify-between items-start h-full hover-border-cyan text-left w-full">
                 <div>
                   {/* Service Icon */}
                   <div className="p-3 bg-white-5 rounded-2xl border border-white-10 text-cyan mb-6 inline-block">

@@ -44,7 +44,7 @@ export default function Certifications() {
         </div>
 
         {/* Certifications Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
           {certificationsData.map((cert, idx) => (
             <motion.div
               key={idx}
@@ -54,7 +54,7 @@ export default function Certifications() {
               transition={{ duration: 0.5, delay: idx * 0.12 }}
               className="flex"
             >
-              <Tilt className="p-8 flex flex-col justify-between items-start h-full hover-border-cyan text-left w-full">
+              <Tilt className="p-8 md:p-10 flex flex-col justify-between items-start h-full hover-border-cyan text-left w-full">
                 <div>
                   <div className="flex justify-between items-start mb-6">
                     <div className="p-3 bg-white-5 rounded-2xl border border-white-10">

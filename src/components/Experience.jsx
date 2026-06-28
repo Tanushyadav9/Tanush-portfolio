@@ -58,7 +58,7 @@ export default function Experience() {
               </div>
 
               {/* Glassmorphic Experience Card */}
-              <Tilt className="p-8">
+              <Tilt className="p-8 md:p-10">
                 {/* Header Info */}
                 <div className="flex flex-wrap justify-between items-start gap-4 mb-6">
                   <div className="flex items-center gap-4">

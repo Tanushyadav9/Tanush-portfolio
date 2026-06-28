@@ -179,7 +179,7 @@ export default function Skills() {
               </div>
 
               {/* Skills Card Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {category.skills.map((skill, skillIdx) => {
                   const icon = getTechIcon(skill.name);
                   return (
@@ -191,7 +191,7 @@ export default function Skills() {
                       transition={{ duration: 0.4, delay: skillIdx * 0.05 }}
                       className="flex"
                     >
-                      <Tilt className="p-5 flex flex-col justify-between w-full hover-border-cyan">
+                      <Tilt className="p-6 md:p-8 flex flex-col justify-between w-full hover-border-cyan">
                         <div>
                           {/* Skill Icon & Name */}
                           <div className="flex items-center gap-3.5 mb-3">

@@ -158,13 +158,13 @@ export default function Contact() {
           <div className="w-16 h-1 bg-gradient-to-r from-purple to-cyan mx-auto mt-4 rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-24 items-start max-w-6xl mx-auto">
           
           {/* Left Column: Premium Cards */}
-          <div className="lg:col-span-5 flex flex-col gap-6 text-left w-full">
+          <div className="lg:col-span-5 flex flex-col gap-8 text-left w-full">
             
             {/* Availability Highlights Card */}
-            <Tilt className="p-6 border border-[#22c55e]/20 bg-[#22c55e]/5">
+            <Tilt className="p-8 md:p-10 border border-[#22c55e]/20 bg-[#22c55e]/5">
               <div className="flex items-center gap-2 mb-4">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e] animate-ping" />
                 <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e] absolute" />
@@ -188,14 +188,14 @@ export default function Contact() {
             </Tilt>
 
             {/* Direct Contact Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {contactDetails.map((detail, i) => (
                 <a 
                   key={i} 
                   href={detail.href}
                   target={detail.href.endsWith('.pdf') ? '_blank' : undefined}
                   rel={detail.href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
-                  className="flex items-center gap-3.5 p-4 rounded-2xl bg-white-5 border border-white-5 hover-border-cyan transition-all group decoration-transparent"
+                  className="flex items-center gap-3.5 p-5 md:p-6 rounded-2xl bg-white-5 border border-white-5 hover-border-cyan transition-all group decoration-transparent"
                 >
                   <div className="p-2.5 bg-white-5 rounded-xl border border-white-10 text-cyan shrink-0">
                     {detail.icon}
@@ -209,7 +209,7 @@ export default function Contact() {
             </div>
 
             {/* Socials connections row */}
-            <Tilt className="p-5 flex items-center justify-between gap-4">
+            <Tilt className="p-6 md:p-8 flex items-center justify-between gap-6">
               <span className="text-xs font-bold text-muted uppercase tracking-wider">Social Channels:</span>
               <div className="flex gap-3">
                 <a 
@@ -237,7 +237,7 @@ export default function Contact() {
 
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7 w-full">
-            <Tilt className="p-8">
+            <Tilt className="p-8 md:p-10">
               <form onSubmit={handleSubmit} className="flex flex-col text-left">
                 
                 <AnimatePresence>

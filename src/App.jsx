@@ -40,65 +40,15 @@ export default function App() {
         {currentPage === 'landing' ? (
           <>
             <Hero />
-            
-            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
-              <div className="w-full h-px bg-white/5" />
-            </div>
-            
             <About />
-            
-            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
-              <div className="w-full h-px bg-white/5" />
-            </div>
-
             <Skills />
-
-            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
-              <div className="w-full h-px bg-white/5" />
-            </div>
-
             <Services />
-
-            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
-              <div className="w-full h-px bg-white/5" />
-            </div>
-
             <GithubStats />
-
-            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
-              <div className="w-full h-px bg-white/5" />
-            </div>
-
             <Workstation />
-
-            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
-              <div className="w-full h-px bg-white/5" />
-            </div>
-
             <Experience />
-
-            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
-              <div className="w-full h-px bg-white/5" />
-            </div>
-
             <Achievements />
-
-            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
-              <div className="w-full h-px bg-white/5" />
-            </div>
-
             <Education />
-
-            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
-              <div className="w-full h-px bg-white/5" />
-            </div>
-
             <Certifications />
-
-            <div className="max-w-7xl mx-auto px-6 md:px-12 my-20 md:my-28">
-              <div className="w-full h-px bg-white/5" />
-            </div>
-
             <Contact />
           </>
         ) : (
