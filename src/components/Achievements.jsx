@@ -1,20 +1,40 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Trophy, Lightbulb, Sparkles } from 'lucide-react';
-import confetti from 'canvas-confetti';
+import { Trophy, Lightbulb, Rocket, Award } from 'lucide-react';
 import Tilt from './Tilt';
 
-export default function Achievements() {
-  const triggerConfetti = () => {
-    // Blast premium purple, cyan and white confetti particles
-    confetti({
-      particleCount: 120,
-      spread: 80,
-      origin: { y: 0.6 },
-      colors: ['#915EFF', '#00E5FF', '#FFFFFF']
-    });
-  };
+const achievementsList = [
+  {
+    title: 'Founder & Builder',
+    category: 'Venture',
+    icon: <Rocket size={24} className="text-[#00E5FF]" />,
+    institution: 'Kenet Technologies',
+    description: 'Launched a hardware-software prototyping brand focused on AI-powered systems and IoT sensors configuration. Spearheaded NoteNetra and VisionPay product layouts.'
+  },
+  {
+    title: 'First Place Winner',
+    category: 'Competition',
+    icon: <Trophy size={24} className="text-[#915EFF]" />,
+    institution: '3D Designing Competition',
+    description: 'Engineered and rendered structural models using advanced geometry, winning first prize for optimization, aesthetic design excellence, and functionality.'
+  },
+  {
+    title: 'Technical Innovations',
+    category: 'Hackathons',
+    icon: <Lightbulb size={24} className="text-[#00E5FF]" />,
+    institution: 'Competitions & Innovation Challenges',
+    description: 'Participated in multiple engineering hackathons and smart system layout contests, designing proof-of-concept software for accessible commerce tools.'
+  },
+  {
+    title: 'Embedded AI Systems Developer',
+    category: 'Academics',
+    icon: <Award size={24} className="text-[#915EFF]" />,
+    institution: 'AI & IoT Project Development',
+    description: 'Developed and deployed full-stack integrations using ESP32 controllers, Firebase databases, and React analytics dashboards to resolve daily challenges.'
+  }
+];
 
+export default function Achievements() {
   return (
     <section id="achievements" className="section-padding relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
@@ -30,79 +50,50 @@ export default function Achievements() {
           <div className="w-16 h-1 bg-gradient-to-r from-purple to-cyan mx-auto mt-4 rounded-full" />
         </div>
 
-        {/* Achievement Timeline Card Container */}
-        <div className="max-w-3xl mx-auto flex flex-col gap-8">
-          
-          {/* Card 1: 1st Place */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            onClick={triggerConfetti}
-            className="cursor-pointer"
-          >
-            <Tilt className="p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6 hover-border-cyan">
-              {/* Icon Holder */}
-              <div className="p-4 bg-gradient-purple-cyan-10 rounded-2xl border border-cyan-20 text-cyan shrink-0">
-                <Trophy size={38} className="animate-pulse" />
+        {/* Timeline Path Layout */}
+        <div className="max-w-3xl mx-auto timeline-track">
+          {achievementsList.map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
+              className="relative pl-12 md:pl-16 mb-10 text-left"
+            >
+              {/* Pulse timeline node indicator */}
+              <div className="timeline-dot">
+                <span className="timeline-ping" />
               </div>
-              
-              <div className="text-center sm:text-left flex-1">
-                <div className="flex flex-wrap items-center justify-center sm:justify-between gap-2 mb-2">
-                  <h3 className="text-2xl font-black text-white font-heading">
-                    🏆 1st Place Winner
-                  </h3>
-                  <span className="text-[10px] tracking-wider font-bold uppercase text-purple bg-purple-10 border border-purple-30 px-3 py-0.5 rounded-full">
-                    Competition
+
+              {/* Glassmorphic Card */}
+              <Tilt className="p-6 md:p-8 hover-border-cyan">
+                <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+                  <div className="flex items-center gap-4">
+                    <div className="p-2.5 bg-white-5 rounded-2xl border border-white-10 shrink-0 text-cyan">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-bold text-white font-heading">
+                        {item.title}
+                      </h3>
+                      <h4 className="text-sm font-semibold text-gradient">
+                        {item.institution}
+                      </h4>
+                    </div>
+                  </div>
+                  
+                  <span className="text-[9px] tracking-wider font-bold uppercase text-purple bg-purple-10 border border-purple-20 px-3 py-1 rounded-full">
+                    {item.category}
                   </span>
                 </div>
                 
-                <h4 className="text-lg font-bold text-cyan font-heading mb-3">
-                  3D Designing Competition
-                </h4>
-                
-                <p className="text-muted text-sm leading-relaxed">
-                  Engineered and rendered structural models using advanced geometry, winning first prize for optimization, aesthetic design excellence, and functionality. Click this card to celebrate!
+                <p className="text-muted text-xs sm:text-sm leading-relaxed">
+                  {item.description}
                 </p>
-              </div>
-            </Tilt>
-          </motion.div>
-
-          {/* Card 2: Innovation Competitions */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <Tilt className="p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6">
-              {/* Icon Holder */}
-              <div className="p-4 bg-gradient-purple-cyan-10 rounded-2xl border border-purple-20 text-purple shrink-0">
-                <Lightbulb size={38} />
-              </div>
-              
-              <div className="text-center sm:text-left flex-1">
-                <div className="flex flex-wrap items-center justify-center sm:justify-between gap-2 mb-2">
-                  <h3 className="text-2xl font-black text-white font-heading">
-                    💡 Innovation & Design
-                  </h3>
-                  <span className="text-[10px] tracking-wider font-bold uppercase text-cyan bg-cyan-10 border border-cyan-30 px-3 py-0.5 rounded-full">
-                    Hackathons
-                  </span>
-                </div>
-                
-                <h4 className="text-lg font-bold text-purple font-heading mb-3">
-                  Engineering Competitions
-                </h4>
-                
-                <p className="text-muted text-sm leading-relaxed">
-                  Participated in multiple national engineering, AI, and smart hardware design contests. Developed proof-of-concept models aiming to solve accessible commerce hurdles and automatic facilities tracking.
-                </p>
-              </div>
-            </Tilt>
-          </motion.div>
-
+              </Tilt>
+            </motion.div>
+          ))}
         </div>
 
       </div>

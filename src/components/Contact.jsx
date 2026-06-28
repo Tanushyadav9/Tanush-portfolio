@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
+import { Mail, Phone, Send, Check, FileText } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import emailjs from '@emailjs/browser';
 import Tilt from './Tilt';
 
-const GithubIcon = ({ size = 24, ...props }) => (
+const GithubIcon = ({ size = 20, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -23,7 +23,7 @@ const GithubIcon = ({ size = 24, ...props }) => (
   </svg>
 );
 
-const LinkedinIcon = ({ size = 24, ...props }) => (
+const LinkedinIcon = ({ size = 20, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -63,14 +63,11 @@ export default function Contact() {
 
     setLoading(true);
 
-    // EmailJS API configurations.
-    // Replace these placeholder strings with your actual credentials from EmailJS Dashboard.
     const serviceId = 'YOUR_SERVICE_ID';
     const templateId = 'YOUR_TEMPLATE_ID';
     const publicKey = 'YOUR_PUBLIC_KEY';
 
     if (serviceId === 'YOUR_SERVICE_ID' || templateId === 'YOUR_TEMPLATE_ID' || publicKey === 'YOUR_PUBLIC_KEY') {
-      // Fallback simulation if credentials are not configured yet
       setTimeout(() => {
         setLoading(false);
         setSuccess(true);
@@ -119,28 +116,28 @@ export default function Contact() {
 
   const contactDetails = [
     {
-      icon: <Mail className="text-cyan" size={22} />,
+      icon: <Mail className="text-cyan" size={20} />,
       label: 'Email Address',
-      value: 'tanushyada0987@gmail.com', // custom professional placeholder
+      value: 'tanushyada0987@gmail.com',
       href: 'mailto:tanushyada0987@gmail.com'
     },
     {
-      icon: <Phone className="text-purple" size={22} />,
+      icon: <Phone className="text-purple" size={20} />,
       label: 'Phone Contact',
       value: '+91 87506 88748',
       href: 'tel:+918750688748'
     },
     {
-      icon: <MapPin className="text-cyan" size={22} />,
-      label: 'Location',
-      value: 'Delhi, India',
-      href: '#'
+      icon: <FileText className="text-cyan" size={20} />,
+      label: 'Resume / CV',
+      value: 'View PDF Document',
+      href: '/Tanush_Yadav_Resume.pdf'
     }
   ];
 
   const socialLinks = [
-    { icon: <GithubIcon size={20} />, href: 'https://github.com/Tanushyadav9', label: 'GitHub' },
-    { icon: <LinkedinIcon size={20} />, href: 'https://www.linkedin.com/in/tanush-yadav-1893b338b', label: 'LinkedIn' }
+    { icon: <GithubIcon size={18} />, href: 'https://github.com/Tanushyadav9', label: 'GitHub' },
+    { icon: <LinkedinIcon size={18} />, href: 'https://www.linkedin.com/in/tanush-yadav-1893b338b', label: 'LinkedIn' }
   ];
 
   return (
@@ -153,7 +150,7 @@ export default function Contact() {
             Get In Touch
           </p>
           <h2 className="text-3xl sm:text-4xl font-black text-white">
-            Contact Me
+            Let's Build Something Together
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-purple to-cyan mx-auto mt-4 rounded-full" />
         </div>
@@ -162,8 +159,8 @@ export default function Contact() {
           
           {/* Left Column: Contact Cards */}
           <div className="lg:col-span-5 flex flex-col gap-6 text-left">
-            <h3 className="text-2xl font-black text-white font-heading">
-              Let's Build Something Amazing Together
+            <h3 className="text-xl sm:text-2xl font-black text-white font-heading">
+              Connect Directly
             </h3>
             
             <p className="text-muted text-sm leading-relaxed mb-4">
@@ -175,9 +172,11 @@ export default function Contact() {
                 <a 
                   key={i} 
                   href={detail.href}
+                  target={detail.href.endsWith('.pdf') ? '_blank' : undefined}
+                  rel={detail.href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
                   className="flex items-center gap-4 p-4 rounded-xl bg-white-5 border border-white-5 hover-border-cyan-30 transition-all group decoration-transparent"
                 >
-                  <div className="p-3 bg-white-5 rounded-xl border border-white-10 group-hover:scale-105 transition-transform">
+                  <div className="p-3 bg-white-5 rounded-xl border border-white-10 group-hover:scale-105 transition-transform text-cyan">
                     {detail.icon}
                   </div>
                   <div>
@@ -197,7 +196,7 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-12 h-12 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-purple-40 hover-bg-purple-10 text-white hover:text-cyan transition-all"
+                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-purple hover-bg-purple-10 text-white hover:text-cyan transition-all"
                 >
                   {social.icon}
                 </a>

@@ -10,7 +10,7 @@ import kindergartenImg from '../assets/kindergarten.png';
 import farmerImg from '../assets/farmer_website.png';
 import petImg from '../assets/pet_website.png';
 
-const GithubIcon = ({ size = 24, ...props }) => (
+const GithubIcon = ({ size = 20, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -32,68 +32,68 @@ const projects = [
   {
     id: 'notenetra',
     title: 'NoteNetra',
-    description: 'An ESP32-based smart currency detection hardware module with cloud synchronization. Uses camera modules, intelligent cloud OCR, and auditory outputs, enabling visually impaired users to recognize paper currencies seamlessly.',
-    tech: ['ESP32', 'Firebase', 'IoT', 'Cloud Dashboard'],
+    description: 'An assistive IoT currency recognizer for visually impaired users. Combines an ESP32 camera module with cloud OCR APIs to detect paper currencies, transmitting real-time audio announcements via integrated speech synthesis to improve independent financial transactions.',
+    tech: ['ESP32', 'Firebase', 'IoT Architecture', 'Cloud OCR'],
     github: 'https://github.com/Tanushyadav9/NoteNetra',
     demo: 'https://github.com/Tanushyadav9/NoteNetra',
     image: notenetraImg,
     featured: true,
-    icon: <Cpu size={24} className="text-[#00E5FF]" />
+    icon: <Cpu size={22} className="text-[#00E5FF]" />
   },
   {
     id: 'visionpay',
     title: 'VisionPay',
-    description: 'Camera-based accessible UPI payment system with voice assistance enabling visually impaired users to complete secure QR code transactions independently.',
-    tech: ['React.js', 'Firebase', 'Computer Vision', 'Speech Synthesis'],
+    description: 'An accessible computer vision-powered UPI payment interface. Implements camera-based QR code detection and secure transaction processing with auditory prompts, helping visually impaired individuals execute digital payments independently and securely.',
+    tech: ['React.js', 'Firebase', 'Computer Vision', 'Web Speech API'],
     github: 'https://github.com/Tanushyadav9/VisionPay',
     demo: 'https://github.com/Tanushyadav9/VisionPay',
     image: visionpayImg,
-    featured: false,
-    icon: <Eye size={24} className="text-[#915EFF]" />
-  },
-  {
-    id: 'kindergarten',
-    title: 'Kindergarten Website',
-    description: 'A modern responsive website designed for a preschool with admissions boards, image gallery grid, contact form, teacher information, and mobile-friendly design.',
-    tech: ['React', 'HTML', 'CSS', 'JavaScript'],
-    github: 'https://github.com/Tanushyadav9/kindergarten',
-    demo: 'https://github.com/Tanushyadav9/kindergarten',
-    image: kindergartenImg,
-    featured: false,
-    icon: <Laptop size={24} className="text-[#00E5FF]" />
+    featured: true,
+    icon: <Eye size={22} className="text-[#915EFF]" />
   },
   {
     id: 'hms',
     title: 'Hotel Management System',
-    description: 'A complete room occupancy scheduling and booking administration desktop dashboard system for processing guest checkout statements, invoice processing, and logs.',
-    tech: ['Java', 'Python', 'MySQL', 'Database UI'],
+    description: 'An enterprise room scheduling and billing dashboard. Built using a Java/Python architecture and MySQL database, it optimizes check-in workflows, ledger generation, and room status logs to improve hospitality administrative throughput.',
+    tech: ['Java', 'Python', 'MySQL', 'Database Normalization'],
     github: 'https://github.com/Tanushyadav9/Hotel-Management-System',
     demo: 'https://github.com/Tanushyadav9/Hotel-Management-System',
     image: hotelImg,
     featured: false,
-    icon: <Building size={24} className="text-[#915EFF]" />
+    icon: <Building size={22} className="text-[#915EFF]" />
+  },
+  {
+    id: 'kindergarten',
+    title: 'Kindergarten Website',
+    description: 'A responsive admissions portal for early childhood centers. Employs React and optimized animations to display educational curriculum grids, photo galleries, and enrollment workflows, achieving cross-device responsive performance.',
+    tech: ['React', 'CSS Flexbox', 'JavaScript', 'Responsive Design'],
+    github: 'https://github.com/Tanushyadav9/kindergarten',
+    demo: 'https://github.com/Tanushyadav9/kindergarten',
+    image: kindergartenImg,
+    featured: false,
+    icon: <Laptop size={22} className="text-[#00E5FF]" />
   },
   {
     id: 'farmer_website',
     title: 'Farmer Website',
-    description: 'Smart farming agriculture platform monitoring local soil parameters charts, weather forecast trackers, nutrient calculators, and crop yields recommendation lists.',
-    tech: ['HTML', 'CSS', 'JavaScript', 'IoT Datastreams'],
+    description: 'An agricultural monitoring and decision-support web system. Connects local sensor networks measuring soil moisture, humidity, and weather feeds to provide real-time fertilizer calculators and crop yield optimization lists.',
+    tech: ['HTML5', 'CSS3', 'JavaScript', 'IoT Datastreams'],
     github: 'https://github.com/Tanushyadav9',
     demo: 'https://github.com/Tanushyadav9',
     image: farmerImg,
     featured: false,
-    icon: <Sprout size={24} className="text-[#00E5FF]" />
+    icon: <Sprout size={22} className="text-[#00E5FF]" />
   },
   {
     id: 'pet_website',
-    title: 'Pet Website',
-    description: 'Modern pet adoption listings index containing adoptable animal profiles cards, veterinarian checkups scheduling calendar, and pet parameters tracker databases.',
-    tech: ['React', 'CSS', 'Firebase', 'State Store'],
+    title: 'Pet Care Website',
+    description: 'A pet adoption listings index and clinical scheduling portal. Implements Firebase for real-time veterinarian checkup bookings and profile updates, featuring quick filtering options to match pets with families.',
+    tech: ['React', 'CSS Grid', 'Firebase DB', 'State Stores'],
     github: 'https://github.com/Tanushyadav9',
     demo: 'https://github.com/Tanushyadav9',
     image: petImg,
     featured: false,
-    icon: <Heart size={24} className="text-[#915EFF]" />
+    icon: <Heart size={22} className="text-[#915EFF]" />
   }
 ];
 
@@ -125,41 +125,42 @@ export default function Projects() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: idx * 0.08 }}
+                transition={{ duration: 0.6, delay: idx * 0.05 }}
+                className="flex animate-card"
               >
                 <Tilt 
-                  className={`p-6 h-full flex flex-col justify-between group ${
+                  className={`p-6 h-full flex flex-col justify-between group w-full ${
                     isFeatured ? 'featured-project-card' : 'standard-project-card'
                   }`}
                 >
                   
-                  {/* Browser Mockup Image Container */}
-                  <div className="project-screenshot-container">
-                    <div className="browser-bar">
-                      <span className="dot dot-red"></span>
-                      <span className="dot dot-yellow"></span>
-                      <span className="dot dot-green"></span>
-                      <span className="text-[10px] text-white/30 ml-2 font-mono">{project.title.toLowerCase().replace(/\s+/g, '-')}.local</span>
-                    </div>
-                    <div className="screenshot-illustration overflow-hidden">
-                      <img 
-                        src={project.image} 
-                        alt={project.title} 
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                      />
-                    </div>
-                  </div>
-
                   <div>
+                    {/* Browser Mockup Image Container */}
+                    <div className="project-screenshot-container">
+                      <div className="browser-bar">
+                        <span className="dot dot-red"></span>
+                        <span className="dot dot-yellow"></span>
+                        <span className="dot dot-green"></span>
+                        <span className="text-[9px] text-white/30 ml-2 font-mono">{project.title.toLowerCase().replace(/\s+/g, '-')}.local</span>
+                      </div>
+                      <div className="screenshot-illustration overflow-hidden flex-1">
+                        <img 
+                          src={project.image} 
+                          alt={project.title} 
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-103" 
+                        />
+                      </div>
+                    </div>
+
                     {/* Top Header Badge Row */}
                     <div className="flex justify-between items-center mb-4">
-                      <div className="p-2.5 bg-white-5 rounded-2xl border border-white-10">
+                      <div className="p-2 bg-white-5 rounded-2xl border border-white-10 text-cyan">
                         {project.icon}
                       </div>
                       
                       {isFeatured && (
-                        <span className="text-[10px] tracking-widest font-black uppercase text-cyan border border-cyan-40 px-3 py-1 rounded-full bg-cyan-10">
-                          Featured Project
+                        <span className="text-[9px] tracking-widest font-black uppercase text-cyan border border-cyan-40 px-3 py-1 rounded-full bg-cyan-10">
+                          Featured
                         </span>
                       )}
                     </div>
@@ -180,7 +181,7 @@ export default function Projects() {
                       {project.tech.map((t, tIdx) => (
                         <span 
                           key={tIdx} 
-                          className="text-[10px] font-bold text-white/70 bg-white-5 border border-white-10 px-2.5 py-0.5 rounded-full hover-border-cyan transition-colors"
+                          className="text-[9px] font-semibold text-white/70 bg-white-5 border border-white-10 px-2 py-0.5 rounded-full"
                         >
                           {t}
                         </span>
@@ -189,17 +190,17 @@ export default function Projects() {
 
                     <div className="w-full h-px bg-white-5 mb-5" />
 
-                    {/* Action Links */}
-                    <div className="flex gap-4">
+                    {/* Action Links/Buttons */}
+                    <div className="flex gap-3">
                       {project.github && (
                         <a 
                           href={project.github} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-xs font-bold text-muted hover:text-white transition-colors decoration-transparent"
+                          className="flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold text-white bg-white-5 border border-white-10 hover-border-cyan py-2 px-3 rounded-xl transition-all hover:bg-cyan/5 decoration-transparent"
                         >
-                          <GithubIcon size={16} />
-                          <span>GitHub Repo</span>
+                          <GithubIcon size={14} />
+                          <span>Codebase</span>
                         </a>
                       )}
                       
@@ -208,9 +209,9 @@ export default function Projects() {
                           href={project.demo} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-xs font-bold text-cyan hover:text-white transition-colors decoration-transparent"
+                          className="flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold text-cyan bg-cyan-10/10 border border-cyan-30 hover-border-cyan py-2 px-3 rounded-xl transition-all hover:bg-cyan/10 hover:text-white decoration-transparent"
                         >
-                          <ExternalLink size={16} />
+                          <ExternalLink size={14} />
                           <span>Live Demo</span>
                         </a>
                       )}

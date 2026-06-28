@@ -1,21 +1,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, GraduationCap, MapPin, Code2, Cpu, CheckSquare, Award, Cloud } from 'lucide-react';
+import { BookOpen, GraduationCap, MapPin, Code2, Cpu, CheckSquare, Award, Cloud, Globe } from 'lucide-react';
 import Tilt from './Tilt';
 
 const factsData = [
   { label: 'Location', value: 'Delhi, India', icon: <MapPin className="text-cyan" size={20} /> },
   { label: 'Education', value: 'B.Tech AI & Data Science', icon: <GraduationCap className="text-purple" size={20} /> },
-  { label: 'Web Developer', value: 'Full Stack Dev', icon: <Code2 className="text-cyan" size={20} /> },
-  { label: 'IoT Developer', value: 'Embedded Systems', icon: <Cpu className="text-purple" size={20} /> },
-  { label: 'Track Record', value: '6+ Projects Completed', icon: <CheckSquare className="text-cyan" size={20} /> }
+  { label: 'Role', value: 'Full Stack Developer', icon: <Code2 className="text-cyan" size={20} /> },
+  { label: 'Hardware', value: 'AI & IoT Engineer', icon: <Cpu className="text-purple" size={20} /> },
+  { label: 'Leadership', value: 'Founder @ Kenet Tech', icon: <Award className="text-cyan" size={20} /> },
+  { label: 'Track Record', value: '6+ Real Projects', icon: <CheckSquare className="text-purple" size={20} /> }
 ];
 
 const learningTech = [
-  { name: 'Next.js', icon: '🌐', desc: 'Server-Side Rendering & App Routing' },
-  { name: 'TypeScript', icon: '🟦', desc: 'Type-safe scalable programming' },
-  { name: 'Docker', icon: '🐋', desc: 'Containerized deployment infrastructure' },
-  { name: 'Cloud Computing', icon: '☁️', desc: 'Serverless APIs, hosting & cloud database' }
+  { name: 'Next.js', icon: <Globe className="text-cyan" size={22} />, desc: 'Server-Side Rendering & App Routing' },
+  { name: 'TypeScript', icon: <Code2 className="text-purple" size={22} />, desc: 'Type-safe scalable programming' },
+  { name: 'Docker', icon: <Cloud className="text-cyan" size={22} />, desc: 'Containerized deployment infrastructure' },
+  { name: 'Cloud Computing', icon: <Cloud className="text-purple" size={22} />, desc: 'Serverless APIs, hosting & cloud database' }
 ];
 
 export default function About() {
@@ -44,7 +45,7 @@ export default function About() {
             >
               
               {/* Graphic Profile Header */}
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-[#915EFF] to-[#00E5FF] flex items-center justify-center shadow-lg shadow-purple">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-[#915EFF] to-[#00E5FF] flex items-center justify-center shadow-lg shadow-purple/20">
                 <GraduationCap size={40} className="text-white" />
               </div>
 
@@ -63,18 +64,18 @@ export default function About() {
                 </div>
                 <div className="flex items-center gap-3">
                   <BookOpen size={18} className="text-purple" />
-                  <span>VIPS, Delhi</span>
+                  <span>VIPS, Delhi (B.Tech student)</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Code2 size={18} className="text-cyan" />
-                  <span>AI & Data Science Specialty</span>
+                  <span>Founder, Kenet Technologies</span>
                 </div>
               </div>
 
               <div className="w-full h-px bg-white-10" />
 
               <p className="text-xs text-muted leading-relaxed text-left">
-                Building accessible software solutions combining embedded hardware, cloud computing, and responsive user web interfaces.
+                Building accessible software solutions combining embedded hardware, machine learning, and production-grade web systems.
               </p>
 
             </Tilt>
@@ -90,15 +91,15 @@ export default function About() {
               className="flex flex-col gap-6"
             >
               {/* Professional Introduction Bio */}
-              <p className="text-lg text-white/90 leading-relaxed font-light">
-                I am <strong className="text-white font-semibold">Tanush Yadav</strong>, a B.Tech student specializing in <strong className="text-white font-semibold">Artificial Intelligence & Data Science</strong> at <span className="text-cyan font-medium font-semibold">Vivekananda Institute of Professional Studies (VIPS), Delhi</span>. I enjoy building modern web applications, AI-powered solutions, and IoT systems that solve real-world problems. My goal is to create innovative, accessible, and scalable products while continuously learning emerging technologies.
+              <p className="text-base sm:text-lg text-white/90 leading-relaxed font-light">
+                I am a B.Tech student in Artificial Intelligence & Data Science at Vivekananda Institute of Professional Studies (VIPS), Delhi. I enjoy designing intelligent software products by combining AI, Full Stack Development, and Embedded Systems. My interests include Machine Learning, Computer Vision, IoT, Cloud Technologies, and scalable web applications. I continuously learn new technologies while building real-world projects that create meaningful impact.
               </p>
               
               <div className="w-full h-px bg-white-10 my-2" />
 
               {/* Quick Facts Section */}
               <div>
-                <h4 className="text-xl font-bold text-white font-heading mb-6 flex items-center gap-2">
+                <h4 className="text-lg font-bold text-white font-heading mb-6 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-cyan animate-pulse" />
                   Quick Facts
                 </h4>
@@ -110,7 +111,7 @@ export default function About() {
                         {fact.icon}
                       </div>
                       <div className="text-left">
-                        <p className="text-[10px] font-bold text-muted uppercase tracking-wider">{fact.label}</p>
+                        <p className="text-[9px] font-bold text-muted uppercase tracking-wider">{fact.label}</p>
                         <p className="text-sm font-bold text-white mt-0.5">{fact.value}</p>
                       </div>
                     </Tilt>
@@ -122,7 +123,7 @@ export default function About() {
 
               {/* Currently Learning Section */}
               <div>
-                <h4 className="text-xl font-bold text-white font-heading mb-6 flex items-center gap-2">
+                <h4 className="text-lg font-bold text-white font-heading mb-6 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-cyan animate-pulse" />
                   Currently Learning
                 </h4>
@@ -131,12 +132,12 @@ export default function About() {
                   {learningTech.map((tech, idx) => (
                     <motion.div 
                       key={idx} 
-                      whileHover={{ scale: 1.02 }}
+                      whileHover={{ scale: 1.01 }}
                       className="p-4 bg-white-5 border border-white-10 rounded-2xl flex items-start gap-4 transition-all"
                     >
-                      <span className="text-2xl mt-1 shrink-0">{tech.icon}</span>
+                      <span className="p-2 bg-white-5 rounded-xl shrink-0">{tech.icon}</span>
                       <div className="text-left">
-                        <span className="text-sm font-bold text-white block">{tech.name}</span>
+                        <span className="text-sm font-bold text-white block mt-1">{tech.name}</span>
                         <span className="text-xs text-muted leading-relaxed mt-0.5 block">{tech.desc}</span>
                       </div>
                     </motion.div>

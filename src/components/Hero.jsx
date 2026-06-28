@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Code, Cpu, Globe, Terminal, Mail } from 'lucide-react';
+import { ArrowDown, FileText, Download, Send, Mail } from 'lucide-react';
 
-const GithubIcon = ({ size = 24, ...props }) => (
+const GithubIcon = ({ size = 20, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -20,7 +20,7 @@ const GithubIcon = ({ size = 24, ...props }) => (
   </svg>
 );
 
-const LinkedinIcon = ({ size = 24, ...props }) => (
+const LinkedinIcon = ({ size = 20, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -39,43 +39,7 @@ const LinkedinIcon = ({ size = 24, ...props }) => (
   </svg>
 );
 
-const titles = [
-  "AI & Data Science Student",
-  "Full Stack Developer",
-  "IoT Enthusiast",
-  "React Developer"
-];
-
 export default function Hero() {
-  const [index, setIndex] = useState(0);
-  const [subIndex, setSubIndex] = useState(0);
-  const [reverse, setReverse] = useState(false);
-  const [currentText, setCurrentText] = useState("");
-
-  // Typing effect hook
-  useEffect(() => {
-    if (subIndex === titles[index].length + 1 && !reverse) {
-      const timeout = setTimeout(() => setReverse(true), 2000);
-      return () => clearTimeout(timeout);
-    }
-
-    if (subIndex === 0 && reverse) {
-      setReverse(false);
-      setIndex((prev) => (prev + 1) % titles.length);
-      return;
-    }
-
-    const timeout = setTimeout(() => {
-      setSubIndex((prev) => prev + (reverse ? -1 : 1));
-    }, reverse ? 50 : 100);
-
-    return () => clearTimeout(timeout);
-  }, [subIndex, reverse, index]);
-
-  useEffect(() => {
-    setCurrentText(titles[index].substring(0, subIndex));
-  }, [subIndex, index]);
-
   const scrollToProjects = () => {
     const element = document.getElementById('projects');
     if (element) {
@@ -94,15 +58,10 @@ export default function Hero() {
     }
   };
 
-  const triggerResumeDownload = () => {
-    // Print window triggers
-    window.print();
-  };
-
   return (
     <section id="home" className="min-h-screen flex items-center justify-center section-padding pt-24 md:pt-32 relative overflow-hidden">
       {/* Background radial overlays */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/5 via-transparent to-transparent pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-center z-10">
         
@@ -113,47 +72,52 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-cyan font-semibold text-lg md:text-xl tracking-wider mb-2 font-heading">
-              WELCOME TO MY PORTFOLIO
+            <p className="text-cyan font-semibold text-xs tracking-widest uppercase mb-3 font-heading">
+              SOFTWARE ENGINEER PORTFOLIO
             </p>
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-tight mb-4">
-              Hi, I'm <span className="text-gradient">Tanush Yadav</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
+              <span className="block text-white">Tanush Yadav</span>
             </h1>
             
-            <div className="h-10 sm:h-12 flex items-center mb-6">
-              <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center font-heading">
-                <span className="border-r-2 border-cyan pr-2 mr-1 animate-pulse">
-                  {currentText}
-                </span>
-              </h2>
+            {/* Subtitle list */}
+            <div className="flex flex-wrap gap-x-3 gap-y-1 items-center mb-6 text-sm sm:text-base font-semibold text-cyan/90 font-heading">
+              <span>AI & Data Science Student</span>
+              <span className="text-white/20 hidden sm:inline">|</span>
+              <span>Full Stack Developer</span>
+              <span className="text-white/20 hidden sm:inline">|</span>
+              <span>AI & IoT Engineer</span>
             </div>
             
             <p className="text-muted text-base sm:text-lg leading-relaxed mb-8 max-w-xl">
-              A passionate developer building AI, IoT and Web applications that solve real-world problems through intelligent technology.
+              I build scalable web applications, AI-powered solutions, and IoT systems that solve real-world problems. My focus is on creating accessible, user-centric, and production-ready software using modern technologies.
             </p>
             
+            {/* Action Buttons */}
             <div className="flex flex-wrap gap-4 items-center">
               <a 
                 href="/Tanush_Yadav_Resume.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="btn btn-primary decoration-transparent hover:scale-105 transition-transform shadow-[0_0_15px_rgba(145,94,255,0.3)]"
+                className="btn btn-primary decoration-transparent hover:scale-[1.02] transition-transform text-sm"
               >
-                📄 View Resume
+                <FileText size={16} />
+                <span>View Resume</span>
               </a>
               <a 
                 href="/Tanush_Yadav_Resume.pdf" 
                 download="Tanush_Yadav_Resume.pdf"
-                className="btn btn-secondary decoration-transparent hover:scale-105 transition-transform"
+                className="btn btn-secondary decoration-transparent hover:scale-[1.02] transition-transform text-sm"
               >
-                ⬇ Download Resume
+                <Download size={16} />
+                <span>Download Resume</span>
               </a>
               <button 
                 onClick={scrollToContact} 
-                className="btn btn-primary decoration-transparent bg-gradient-to-r from-cyan-500 to-blue-500 hover:scale-105 transition-transform shadow-[0_0_15px_rgba(0,229,255,0.3)]"
+                className="btn btn-primary bg-gradient-to-r from-cyan-500 to-blue-500 hover:scale-[1.02] transition-transform text-sm"
               >
-                ✉ Hire Me
+                <Send size={16} />
+                <span>Hire Me</span>
               </button>
             </div>
 
@@ -164,55 +128,54 @@ export default function Hero() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="w-12 h-12 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-cyan hover-bg-cyan-10 text-white hover:text-cyan transition-all social-icon-glow"
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-cyan text-white hover:text-cyan transition-all social-icon-glow"
               >
-                <GithubIcon size={22} />
+                <GithubIcon size={18} />
               </a>
               <a 
                 href="https://www.linkedin.com/in/tanush-yadav-1893b338b" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="w-12 h-12 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-purple hover-bg-purple-10 text-white hover:text-purple transition-all social-icon-glow"
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-purple text-white hover:text-purple transition-all social-icon-glow"
               >
-                <LinkedinIcon size={22} />
+                <LinkedinIcon size={18} />
               </a>
               <a 
                 href="mailto:tanushyada0987@gmail.com" 
                 aria-label="Email"
-                className="w-12 h-12 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-cyan hover-bg-cyan-10 text-white hover:text-cyan transition-all social-icon-glow"
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white-5 border border-white-10 hover-border-cyan text-white hover:text-cyan transition-all social-icon-glow"
               >
-                <Mail size={22} />
+                <Mail size={18} />
               </a>
             </div>
           </motion.div>
         </div>
 
-        {/* Right Graphical Block */}
+        {/* Right Graphical Block: Abstract AI & IoT Network Graphics */}
         <div className="col-span-1 md:col-span-5 flex justify-center items-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, cubicBezier: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="w-full aspect-square relative floating-graphic"
             style={{ maxWidth: '400px' }}
           >
             {/* Background glowing circle */}
-            <div className="hero-glow-bg" />
+            <div className="hero-glow-bg opacity-30" />
 
             <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-              {/* Circuit Grid Background lines */}
-              <path d="M 50,250 L 450,250" stroke="rgba(255,255,255,0.03)" strokeWidth="2" strokeDasharray="5 5" />
-              <path d="M 250,50 L 250,450" stroke="rgba(255,255,255,0.03)" strokeWidth="2" strokeDasharray="5 5" />
-              
-              {/* Circuit paths with gradient glowing strokes */}
               <defs>
-                <linearGradient id="circuitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stopColor="#915EFF" />
-                  <stop offset="100%" stopColor="#00E5FF" />
+                  <stop offset="100%" stopColor="#7c3aed" />
                 </linearGradient>
-                <filter id="glow" x="-10%" y="-10%" width="120%" height="120%">
-                  <feGaussianBlur stdDeviation="6" result="blur" />
+                <linearGradient id="secondaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#00E5FF" />
+                  <stop offset="100%" stopColor="#0083B0" />
+                </linearGradient>
+                <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="8" result="blur" />
                   <feMerge>
                     <feMergeNode in="blur" />
                     <feMergeNode in="SourceGraphic" />
@@ -220,45 +183,65 @@ export default function Hero() {
                 </filter>
               </defs>
 
-              {/* Connected Node Path Lines */}
-              <path d="M 80,120 L 150,120 L 200,170 M 200,170 L 200,220" stroke="url(#circuitGrad)" strokeWidth="2.5" opacity="0.6" strokeLinecap="round" />
-              <path d="M 420,380 L 350,380 L 300,330 M 300,330 L 300,280" stroke="url(#circuitGrad)" strokeWidth="2.5" opacity="0.6" strokeLinecap="round" />
-              <path d="M 400,100 L 330,170 L 330,220" stroke="url(#circuitGrad)" strokeWidth="2.5" opacity="0.4" strokeLinecap="round" />
-              <path d="M 100,400 L 170,330 L 170,280" stroke="url(#circuitGrad)" strokeWidth="2.5" opacity="0.4" strokeLinecap="round" />
+              {/* Concentric Rotating Network Orbits */}
+              <circle cx="250" cy="250" r="180" stroke="rgba(145, 94, 255, 0.08)" strokeWidth="1.5" strokeDasharray="6 8" />
+              <circle cx="250" cy="250" r="140" stroke="rgba(0, 229, 255, 0.08)" strokeWidth="1.5" strokeDasharray="12 6" />
+              <circle cx="250" cy="250" r="100" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1" />
 
-              {/* Pulsing Path Nodes */}
-              <circle cx="80" cy="120" r="5" fill="#915EFF" filter="url(#glow)" />
-              <circle cx="420" cy="380" r="5" fill="#00E5FF" filter="url(#glow)" />
-              <circle cx="400" cy="100" r="4" fill="#00E5FF" />
-              <circle cx="100" cy="400" r="4" fill="#915EFF" />
+              {/* Data Connections / Circuit Mesh */}
+              <path d="M 120,150 L 250,250 L 380,150" stroke="rgba(145, 94, 255, 0.15)" strokeWidth="1.5" strokeLinecap="round" />
+              <path d="M 120,350 L 250,250 L 380,350" stroke="rgba(0, 229, 255, 0.15)" strokeWidth="1.5" strokeLinecap="round" />
+              <path d="M 80,250 L 420,250" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1" />
 
-              {/* Central Floating Laptop Graphic */}
-              <g transform="translate(110, 140)">
-                {/* Laptop Back Screen */}
-                <rect x="20" y="20" width="240" height="150" rx="10" fill="#0d1117" stroke="url(#circuitGrad)" strokeWidth="3" filter="url(#glow)" />
-                <rect x="25" y="25" width="230" height="140" rx="6" fill="#070a13" />
+              {/* Isometric Data Block / AI core core representation */}
+              <g transform="translate(250, 250)">
+                {/* Core Sphere */}
+                <circle cx="0" cy="0" r="32" fill="url(#primaryGrad)" opacity="0.1" />
+                <circle cx="0" cy="0" r="22" fill="url(#secondaryGrad)" opacity="0.15" />
+                <circle cx="0" cy="0" r="12" fill="#0B0F19" stroke="url(#secondaryGrad)" strokeWidth="2.5" filter="url(#softGlow)" />
+                <circle cx="0" cy="0" r="4" fill="#00E5FF" />
                 
-                {/* Screen Content Graphics */}
-                <text x="40" y="55" fill="#915EFF" fontSize="14" fontFamily="monospace" fontWeight="bold">&lt;code&gt;</text>
-                <text x="55" y="80" fill="#00E5FF" fontSize="12" fontFamily="monospace">const user = "Tanush Yadav";</text>
-                <text x="55" y="100" fill="#aaa6c3" fontSize="11" fontFamily="monospace">fields: [AI, FullStack, IoT];</text>
-                <text x="55" y="120" fill="#00E5FF" fontSize="12" fontFamily="monospace">status: "Building Solutions";</text>
-                <text x="40" y="145" fill="#915EFF" fontSize="14" fontFamily="monospace" fontWeight="bold">&lt;/code&gt;</text>
-
-                {/* Laptop Base (Keyboard Part) */}
-                <path d="M 0,170 L 280,170 L 290,195 L -10,195 Z" fill="#0f1422" stroke="url(#circuitGrad)" strokeWidth="3" strokeLinejoin="round" />
-                <rect x="110" y="180" width="60" height="8" rx="3" fill="#1b233a" />
+                {/* Tech details orbiting the core */}
+                <path d="M -45,-45 L -20,-20" stroke="#915EFF" strokeWidth="1.5" opacity="0.6" />
+                <path d="M 45,-45 L 20,-20" stroke="#00E5FF" strokeWidth="1.5" opacity="0.6" />
+                <path d="M -45,45 L -20,20" stroke="#00E5FF" strokeWidth="1.5" opacity="0.6" />
+                <path d="M 45,45 L 20,20" stroke="#915EFF" strokeWidth="1.5" opacity="0.6" />
               </g>
 
-              {/* Interactive Micro Floating icons */}
-              <g transform="translate(60, 260)" className="spinning-gear">
-                <circle cx="0" cy="0" r="16" fill="rgba(145, 94, 255, 0.1)" stroke="#915EFF" strokeWidth="1.5" />
-                <path d="M-4 -4 L4 4 M-4 4 L4 -4" stroke="#915EFF" strokeWidth="1.5" />
+              {/* Sub-system Core Nodes (represented as small circular modules) */}
+              {/* Top AI Module */}
+              <g transform="translate(250, 80)">
+                <circle cx="0" cy="0" r="14" fill="#0B0F19" stroke="url(#primaryGrad)" strokeWidth="2" />
+                <circle cx="0" cy="0" r="4" fill="#915EFF" />
+                <text x="22" y="4" fill="rgba(255, 255, 255, 0.5)" fontSize="9" fontFamily="monospace" fontWeight="bold">AI_CORE</text>
               </g>
-              <g transform="translate(420, 200)">
-                <circle cx="0" cy="0" r="18" fill="rgba(0, 229, 255, 0.1)" stroke="#00E5FF" strokeWidth="1.5" />
-                <path d="M -6,0 L 6,0 M 0,-6 L 0,6" stroke="#00E5FF" strokeWidth="1.5" />
+
+              {/* Bottom IoT Module */}
+              <g transform="translate(250, 420)">
+                <circle cx="0" cy="0" r="14" fill="#0B0F19" stroke="url(#secondaryGrad)" strokeWidth="2" />
+                <circle cx="0" cy="0" r="4" fill="#00E5FF" />
+                <text x="22" y="4" fill="rgba(255, 255, 255, 0.5)" fontSize="9" fontFamily="monospace" fontWeight="bold">IoT_NODE</text>
               </g>
+
+              {/* Left Data Stack Module */}
+              <g transform="translate(80, 250)">
+                <circle cx="0" cy="0" r="14" fill="#0B0F19" stroke="rgba(255,255,255,0.15)" strokeWidth="2" />
+                <path d="M -4,-4 L 4,-4 M -4,0 L 4,0 M -4,4 L 4,4" stroke="#aaa6c3" strokeWidth="1.5" />
+                <text x="-65" y="4" fill="rgba(255, 255, 255, 0.5)" fontSize="9" fontFamily="monospace" fontWeight="bold">DATA_NET</text>
+              </g>
+
+              {/* Right Cloud / Service Module */}
+              <g transform="translate(420, 250)">
+                <circle cx="0" cy="0" r="14" fill="#0B0F19" stroke="url(#secondaryGrad)" strokeWidth="2" />
+                <circle cx="0" cy="0" r="3" fill="#00E5FF" />
+                <text x="20" y="4" fill="rgba(255, 255, 255, 0.5)" fontSize="9" fontFamily="monospace" fontWeight="bold">CLOUD.API</text>
+              </g>
+
+              {/* Technical Code / Binary Feed overlays */}
+              <text x="70" y="100" fill="rgba(0, 229, 255, 0.25)" fontSize="8" fontFamily="monospace">01001010 01010011</text>
+              <text x="350" y="100" fill="rgba(145, 94, 255, 0.25)" fontSize="8" fontFamily="monospace">SYS_HEALTH: 100%</text>
+              <text x="50" y="400" fill="rgba(145, 94, 255, 0.25)" fontSize="8" fontFamily="monospace">MODEL: CV_OCR.h5</text>
+              <text x="350" y="400" fill="rgba(0, 229, 255, 0.25)" fontSize="8" fontFamily="monospace">REST_API: OK</text>
             </svg>
           </motion.div>
         </div>

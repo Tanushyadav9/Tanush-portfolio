@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowUp, Mail, FileText } from 'lucide-react';
 
-const GithubIcon = ({ size = 18, ...props }) => (
+const GithubIcon = ({ size = 16, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -19,7 +19,7 @@ const GithubIcon = ({ size = 18, ...props }) => (
   </svg>
 );
 
-const LinkedinIcon = ({ size = 18, ...props }) => (
+const LinkedinIcon = ({ size = 16, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -44,13 +44,21 @@ export default function Footer() {
   };
 
   return (
-    <footer className="py-8 bg-[#050816] border-t border-white-5 relative z-10">
+    <footer className="py-10 bg-[#0B0F19] border-t border-white-5 relative z-10">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
         
-        {/* Left Side: Copyright */}
-        <p className="text-xs text-muted">
-          Copyright &copy; 2026 Tanush Yadav. All rights reserved.
-        </p>
+        {/* Left Side: Brand & Copyright */}
+        <div className="text-center md:text-left">
+          <span className="text-base font-extrabold tracking-wider text-gradient font-heading block mb-1">
+            TANUSH YADAV
+          </span>
+          <span className="text-[10px] tracking-widest uppercase font-bold text-muted block mb-3">
+            AI & Full Stack Developer
+          </span>
+          <p className="text-xs text-white/40">
+            Copyright &copy; 2026 Tanush Yadav. All rights reserved.
+          </p>
+        </div>
 
         {/* Center: Social Profile & Resume Links */}
         <div className="flex flex-wrap justify-center gap-6 text-xs text-muted">

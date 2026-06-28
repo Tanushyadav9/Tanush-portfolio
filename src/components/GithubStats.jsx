@@ -1,10 +1,9 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { GitCommit, GitBranch, Star, Eye, ExternalLink } from 'lucide-react';
 import Tilt from './Tilt';
 
 // Generate simulated activity coordinates
-const contribGrid = Array.from({ length: 90 }, (_, i) => {
+const contribGrid = Array.from({ length: 90 }, () => {
   // Random opacity representation
   const levels = ['bg-[#1b233d]', 'bg-green-900/40', 'bg-green-700/60', 'bg-green-500/80', 'bg-[#00E5FF]'];
   const weight = Math.floor(Math.random() * 5);

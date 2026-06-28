@@ -76,7 +76,7 @@ export default function Navbar() {
             TANUSH YADAV
           </span>
           <span className="text-[10px] text-white-60 border border-cyan-30 px-2.5 py-0.5 rounded-full hidden sm:inline-block font-medium tracking-wide">
-            AI & FULL STACK
+            AI & SOFTWARE ENGINEER
           </span>
         </div>
 

@@ -1,22 +1,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar, MapPin, CheckCircle, Cpu } from 'lucide-react';
+import { Calendar, MapPin, CheckCircle, Cpu } from 'lucide-react';
 import Tilt from './Tilt';
 
 const experiences = [
   {
     role: 'Embedded Systems Developer',
     company: 'Kenet Technologies',
-    location: 'Delhi',
+    location: 'Delhi, India',
     duration: '2024 – Present',
-    companyLogo: <Cpu size={28} className="text-[#00E5FF]" />,
+    companyLogo: <Cpu size={26} className="text-[#00E5FF]" />,
     details: [
-      'Building innovative Artificial Intelligence and Internet of Things (IoT) products focused on high accessibility.',
-      'Developed NoteNetra, a smart currency detection system featuring a real-time cloud data synchronizer for visually impaired users.',
-      'Designed VisionPay, a camera-based, accessible QR code transaction system complete with voice instructions feedback.',
-      'Lead hardware layout designs, ESP32 firmware development, and React cloud analytics dashboard integration from concept to production.'
+      'Leading the design and development of AI-powered and IoT-based solutions.',
+      'Developed NoteNetra, a smart currency detection system using ESP32 and cloud integration.',
+      'Built VisionPay, an accessible QR payment platform for visually impaired users.',
+      'Responsible for hardware prototyping, software architecture, and deployment.'
     ],
-    techStack: ['ESP32', 'Arduino IDE', 'React.js', 'Firebase', 'Python', 'IoT Sensors']
+    techStack: ['ESP32', 'Arduino IDE', 'React.js', 'Firebase', 'Python', 'Computer Vision', 'IoT Protocols']
   }
 ];
 
@@ -41,7 +41,7 @@ export default function Experience() {
           {experiences.map((exp, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6 }}
@@ -57,27 +57,27 @@ export default function Experience() {
                 {/* Header Information */}
                 <div className="flex flex-wrap justify-between items-start gap-4 mb-6">
                   <div className="flex items-center gap-4">
-                    <div className="p-3 bg-white-5 rounded-2xl border border-white-10 shrink-0">
+                    <div className="p-3 bg-white-5 rounded-2xl border border-white-10 shrink-0 text-cyan">
                       {exp.companyLogo}
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-white font-heading mb-1">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white font-heading mb-1">
                         {exp.role}
                       </h3>
-                      <h4 className="text-lg font-medium text-gradient">
+                      <h4 className="text-base sm:text-lg font-medium text-gradient">
                         {exp.company}
                       </h4>
                     </div>
                   </div>
                   
                   {/* Meta items */}
-                  <div className="flex flex-col gap-2 text-sm text-muted">
-                    <div className="flex items-center gap-2 bg-white-5 px-3.5 py-1 rounded-full border border-white-5">
-                      <Calendar size={14} className="text-cyan" />
+                  <div className="flex flex-col gap-2 text-xs text-muted">
+                    <div className="flex items-center gap-2 bg-white-5 px-3 py-1 rounded-full border border-white-5">
+                      <Calendar size={12} className="text-cyan" />
                       <span>{exp.duration}</span>
                     </div>
-                    <div className="flex items-center gap-2 bg-white-5 px-3.5 py-1 rounded-full border border-white-5">
-                      <MapPin size={14} className="text-purple" />
+                    <div className="flex items-center gap-2 bg-white-5 px-3 py-1 rounded-full border border-white-5">
+                      <MapPin size={12} className="text-purple" />
                       <span>{exp.location}</span>
                     </div>
                   </div>
@@ -88,9 +88,9 @@ export default function Experience() {
                 {/* Description Bullets */}
                 <ul className="flex flex-col gap-4 list-none mb-6">
                   {exp.details.map((detail, dIdx) => (
-                    <li key={dIdx} className="flex items-start gap-3 text-base text-muted leading-relaxed">
+                    <li key={dIdx} className="flex items-start gap-3 text-sm sm:text-base text-muted leading-relaxed">
                       <span className="mt-1.5 text-cyan shrink-0">
-                        <CheckCircle size={16} />
+                        <CheckCircle size={14} />
                       </span>
                       <span>{detail}</span>
                     </li>
@@ -101,7 +101,7 @@ export default function Experience() {
 
                 {/* Technologies Badges */}
                 <div>
-                  <p className="text-xs font-bold text-white/50 uppercase tracking-wider mb-3">Key Technologies Used:</p>
+                  <p className="text-xs font-bold text-white/50 uppercase tracking-wider mb-3">Key Technologies:</p>
                   <div className="flex flex-wrap gap-2">
                     {exp.techStack.map((tech, tIdx) => (
                       <span 

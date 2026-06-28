@@ -1,18 +1,18 @@
 /* Premium Custom CSS design system for Tanush Yadav's Portfolio */
 :root {
-  --bg-color: #050816;
+  --bg-color: #0B0F19;
   --primary-color: #915EFF;
   --secondary-color: #00E5FF;
   --text-color: #FFFFFF;
   --text-muted: #aaa6c3;
-  --card-bg: rgba(255, 255, 255, 0.03);
-  --card-border: rgba(255, 255, 255, 0.08);
-  --card-border-glow: rgba(145, 94, 255, 0.2);
-  --purple-glow: rgba(145, 94, 255, 0.15);
-  --cyan-glow: rgba(0, 229, 255, 0.15);
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --card-border: rgba(255, 255, 255, 0.05);
+  --card-border-glow: rgba(145, 94, 255, 0.15);
+  --purple-glow: rgba(145, 94, 255, 0.06);
+  --cyan-glow: rgba(0, 229, 255, 0.06);
   
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
   
   scroll-behavior: smooth;
 }
@@ -55,7 +55,7 @@ body {
   filter: blur(120px);
   z-index: 0;
   pointer-events: none;
-  opacity: 0.45;
+  opacity: 0.18;
   animation: float-blob 20s infinite alternate ease-in-out;
 }
 
@@ -109,8 +109,8 @@ body {
   mix-blend-mode: screen;
   background: radial-gradient(
     600px circle at var(--mouse-x, 0) var(--mouse-y, 0),
-    rgba(145, 94, 255, 0.08),
-    rgba(0, 229, 255, 0.06) 40%,
+    rgba(145, 94, 255, 0.05),
+    rgba(0, 229, 255, 0.03) 40%,
     transparent 80%
   );
   transition: opacity 0.3s ease;
@@ -209,26 +209,26 @@ h1, h2, h3, h4 {
   background: linear-gradient(90deg, var(--primary-color) 0%, #7c3aed 100%);
   color: white;
   border: none;
-  box-shadow: 0 4px 15px rgba(145, 94, 255, 0.4);
+  box-shadow: 0 4px 12px rgba(145, 94, 255, 0.15);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(145, 94, 255, 0.6);
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 16px rgba(145, 94, 255, 0.25);
   background: linear-gradient(90deg, #9e73ff 0%, #8b5cf6 100%);
 }
 
 .btn-secondary {
   background: transparent;
   color: #fff;
-  border: 2px solid var(--secondary-color);
-  box-shadow: 0 4px 15px rgba(0, 229, 255, 0.1);
+  border: 1.5px solid var(--secondary-color);
+  box-shadow: none;
 }
 
 .btn-secondary:hover {
-  transform: translateY(-2px);
-  background: rgba(0, 229, 255, 0.1);
-  box-shadow: 0 6px 20px rgba(0, 229, 255, 0.3);
+  transform: translateY(-1.5px);
+  background: rgba(0, 229, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 229, 255, 0.12);
 }
 
 /* Forms styling */
@@ -510,13 +510,13 @@ h1, h2, h3, h4 {
   .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 .featured-project-card {
-  border: 1px solid rgba(145, 94, 255, 0.3);
-  box-shadow: 0 0 25px rgba(145, 94, 255, 0.15);
-  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(145, 94, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.03);
 }
 
 .standard-project-card {
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: rgba(255, 255, 255, 0.01);
 }
 
 .nav-bg-scrolled {
@@ -760,16 +760,12 @@ h1, h2, h3, h4 {
   grid-template-columns: repeat(15, minmax(0, 1fr));
 }
 
-.social-icon-glow {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
 .social-icon-glow:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
-  border-color: #00E5FF;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 229, 255, 0.15);
+  border-color: var(--secondary-color);
 }
 
 .btn-primary:hover, .btn-secondary:hover {
-  box-shadow: 0 0 20px rgba(145, 94, 255, 0.4);
+  box-shadow: 0 4px 12px rgba(145, 94, 255, 0.2);
 }

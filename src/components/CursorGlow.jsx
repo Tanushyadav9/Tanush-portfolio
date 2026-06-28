@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 export default function CursorGlow() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
