@@ -206,8 +206,8 @@ export default function Projects({ onBack }) {
         )}
 
         {/* Section Header */}
-        <div className="text-center mb-[60px]">
-          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-[20px]">
+        <div className="text-center mb-12">
+          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-4">
             Case Studies
           </p>
           <h2 className="text-3xl sm:text-4xl font-black text-white">
@@ -217,7 +217,7 @@ export default function Projects({ onBack }) {
         </div>
 
         {/* Projects Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-[40px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {projects.map((project, idx) => {
             const isFeatured = project.featured;
             
@@ -230,7 +230,7 @@ export default function Projects({ onBack }) {
                 className="flex animate-card"
               >
                 <Tilt 
-                  className={`py-[36px] px-[32px] h-full flex flex-col justify-between group w-full ${
+                  className={`p-8 h-full flex flex-col justify-between group w-full ${
                     isFeatured ? 'featured-project-card' : 'standard-project-card'
                   }`}
                 >

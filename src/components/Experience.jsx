@@ -22,6 +22,23 @@ const experiences = [
       'Formulated distributed telemetry data models in Firebase, ensuring 100% telemetry logs replication across unstable network regions.'
     ],
     techStack: ['ESP32', 'Arduino IDE', 'React.js', 'Firebase DB', 'Python', 'Computer Vision', 'Restful APIs']
+  },
+  {
+    role: 'Founder & Hardware Lead',
+    company: 'Kenet Technologies',
+    location: 'Delhi, India',
+    duration: '2023 – 2024',
+    companyLogo: <Star size={26} className="text-[#915EFF]" />,
+    contributions: [
+      'Launched a hardware-software prototyping brand focused on custom AI-powered systems and IoT sensors configuration.',
+      'Designed and engineered structural models using advanced geometry for product prototyping and enclosures.',
+      'Spearheaded NoteNetra and VisionPay product conceptualization, schematics layouts, and embedded system structures.'
+    ],
+    achievements: [
+      'Successfully completed prototype builds for multiple clients, integrating ESP32 and Arduino microcontrollers.',
+      'Won first place in local 3D Designing Competition for high-fidelity mechanical and hardware designs.'
+    ],
+    techStack: ['3D Modeling', 'ESP32', 'Arduino IDE', 'Hardware Prototyping', 'Product Design']
   }
 ];
 
@@ -31,8 +48,8 @@ export default function Experience() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-[60px]">
-          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-[20px]">
+        <div className="text-center mb-12">
+          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-4">
             Timeline
           </p>
           <h2 className="text-3xl sm:text-4xl font-black text-white">
@@ -50,7 +67,7 @@ export default function Experience() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative pl-12 md:pl-16 mb-[60px] text-left"
+              className="relative pl-12 md:pl-16 mb-16 text-left"
             >
               {/* Pulse timeline node */}
               <div className="timeline-dot">
@@ -58,7 +75,7 @@ export default function Experience() {
               </div>
 
               {/* Glassmorphic Experience Card */}
-              <Tilt className="py-[36px] px-[32px] md:px-[40px]">
+              <Tilt className="p-8 md:p-10">
                 {/* Header Info */}
                 <div className="flex flex-wrap justify-between items-start gap-4 mb-8">
                   <div className="flex items-center gap-4">

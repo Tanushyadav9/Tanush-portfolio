@@ -95,7 +95,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-[120px] pb-[140px] scroll-snap-align-start scroll-snap-stop-always">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-[120px] pb-[180px] scroll-snap-align-start scroll-snap-stop-always">
       {/* Radial overlay */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/5 via-transparent to-transparent pointer-events-none" />
       
@@ -106,16 +106,16 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="flex flex-col items-center"
         >
-          <p className="text-cyan font-semibold text-xs tracking-widest uppercase mb-[36px] font-heading">
+          <p className="text-cyan font-semibold text-xs tracking-widest uppercase mb-6 font-heading">
             SOFTWARE ENGINEER PORTFOLIO
           </p>
           
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-[40px]">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-8">
             Tanush Yadav
           </h1>
           
           {/* Rotating Title */}
-          <div className="h-10 sm:h-12 flex items-center mb-[48px] justify-center">
+          <div className="h-10 sm:h-12 flex items-center mb-8 justify-center">
             <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center justify-center font-heading">
               <span className="border-r-2 border-cyan pr-2 mr-1 animate-pulse min-h-[30px] inline-block">
                 {currentText}
@@ -123,7 +123,7 @@ export default function Hero() {
             </h2>
           </div>
           
-          <p className="text-muted text-base sm:text-lg leading-relaxed mb-[56px] max-w-xl text-center">
+          <p className="text-muted text-base sm:text-lg leading-relaxed mb-8 max-w-xl text-center">
             I build scalable web applications, AI-powered software, and IoT solutions focused on accessibility, automation, and solving real-world engineering problems.
           </p>
           
@@ -156,7 +156,7 @@ export default function Hero() {
           </div>
 
           {/* Social Connection Row */}
-          <div className="flex gap-6 mt-[44px] items-center justify-center">
+          <div className="flex gap-8 mt-12 items-center justify-center">
             <a 
               href="https://github.com/Tanushyadav9" 
               target="_blank" 
@@ -187,7 +187,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-10" onClick={scrollToAbout}>
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 cursor-pointer z-10" onClick={scrollToAbout}>
         <span className="text-[10px] text-muted tracking-widest uppercase">Scroll Down</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}

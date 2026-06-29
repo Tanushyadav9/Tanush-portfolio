@@ -396,6 +396,7 @@ h1, h2, h3, h4 {
 .shrink-0 { flex-shrink: 0; }
 .flex-1 { flex: 1 1 0%; }
 .hidden { display: none; }
+.list-none { list-style: none !important; }
 
 .grid { display: grid; }
 .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
@@ -820,3 +821,86 @@ h1, h2, h3, h4 {
 .group:hover .avatar-glow {
   filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.5)) drop-shadow(0 0 12px rgba(139, 92, 246, 0.3));
 }
+
+/* Custom Spacing & Utility Classes for React Components (Vanilla CSS fallback) */
+.w-11 {
+  width: 2.75rem !important;
+}
+.h-11 {
+  height: 2.75rem !important;
+}
+.mt-12 {
+  margin-top: 3rem !important;
+}
+.mb-12 {
+  margin-bottom: 3rem !important;
+}
+.pb-\[180px\] {
+  padding-bottom: 180px !important;
+}
+.pt-\[120px\] {
+  padding-top: 120px !important;
+}
+.bottom-12 {
+  bottom: 3rem !important;
+}
+.text-white {
+  color: #ffffff !important;
+}
+.transition-all {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Social Icons Interactive Hover States */
+.hover-border-cyan:hover {
+  border-color: #00E5FF !important;
+  color: #00E5FF !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.25) !important;
+}
+
+.hover-border-purple:hover {
+  border-color: #915EFF !important;
+  color: #915EFF !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 0 15px rgba(145, 94, 255, 0.25) !important;
+}
+
+/* Projects & Layout Spacing Utility Fixes */
+.pt-40 {
+  padding-top: 10rem !important;
+}
+@media (min-width: 768px) {
+  .md\:pt-48 {
+    padding-top: 12rem !important;
+  }
+}
+.pb-32 {
+  padding-bottom: 8rem !important;
+}
+.mb-10 {
+  margin-bottom: 2.5rem !important;
+}
+.mb-5 {
+  margin-bottom: 1.25rem !important;
+}
+.p-5 {
+  padding: 1.25rem !important;
+}
+.p-7 {
+  padding: 1.75rem !important;
+}
+.gap-2\.5 {
+  gap: 0.625rem !important;
+}
+.py-2\.5 {
+  padding-top: 0.625rem !important;
+  padding-bottom: 0.625rem !important;
+}
+.px-3 {
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+}
+
+
+
