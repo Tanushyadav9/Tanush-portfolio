@@ -76,8 +76,8 @@ export default function Hero() {
     setCurrentText(titles[index].substring(0, subIndex));
   }, [subIndex, index]);
 
-  const scrollToAbout = () => {
-    const element = document.getElementById('about');
+  const scrollToSkills = () => {
+    const element = document.getElementById('skills');
     if (element) {
       const yOffset = -80;
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
@@ -187,7 +187,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 cursor-pointer z-10" onClick={scrollToAbout}>
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 cursor-pointer z-10" onClick={scrollToSkills}>
         <span className="text-[10px] text-muted tracking-widest uppercase">Scroll Down</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}

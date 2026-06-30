@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Cpu, Eye, Building, Laptop, Sprout, Heart, X, BookOpen, AlertCircle, Award } from 'lucide-react';
+import { Cpu, Eye, Building, Laptop, Sprout, Heart, X, BookOpen, AlertCircle, Award } from 'lucide-react';
 import Tilt from './Tilt';
 
 import notenetraImg from '../assets/notenetra.png';
@@ -10,23 +10,6 @@ import kindergartenImg from '../assets/kindergarten.png';
 import farmerImg from '../assets/farmer_website.png';
 import petImg from '../assets/pet_website.png';
 
-const GithubIcon = ({ size = 20, ...props }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    {...props}
-  >
-    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-    <path d="M9 18c-4.51 2-5-2-7-2" />
-  </svg>
-);
 
 const projects = [
   {
@@ -296,7 +279,7 @@ export default function Projects({ onBack }) {
                     <div className="w-full h-px bg-white-5 mb-6" />
                     
                     {/* Primary Trigger & Links */}
-                    <div className="flex flex-col gap-2.5 mt-8">
+                    <div className="mt-8">
                       <button
                         onClick={() => openCaseStudy(project)}
                         className="w-full flex items-center justify-center gap-1.5 text-xs font-semibold text-white bg-white-5 border border-white-10 hover-border-cyan py-2.5 px-3 rounded-xl transition-all hover:bg-cyan/5 cursor-pointer"
@@ -304,32 +287,6 @@ export default function Projects({ onBack }) {
                         <BookOpen size={14} className="text-cyan" />
                         <span>View Case Study</span>
                       </button>
-
-                      <div className="flex gap-2">
-                        {project.github && (
-                          <a 
-                            href={project.github} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="flex-1 flex items-center justify-center gap-1.5 text-[10px] font-semibold text-muted bg-[#0B0F19]/40 border border-white-5 hover-border-cyan py-2 px-2 rounded-lg transition-all hover:text-white decoration-transparent"
-                          >
-                            <GithubIcon size={12} />
-                            <span>Code</span>
-                          </a>
-                        )}
-                        
-                        {project.demo && (
-                          <a 
-                            href={project.demo} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="flex-1 flex items-center justify-center gap-1.5 text-[10px] font-semibold text-cyan bg-cyan-10/10 border border-cyan-30 hover-border-cyan py-2 px-2 rounded-lg transition-all hover:bg-cyan/10 hover:text-white decoration-transparent"
-                          >
-                            <ExternalLink size={12} />
-                            <span>Demo</span>
-                          </a>
-                        )}
-                      </div>
                     </div>
                   </div>
 
@@ -482,27 +439,7 @@ export default function Projects({ onBack }) {
 
               </div>
 
-              {/* Modal Footer actions */}
-              <div className="p-5 border-t border-white-10 flex gap-4 bg-white-5/5">
-                <a 
-                  href={selectedProject.github} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 text-xs font-semibold text-white bg-white-5 border border-white-10 hover-border-cyan py-2.5 px-4 rounded-xl transition-all hover:bg-cyan/5 decoration-transparent"
-                >
-                  <GithubIcon size={14} />
-                  <span>Explore Repository Code</span>
-                </a>
-                <a 
-                  href={selectedProject.demo} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 text-xs font-semibold text-cyan bg-cyan-10/20 border border-cyan-40 hover-border-cyan py-2.5 px-4 rounded-xl transition-all hover:bg-cyan/10 hover:text-white decoration-transparent"
-                >
-                  <ExternalLink size={14} />
-                  <span>Launch Live Demo</span>
-                </a>
-              </div>
+
 
             </motion.div>
           </div>
