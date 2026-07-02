@@ -139,32 +139,75 @@ const skillCategories = [
   }
 ];
 
-function SkillProgressBar({ percentage }) {
+function SkillRow({ skill }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <div className="progress-bar-bg" ref={ref}>
-      <motion.div
-        className="progress-bar-fill"
-        initial={{ width: 0 }}
-        animate={isInView ? { width: `${percentage}%` } : { width: 0 }}
-        transition={{ duration: 1.2, ease: 'easeOut' }}
-      />
+    <div ref={ref} className="flex items-center gap-2.5 py-2 border-b border-white/5 last:border-0">
+      <div className="p-1 bg-white/5 rounded-md border border-white/10 shrink-0 text-cyan">
+        {skill.icon}
+      </div>
+      <div className="flex-1 min-w-0">
+        <div className="flex justify-between items-center mb-1">
+          <span className="text-[11px] font-semibold text-white/90 truncate">{skill.name}</span>
+          <span className="text-[9px] font-bold text-cyan ml-2 shrink-0">{skill.level}%</span>
+        </div>
+        <div className="progress-bar-bg" style={{ marginTop: 0 }}>
+          <motion.div
+            className="progress-bar-fill"
+            initial={{ width: 0 }}
+            animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
+            transition={{ duration: 1.0, ease: 'easeOut' }}
+          />
+        </div>
+      </div>
     </div>
   );
 }
 
+function CategoryColumn({ category, delay = 0 }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay }}
+      className="glass-card p-5 border border-white/10 hover:border-cyan/20 transition-all flex flex-col"
+    >
+      {/* Column header */}
+      <div className="flex items-center gap-2 mb-4 pb-3 border-b border-white/10">
+        <div className="p-1.5 bg-white/5 rounded-lg border border-white/10 text-cyan shrink-0">
+          {category.icon}
+        </div>
+        <h3 className="text-xs font-black text-white font-heading tracking-wide uppercase">
+          {category.title}
+        </h3>
+      </div>
+
+      {/* Skill rows */}
+      <div className="flex flex-col">
+        {category.skills.map((skill, idx) => (
+          <SkillRow key={idx} skill={skill} />
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Skills() {
+  // Split into two rows: [Frontend, Backend, AI & ML] and [Embedded, Tools]
+  const row1 = skillCategories.slice(0, 3);
+  const row2 = skillCategories.slice(3);
+
   return (
     <section id="skills" className="section-padding relative overflow-hidden">
-      {/* Accent glow */}
       <div className="absolute top-[40%] left-[-15%] w-[320px] h-[320px] bg-cyan/5 rounded-full filter blur-3xl -z-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
 
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-4">
             Specializations
           </p>
@@ -174,57 +217,17 @@ export default function Skills() {
           <div className="w-16 h-1 bg-gradient-to-r from-purple to-cyan mx-auto mt-4 rounded-full" />
         </div>
 
-        {/* Ordered Categories */}
-        <div className="flex flex-col gap-10">
-          {skillCategories.map((category, catIdx) => (
-            <div key={catIdx}>
+        {/* Row 1: Frontend | Backend | AI & ML */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
+          {row1.map((cat, idx) => (
+            <CategoryColumn key={cat.title} category={cat} delay={idx * 0.08} />
+          ))}
+        </div>
 
-              {/* Category Label Row */}
-              <div className="flex items-center gap-3 mb-5 pb-3 border-b border-white/5">
-                <div className="p-2 bg-white/5 rounded-xl border border-white/10">
-                  {category.icon}
-                </div>
-                <h3 className="text-sm font-bold text-white font-heading tracking-wide">
-                  {category.title}
-                </h3>
-                <span className="text-[10px] text-white/30 font-semibold ml-auto">
-                  {category.skills.length} {category.skills.length === 1 ? 'skill' : 'skills'}
-                </span>
-              </div>
-
-              {/* Skills Row — uniform 5-col grid on large screens */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-                {category.skills.map((skill, skillIdx) => (
-                  <motion.div
-                    key={skillIdx}
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.35, delay: skillIdx * 0.04 }}
-                    className="flex"
-                  >
-                    <Tilt className="glass-card p-4 flex flex-col justify-between w-full border border-white/10 hover:border-cyan/25 transition-all">
-                      <div>
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="p-1.5 bg-white/5 rounded-lg border border-white/10 shrink-0 text-cyan">
-                            {skill.icon}
-                          </div>
-                          <span className="text-[9px] font-bold text-cyan">{skill.level}%</span>
-                        </div>
-                        <span className="text-xs font-bold text-white font-heading block mb-1">
-                          {skill.name}
-                        </span>
-                        <p className="text-[9px] text-white/45 leading-relaxed font-light line-clamp-2">
-                          {skill.desc}
-                        </p>
-                      </div>
-                      <SkillProgressBar percentage={skill.level} />
-                    </Tilt>
-                  </motion.div>
-                ))}
-              </div>
-
-            </div>
+        {/* Row 2: Embedded | Tools */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {row2.map((cat, idx) => (
+            <CategoryColumn key={cat.title} category={cat} delay={idx * 0.08} />
           ))}
         </div>
 
@@ -232,4 +235,3 @@ export default function Skills() {
     </section>
   );
 }
-
