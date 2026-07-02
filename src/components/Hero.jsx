@@ -125,10 +125,10 @@ export default function Hero() {
       {/* Radial overlay */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_rgba(145,94,255,0.08)_0%,_transparent_75%)] pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center z-10 relative">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full flex items-center z-10 relative">
         
-        {/* Left Column */}
-        <div className="lg:col-span-7 flex flex-col text-left items-start">
+        {/* Content */}
+        <div className="w-full flex flex-col text-left items-start">
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
@@ -201,55 +201,16 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right Column (Avatar Glass Box) */}
-        <div className="lg:col-span-5 flex justify-center relative">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
-          >
-            {/* Ambient behind avatar */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#915EFF]/15 to-[#00E5FF]/15 rounded-3xl filter blur-2xl -z-10" />
 
-            {/* floating decorations */}
-            <div className="absolute -top-4 -left-4 w-10 h-10 rounded-xl bg-purple/10 border border-purple/20 backdrop-blur-md flex items-center justify-center float-shape-1 z-20">
-              <span className="text-xs">🤖</span>
-            </div>
-            <div className="absolute -bottom-4 -right-4 w-12 h-12 rounded-full bg-cyan/10 border border-cyan/20 backdrop-blur-md flex items-center justify-center float-shape-2 z-20">
-              <span className="text-xs">⚛️</span>
-            </div>
-
-            {/* Glass box */}
-            <div className="glass-card p-4 max-w-[320px] sm:max-w-[350px] border border-white/15 bg-white/5 shadow-2xl">
-              <div className="rounded-xl overflow-hidden aspect-square border border-white/10 relative bg-[#0b0f19]">
-                <img 
-                  src={profileAvatar} 
-                  alt="Tanush Yadav Headshot" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="mt-4 text-left px-2">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-sm font-bold text-white font-heading">Tanush Yadav</span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" title="Available now" />
-                </div>
-                <p className="text-[10px] text-white/50 leading-relaxed font-light">
-                  B.Tech Artificial Intelligence & Data Science Student at VIPS. IoT Builder & Software Developer.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
 
       </div>
 
       {/* Scroll Indicator */}
       <div 
         className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 cursor-pointer z-10" 
-        onClick={() => scrollToSection('about')}
+        onClick={() => scrollToSection('skills')}
       >
-        <span className="text-[9px] text-white/40 tracking-widest uppercase font-semibold">Scroll to Profile</span>
+        <span className="text-[9px] text-white/40 tracking-widest uppercase font-semibold">Scroll Down</span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
