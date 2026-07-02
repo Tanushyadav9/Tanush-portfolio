@@ -158,11 +158,11 @@ function SkillProgressBar({ percentage }) {
 export default function Skills() {
   return (
     <section id="skills" className="section-padding relative overflow-hidden">
-      {/* Accent glow overlay */}
-      <div className="absolute top-[40%] left-[-15%] w-[320px] height-[320px] bg-cyan/5 rounded-full filter blur-3xl -z-10 pointer-events-none" />
+      {/* Accent glow */}
+      <div className="absolute top-[40%] left-[-15%] w-[320px] h-[320px] bg-cyan/5 rounded-full filter blur-3xl -z-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        
+
         {/* Section Header */}
         <div className="text-center mb-16">
           <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-4">
@@ -174,51 +174,50 @@ export default function Skills() {
           <div className="w-16 h-1 bg-gradient-to-r from-purple to-cyan mx-auto mt-4 rounded-full" />
         </div>
 
-        {/* Categories Grid (Vertical column layout) */}
-        <div className="flex flex-col gap-12">
+        {/* Ordered Categories */}
+        <div className="flex flex-col gap-10">
           {skillCategories.map((category, catIdx) => (
-            <div key={catIdx} className="text-left">
-              
-              {/* Category Title */}
-              <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-3">
-                <div className="p-2 bg-white/5 rounded-xl border border-white/10 text-cyan">
+            <div key={catIdx}>
+
+              {/* Category Label Row */}
+              <div className="flex items-center gap-3 mb-5 pb-3 border-b border-white/5">
+                <div className="p-2 bg-white/5 rounded-xl border border-white/10">
                   {category.icon}
                 </div>
-                <h3 className="text-lg font-bold text-white font-heading">
+                <h3 className="text-sm font-bold text-white font-heading tracking-wide">
                   {category.title}
                 </h3>
+                <span className="text-[10px] text-white/30 font-semibold ml-auto">
+                  {category.skills.length} {category.skills.length === 1 ? 'skill' : 'skills'}
+                </span>
               </div>
 
-              {/* Skills cards grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Skills Row — uniform 5-col grid on large screens */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
                 {category.skills.map((skill, skillIdx) => (
                   <motion.div
                     key={skillIdx}
-                    initial={{ opacity: 0, y: 15 }}
+                    initial={{ opacity: 0, y: 12 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: skillIdx * 0.05 }}
+                    transition={{ duration: 0.35, delay: skillIdx * 0.04 }}
                     className="flex"
                   >
-                    <Tilt className="glass-card p-6 flex flex-col justify-between w-full border border-white/10 hover:border-cyan/25 transition-all">
+                    <Tilt className="glass-card p-4 flex flex-col justify-between w-full border border-white/10 hover:border-cyan/25 transition-all">
                       <div>
-                        <div className="flex justify-between items-center mb-3">
-                          <div className="flex items-center gap-3">
-                            <div className="p-2 bg-white/5 rounded-lg border border-white/10 shrink-0 text-cyan">
-                              {skill.icon}
-                            </div>
-                            <span className="text-xs font-bold text-white font-heading">
-                              {skill.name}
-                            </span>
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="p-1.5 bg-white/5 rounded-lg border border-white/10 shrink-0 text-cyan">
+                            {skill.icon}
                           </div>
-                          <span className="text-[10px] font-bold text-cyan">{skill.level}%</span>
+                          <span className="text-[9px] font-bold text-cyan">{skill.level}%</span>
                         </div>
-
-                        <p className="text-[10px] text-white/50 leading-relaxed font-light mb-4 line-clamp-2">
+                        <span className="text-xs font-bold text-white font-heading block mb-1">
+                          {skill.name}
+                        </span>
+                        <p className="text-[9px] text-white/45 leading-relaxed font-light line-clamp-2">
                           {skill.desc}
                         </p>
                       </div>
-
                       <SkillProgressBar percentage={skill.level} />
                     </Tilt>
                   </motion.div>
@@ -233,3 +232,4 @@ export default function Skills() {
     </section>
   );
 }
+
