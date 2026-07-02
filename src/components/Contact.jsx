@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, Send, Check, FileText, MapPin } from 'lucide-react';
+import { Mail, Phone, Send, Check, FileText, MapPin, Clock, ExternalLink } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import emailjs from '@emailjs/browser';
 import Tilt from './Tilt';
@@ -116,70 +116,82 @@ export default function Contact() {
 
   const contactDetails = [
     {
-      icon: <Mail className="text-cyan" size={24} />,
-      label: 'Email',
+      icon: <Mail className="text-cyan" size={18} />,
+      label: 'Email Address',
       value: 'tanushyada0987@gmail.com',
       href: 'mailto:tanushyada0987@gmail.com'
     },
     {
-      icon: <Phone className="text-purple" size={24} />,
-      label: 'Phone',
+      icon: <LinkedinIcon className="text-purple" size={18} />,
+      label: 'LinkedIn Profile',
+      value: 'tanush-yadav',
+      href: 'https://www.linkedin.com/in/tanush-yadav-1893b338b'
+    },
+    {
+      icon: <GithubIcon className="text-cyan" size={18} />,
+      label: 'GitHub Code',
+      value: 'Tanushyadav9',
+      href: 'https://github.com/Tanushyadav9'
+    },
+    {
+      icon: <Phone className="text-purple" size={18} />,
+      label: 'Phone Contact',
       value: '+91 87506 88748',
       href: 'tel:+918750688748'
     },
     {
-      icon: <MapPin className="text-cyan" size={24} />,
+      icon: <MapPin className="text-cyan" size={18} />,
       label: 'Location',
       value: 'Delhi, India',
       href: '#'
     },
     {
-      icon: <FileText className="text-purple" size={24} />,
-      label: 'Resume Document',
-      value: 'View PDF File',
+      icon: <FileText className="text-purple" size={18} />,
+      label: 'Resume PDF',
+      value: 'View Resume',
       href: '/Tanush_Yadav_Resume.pdf'
     }
   ];
 
-  const availabilities = ['Internships', 'Freelance Projects', 'Collaborations', 'Hackathons'];
-
   return (
-    <section id="contact" className="section-padding relative">
+    <section id="contact" className="section-padding relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-[60px]">
-          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-[20px]">
-            Communication
+        <div className="text-center mb-16">
+          <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-4 font-heading">
+            Get In Touch
           </p>
-          <h2 className="text-3xl sm:text-4xl font-black text-white">
-            Let's Build Something Together
+          <h2 className="text-3xl sm:text-4xl font-black text-white font-heading">
+            Contact & Availability
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-purple to-cyan mx-auto mt-4 rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-[40px] items-start max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-6xl mx-auto">
           
-          {/* Left Column: Premium Cards */}
-          <div className="lg:col-span-5 flex flex-col gap-8 text-left w-full">
+          {/* Left Column (Details) */}
+          <div className="lg:col-span-5 flex flex-col gap-6 text-left w-full">
             
-            {/* Availability Highlights Card */}
-            <Tilt className="py-[36px] px-[32px] border border-[#22c55e]/20 bg-[#22c55e]/5">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e] animate-ping" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e] absolute" />
-                <span className="text-xs font-black uppercase text-[#22c55e] tracking-widest ml-2">
+            {/* Availability card */}
+            <Tilt className="glass-card p-6 border border-emerald-500/20 bg-emerald-500/5 relative overflow-hidden">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-[10px] font-black uppercase text-emerald-400 tracking-wider">
                   Availability Status
                 </span>
               </div>
-              <h4 className="text-lg font-bold text-white font-heading mb-3">
-                🟢 Available for:
+              <h4 className="text-base font-bold text-white font-heading mb-2">
+                Open for Opportunities
               </h4>
-              <div className="flex flex-wrap gap-2">
-                {availabilities.map((item, idx) => (
+              <p className="text-[11px] text-white/50 leading-relaxed font-light mb-4">
+                Currently looking for engineering internships, student placements, open source coding, and hackathons iterations.
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {['Internships', 'Open Source', 'Hackathons', 'Collaborations'].map((item, idx) => (
                   <span 
                     key={idx} 
-                    className="text-xs font-semibold text-white/90 bg-[#22c55e]/10 border border-[#22c55e]/20 px-3 py-1 rounded-xl"
+                    className="text-[9px] font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-md"
                   >
                     {item}
                   </span>
@@ -187,64 +199,46 @@ export default function Contact() {
               </div>
             </Tilt>
 
-            {/* Direct Contact Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[24px]">
+            {/* Response speed banner */}
+            <div className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-2xl">
+              <div className="w-8 h-8 rounded-xl bg-purple-500/10 text-purple border border-purple-500/20 flex items-center justify-center shrink-0">
+                <Clock size={16} />
+              </div>
+              <div>
+                <span className="text-xs font-bold text-white block">Response Guaranteed</span>
+                <span className="text-[10px] text-white/50">Typically replies to professional inquiries within 24 hours.</span>
+              </div>
+            </div>
+
+            {/* Direct details grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {contactDetails.map((detail, i) => (
                 <a 
                   key={i} 
                   href={detail.href}
-                  target={detail.href.endsWith('.pdf') ? '_blank' : undefined}
-                  rel={detail.href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
-                  className="flex items-center gap-5 p-6 rounded-2xl bg-white-5 border border-white-5 hover-border-cyan transition-all group decoration-transparent"
+                  target={detail.href.startsWith('http') || detail.href.endsWith('.pdf') ? '_blank' : undefined}
+                  rel={detail.href.startsWith('http') || detail.href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
+                  className="glass-card p-4 border border-white/10 hover:border-cyan/35 transition-all flex items-start gap-3 group decoration-transparent text-left"
                 >
-                  <div className="w-[56px] h-[56px] flex items-center justify-center bg-white-5 rounded-xl border border-white-10 text-cyan shrink-0">
+                  <div className="w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 rounded-lg text-cyan shrink-0 transition-colors group-hover:bg-cyan/10">
                     {detail.icon}
                   </div>
-                  <div className="min-w-0 flex flex-col gap-[18px]">
-                    <p className="text-[10px] text-muted uppercase tracking-wider">{detail.label}</p>
-                    <p className="text-xs font-bold text-white group-hover:text-cyan transition-colors truncate">{detail.value}</p>
+                  <div className="min-w-0">
+                    <span className="text-[9px] text-white/30 uppercase tracking-wider block mb-0.5 font-semibold">{detail.label}</span>
+                    <span className="text-xs font-bold text-white group-hover:text-cyan transition-colors truncate block">{detail.value}</span>
                   </div>
                 </a>
               ))}
             </div>
 
-            {/* Socials connections row */}
-            <Tilt className="py-[36px] px-[32px] flex flex-col items-center justify-center">
-              <span className="text-xs font-bold text-muted uppercase tracking-wider mb-6">Social Channels</span>
-              <div className="flex gap-[24px] justify-center items-center">
-                <a 
-                  href="https://github.com/Tanushyadav9" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                  className="w-11 h-11 flex items-center justify-center rounded-full bg-white-5 border border-white-10 hover-border-cyan text-white hover:text-cyan transition-all hover:-translate-y-1"
-                >
-                  <GithubIcon size={18} />
-                </a>
-                <a 
-                  href="https://www.linkedin.com/in/tanush-yadav-1893b338b" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  className="w-11 h-11 flex items-center justify-center rounded-full bg-white-5 border border-white-10 hover-border-purple text-white hover:text-purple transition-all hover:-translate-y-1"
-                >
-                  <LinkedinIcon size={18} />
-                </a>
-                <a 
-                  href="mailto:tanushyada0987@gmail.com" 
-                  aria-label="Email"
-                  className="w-11 h-11 flex items-center justify-center rounded-full bg-white-5 border border-white-10 hover-border-cyan text-white hover:text-cyan transition-all hover:-translate-y-1"
-                >
-                  <Mail size={18} />
-                </a>
-              </div>
-            </Tilt>
-
           </div>
 
-          {/* Right Column: Contact Form */}
+          {/* Right Column (Form) */}
           <div className="lg:col-span-7 w-full">
-            <Tilt className="py-[36px] px-[32px]">
+            <Tilt className="glass-card p-6 md:p-8 border border-white/10">
+              <h3 className="text-base sm:text-lg font-bold text-white font-heading mb-6 text-left">
+                Send Direct Inquiry
+              </h3>
               <form onSubmit={handleSubmit} className="flex flex-col text-left">
                 
                 <AnimatePresence>
@@ -253,14 +247,14 @@ export default function Contact() {
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="p-4 mb-6 error-banner rounded-xl text-sm font-semibold"
+                      className="p-4 mb-6 bg-red-500/10 border border-red-500/20 text-red-400 rounded-xl text-xs font-semibold"
                     >
                       {error}
                     </motion.div>
                   )}
                 </AnimatePresence>
 
-                <div className="form-group">
+                <div className="form-group mb-6">
                   <input 
                     type="text" 
                     id="name"
@@ -274,7 +268,7 @@ export default function Contact() {
                   <label htmlFor="name" className="form-label">Full Name</label>
                 </div>
 
-                <div className="form-group">
+                <div className="form-group mb-6">
                   <input 
                     type="email" 
                     id="email"
@@ -288,11 +282,11 @@ export default function Contact() {
                   <label htmlFor="email" className="form-label">Email Address</label>
                 </div>
 
-                <div className="form-group">
+                <div className="form-group mb-6">
                   <textarea 
                     id="message"
                     name="message"
-                    rows="5"
+                    rows="4"
                     value={form.message}
                     onChange={handleChange}
                     className="form-input"
@@ -303,27 +297,27 @@ export default function Contact() {
                   <label htmlFor="message" className="form-label">Your Message</label>
                 </div>
 
-                <div className="mt-2">
+                <div>
                   {success ? (
-                    <div className="p-4 success-banner rounded-full flex items-center justify-center gap-2 font-bold text-sm">
-                      <Check size={16} />
-                      <span>Message Sent Successfully! Thank You.</span>
+                    <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center gap-2 font-bold text-xs">
+                      <Check size={14} className="stroke-[3]" />
+                      <span>Message Sent Successfully! Confetti Launched.</span>
                     </div>
                   ) : (
                     <button 
                       type="submit" 
-                      className="btn btn-primary w-full sm:w-auto"
+                      className="btn btn-primary w-full sm:w-auto font-semibold text-xs cursor-pointer"
                       disabled={loading}
                     >
                       {loading ? (
                         <span className="flex items-center gap-2">
-                          <span className="w-4 h-4 rounded-full border-2 spinner-border animate-spin" />
-                          Sending...
+                          <span className="w-3.5 h-3.5 rounded-full border-2 border-t-transparent border-white animate-spin" />
+                          <span>Sending Inquiry...</span>
                         </span>
                       ) : (
                         <span className="flex items-center gap-2">
-                          <Send size={16} />
-                          Send Message
+                          <Send size={14} />
+                          <span>Send Message</span>
                         </span>
                       )}
                     </button>

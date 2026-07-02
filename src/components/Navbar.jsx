@@ -4,10 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
   { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
   { id: 'experience', label: 'Experience' },
-  { id: 'education', label: 'Education' },
   { id: 'contact', label: 'Contact' },
 ];
 
@@ -61,8 +61,8 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled 
-          ? 'py-[24px] nav-bg-scrolled' 
-          : 'py-[28px] bg-transparent'
+          ? 'py-[18px] bg-[#0B0F19]/80 backdrop-blur-lg border-b border-white/5 shadow-lg' 
+          : 'py-[24px] bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
@@ -73,21 +73,28 @@ export default function Navbar() {
           <span className="text-xl font-extrabold tracking-wider text-gradient font-heading">
             TANUSH YADAV
           </span>
-          <span className="text-[10px] text-white-60 border border-cyan-30 px-2.5 py-0.5 rounded-full hidden sm:inline-block font-medium tracking-wide">
-            AI & SOFTWARE ENGINEER
+          <span className="text-[9px] text-cyan/70 border border-cyan/30 px-2.5 py-0.5 rounded-full hidden sm:inline-block font-bold tracking-wide uppercase">
+            AI & SOFTWARE DEVELOPER
           </span>
         </div>
 
         {/* Desktop Navigation */}
-        <ul className="list-none hidden md:flex flex-row items-center gap-6">
+        <ul className="list-none hidden md:flex flex-row items-center gap-2">
           {navLinks.map((link) => (
-            <li key={link.id}>
+            <li key={link.id} className="relative">
               <a
                 className={`nav-link ${active === link.id ? 'active' : ''}`}
                 onClick={() => handleClick(link.id)}
               >
                 {link.label}
               </a>
+              {active === link.id && (
+                <motion.span
+                  layoutId="activeUnderline"
+                  className="nav-link-underline"
+                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                />
+              )}
             </li>
           ))}
         </ul>
@@ -112,7 +119,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="md:hidden mobile-menu-bg border-b border-white-10 absolute top-full left-0 w-full overflow-hidden"
+            className="md:hidden bg-[#0b0f19]/95 backdrop-blur-xl border-b border-white/10 absolute top-full left-0 w-full overflow-hidden"
           >
             <ul className="list-none flex flex-col gap-3 p-6">
               {navLinks.map((link) => (

@@ -902,5 +902,161 @@ h1, h2, h3, h4 {
   padding-right: 0.75rem !important;
 }
 
+/* Redesign Premium CSS Styles */
+
+/* Aurora Animated Background */
+@keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.aurora-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: radial-gradient(circle at 10% 20%, rgba(145, 94, 255, 0.12) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.1) 0%, transparent 40%),
+              radial-gradient(circle at 50% 50%, rgba(145, 94, 255, 0.05) 0%, transparent 60%),
+              #0B0F19;
+  background-size: 200% 200%;
+  animation: aurora 20s ease infinite alternate;
+  pointer-events: none;
+}
+
+/* Floating Shapes in Hero */
+@keyframes float-shape-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  50% { transform: translateY(-15px) rotate(5deg) scale(1.03); }
+}
+
+@keyframes float-shape-fast {
+  0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) translateX(12px) rotate(-8deg); }
+}
+
+.float-shape-1 {
+  animation: float-shape-slow 10s ease-in-out infinite;
+}
+
+.float-shape-2 {
+  animation: float-shape-fast 8s ease-in-out infinite;
+}
+
+/* Browser Mockup Shell */
+.browser-mockup {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 15px 40px -15px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s ease;
+}
+
+.browser-header {
+  height: 36px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 8px;
+}
+
+.browser-header .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.browser-header .dot-close { background-color: rgba(255, 95, 86, 0.7); }
+.browser-header .dot-minimize { background-color: rgba(255, 189, 46, 0.7); }
+.browser-header .dot-expand { background-color: rgba(39, 201, 63, 0.7); }
+
+.browser-address {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+}
+
+/* Elegant Progress Bar */
+.progress-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 99px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  margin-top: 8px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 99px;
+}
+
+/* Scroll Progress Bar */
+.scroll-progress-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  z-index: 100;
+}
+
+/* Active Nav Underline Glow */
+.nav-link-underline {
+  position: absolute;
+  bottom: 0;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+/* Grid & Section gaps */
+.gap-section {
+  gap: 80px !important;
+}
+
+@media (min-width: 1024px) {
+  .gap-section {
+    gap: 120px !important;
+  }
+}
+
+/* Modern Profile Highlight Cards */
+.profile-badge-card {
+  transition: all 0.3s ease;
+}
+.profile-badge-card:hover {
+  border-color: rgba(0, 229, 255, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+
 
 

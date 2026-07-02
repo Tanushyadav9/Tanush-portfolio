@@ -9,34 +9,25 @@ const experiences = [
     company: 'Kenet Technologies',
     location: 'Delhi, India',
     duration: '2024 – Present',
-    companyLogo: <Cpu size={26} className="text-[#00E5FF]" />,
-    contributions: [
-      'Leading the architecture design and low-level C++ firmware coding for AI-powered and IoT-based solutions.',
-      'Developed NoteNetra, a smart currency detection device parsing image frames to cloud OCR endpoints.',
-      'Built VisionPay, an accessible QR payment platform using canvas computer vision and speech synthesizers.',
-      'Responsible for schematic layouts, hardware prototyping, database schemas, and dashboard hosting.'
+    companyLogo: <Cpu size={22} className="text-[#00E5FF]" />,
+    bullets: [
+      'Architecting low-level C++ firmware and schema integrations for ESP32 and Arduino-based platforms.',
+      'Developed NoteNetra currency validator, reducing cloud transmission image overhead to lower latency by 70%.',
+      'Built VisionPay QR scanner guides, securing a 98% transaction verification rate using Web Speech synthesis.',
+      'Constructed distributed telemetry databases on Firebase for remote synchronization across unstable networks.'
     ],
-    achievements: [
-      'Engineered localized image resolution compression algorithms on ESP32 microcontrollers, reducing data transmission latency by 70%.',
-      'Implemented accessible speech interaction flows on payment nodes, achieving a 98% scan verification success rate among blind trial groups.',
-      'Formulated distributed telemetry data models in Firebase, ensuring 100% telemetry logs replication across unstable network regions.'
-    ],
-    techStack: ['ESP32', 'Arduino IDE', 'React.js', 'Firebase DB', 'Python', 'Computer Vision', 'Restful APIs']
+    techStack: ['ESP32', 'Arduino IDE', 'React.js', 'Firebase DB', 'Python', 'Computer Vision', 'REST APIs']
   },
   {
     role: 'Founder & Hardware Lead',
     company: 'Kenet Technologies',
     location: 'Delhi, India',
     duration: '2023 – 2024',
-    companyLogo: <Star size={26} className="text-[#915EFF]" />,
-    contributions: [
-      'Launched a hardware-software prototyping brand focused on custom AI-powered systems and IoT sensors configuration.',
-      'Designed and engineered structural models using advanced geometry for product prototyping and enclosures.',
-      'Spearheaded NoteNetra and VisionPay product conceptualization, schematics layouts, and embedded system structures.'
-    ],
-    achievements: [
-      'Successfully completed prototype builds for multiple clients, integrating ESP32 and Arduino microcontrollers.',
-      'Won first place in local 3D Designing Competition for high-fidelity mechanical and hardware designs.'
+    companyLogo: <Star size={22} className="text-[#915EFF]" />,
+    bullets: [
+      'Launched hardware prototyping brand staging custom microcontroller grids and automated sensor clusters.',
+      'Engineered optimized device casings using advanced mechanical geometries, winning first place in designing contests.',
+      'Drafted full hardware schematics layouts, power distribution tracks, and sensor routing configurations.'
     ],
     techStack: ['3D Modeling', 'ESP32', 'Arduino IDE', 'Hardware Prototyping', 'Product Design']
   }
@@ -48,108 +39,88 @@ export default function Experience() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-4">
             Timeline
           </p>
-          <h2 className="text-3xl sm:text-4xl font-black text-white">
+          <h2 className="text-3xl sm:text-4xl font-black text-white font-heading">
             Professional Experience
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-purple to-cyan mx-auto mt-4 rounded-full" />
         </div>
 
-        {/* Timeline Track */}
+        {/* Timeline track */}
         <div className="max-w-4xl mx-auto timeline-track">
           {experiences.map((exp, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -25 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative pl-12 md:pl-16 mb-16 text-left"
+              className="relative pl-12 md:pl-16 mb-12 text-left"
             >
-              {/* Pulse timeline node */}
+              {/* timeline node */}
               <div className="timeline-dot">
                 <span className="timeline-ping" />
               </div>
 
-              {/* Glassmorphic Experience Card */}
-              <Tilt className="p-8 md:p-10">
+              {/* Card */}
+              <Tilt className="glass-card p-6 md:p-8 border border-white/10 hover:border-cyan/25 transition-all">
                 {/* Header Info */}
-                <div className="flex flex-wrap justify-between items-start gap-4 mb-8">
+                <div className="flex flex-wrap justify-between items-start gap-4 mb-6">
                   <div className="flex items-center gap-4">
-                    <div className="p-3 bg-white-5 rounded-2xl border border-white-10 shrink-0 text-cyan">
+                    <div className="p-2.5 bg-white/5 rounded-xl border border-white/10 shrink-0 text-cyan">
                       {exp.companyLogo}
                     </div>
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-white font-heading mb-2">
+                      <h3 className="text-lg sm:text-xl font-bold text-white font-heading mb-1">
                         {exp.role}
                       </h3>
-                      <h4 className="text-base sm:text-lg font-medium text-gradient">
+                      <h4 className="text-sm font-semibold text-gradient">
                         {exp.company}
                       </h4>
                     </div>
                   </div>
                   
                   {/* Meta Details */}
-                  <div className="flex flex-col gap-2.5 text-xs text-muted">
-                    <div className="flex items-center gap-2 bg-white-5 px-3 py-1 rounded-full border border-white-5">
+                  <div className="flex flex-wrap gap-2 text-xs text-white/40">
+                    <div className="flex items-center gap-1.5 bg-white/5 px-3 py-1 rounded-full border border-white/5">
                       <Calendar size={12} className="text-cyan" />
                       <span>{exp.duration}</span>
                     </div>
-                    <div className="flex items-center gap-2 bg-white-5 px-3 py-1 rounded-full border border-white-5">
+                    <div className="flex items-center gap-1.5 bg-white/5 px-3 py-1 rounded-full border border-white/5">
                       <MapPin size={12} className="text-purple" />
                       <span>{exp.location}</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="w-full h-px bg-white-10 mb-8" />
+                <div className="w-full h-px bg-white/5 mb-6" />
 
-                {/* Major Contributions */}
-                <div className="mb-8">
-                  <h5 className="text-xs font-black text-white/50 uppercase tracking-wider mb-3 block">
-                    Major Contributions:
-                  </h5>
-                  <ul className="flex flex-col gap-4 list-none">
-                    {exp.contributions.map((detail, dIdx) => (
-                      <li key={dIdx} className="flex items-start gap-3 text-sm text-muted leading-relaxed">
+                {/* Major Contributions bullets */}
+                <div className="mb-6">
+                  <ul className="flex flex-col gap-3 list-none">
+                    {exp.bullets.map((bullet, bIdx) => (
+                      <li key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-white/70 leading-relaxed font-light">
                         <span className="mt-1 text-cyan shrink-0">
-                          <CheckCircle size={14} />
+                          <CheckCircle size={14} className="stroke-[2.5]" />
                         </span>
-                        <span>{detail}</span>
+                        <span>{bullet}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Key Achievements */}
-                <div className="mb-8 p-6 bg-cyan-10/5 border border-cyan-40/15 rounded-2xl">
-                  <h5 className="text-xs font-black text-cyan uppercase tracking-wider mb-3 flex items-center gap-1.5">
-                    <Star size={14} className="fill-cyan" />
-                    <span>Key Achievements:</span>
-                  </h5>
-                  <ul className="flex flex-col gap-3.5 list-none">
-                    {exp.achievements.map((ach, aIdx) => (
-                      <li key={aIdx} className="text-xs text-white/80 leading-relaxed flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-purple mt-1.5 shrink-0" />
-                        <span>{ach}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <div className="w-full h-px bg-white/5 mb-6" />
 
-                <div className="w-full h-px bg-white-10 mb-8" />
-
-                {/* Key Technologies */}
+                {/* Technologies */}
                 <div>
-                  <p className="text-xs font-bold text-white/50 uppercase tracking-wider mb-3">Key Technologies:</p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5">
                     {exp.techStack.map((tech, tIdx) => (
                       <span 
                         key={tIdx} 
-                        className="px-3.5 py-1.5 bg-white-5 border border-white-10 rounded-xl text-xs font-bold text-cyan"
+                        className="px-2.5 py-1 bg-white/5 border border-white/5 rounded-md text-[10px] font-semibold text-white/60"
                       >
                         {tech}
                       </span>
