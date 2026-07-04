@@ -1,142 +1,178 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
-  { id: 'home', label: 'Home' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'projects', label: 'Projects' },
+  { id: 'home',       label: 'Home' },
+  { id: 'skills',     label: 'Skills' },
+  { id: 'projects',   label: 'Projects' },
   { id: 'experience', label: 'Experience' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'contact',    label: 'Contact' },
 ];
 
 export default function Navbar() {
-  const [active, setActive] = useState('home');
-  const [toggle, setToggle] = useState(false);
+  const [active, setActive]   = useState('home');
+  const [toggle, setToggle]   = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  /* ── scroll spy ─────────────────────────────────────────── */
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 40);
 
-      // Determine active section based on scroll position
-      const scrollPos = scrollTop + 200; // offset for early activation
-      const sections = navLinks.map(link => document.getElementById(link.id));
-
-      for (let i = 0; i < sections.length; i++) {
-        const section = sections[i];
-        if (section) {
-          const offsetTop = section.offsetTop;
-          const offsetHeight = section.offsetHeight;
-          if (scrollPos >= offsetTop && scrollPos < offsetTop + offsetHeight) {
-            setActive(navLinks[i].id);
-            break;
-          }
+      const offset = y + 160;
+      for (let i = navLinks.length - 1; i >= 0; i--) {
+        const el = document.getElementById(navLinks[i].id);
+        if (el && offset >= el.offsetTop) {
+          setActive(navLinks[i].id);
+          break;
         }
       }
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleClick = (id) => {
+  /* ── smooth scroll helper ────────────────────────────────── */
+  const scrollTo = (id) => {
     setToggle(false);
     setActive(id);
-    const element = document.getElementById(id);
-    if (element) {
-      const yOffset = -80; 
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    const el = document.getElementById(id);
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.scrollY - 80;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'py-[18px] bg-[#0B0F19]/80 backdrop-blur-lg border-b border-white/5 shadow-lg' 
-          : 'py-[24px] bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
-        <div 
-          className="flex items-center gap-3 cursor-pointer"
-          onClick={() => handleClick('home')}
-        >
-          <span className="text-xl font-extrabold tracking-wider text-gradient font-heading">
-            TANUSH YADAV
-          </span>
-          <span className="text-[9px] text-cyan/70 border border-cyan/30 px-2.5 py-0.5 rounded-full hidden sm:inline-block font-bold tracking-wide uppercase">
-            AI & SOFTWARE DEVELOPER
-          </span>
-        </div>
+    <>
+      {/* ── Main bar ────────────────────────────────────────── */}
+      <motion.nav
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        className={`navbar-root ${scrolled ? 'navbar-scrolled' : ''}`}
+      >
+        <div className="navbar-inner">
 
-        {/* Desktop Navigation */}
-        <ul className="list-none hidden md:flex flex-row items-center gap-2">
-          {navLinks.map((link) => (
-            <li key={link.id} className="relative">
-              <a
-                className={`nav-link ${active === link.id ? 'active' : ''}`}
-                onClick={() => handleClick(link.id)}
-              >
-                {link.label}
-              </a>
-              {active === link.id && (
-                <motion.span
-                  layoutId="activeUnderline"
-                  className="nav-link-underline"
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                />
-              )}
-            </li>
-          ))}
-        </ul>
+          {/* ── Logo ── */}
+          <button className="navbar-logo" onClick={() => scrollTo('home')}>
+            {/* Monogram mark */}
+            <span className="navbar-monogram" aria-hidden="true">TY</span>
+            <span className="navbar-name">Tanush Yadav</span>
+            <span className="navbar-badge">AI · Dev</span>
+          </button>
 
-        {/* Mobile menu button */}
-        <div className="md:hidden flex items-center">
-          <button
-            onClick={() => setToggle(!toggle)}
-            className="text-white hover:text-cyan transition-all p-1"
-            aria-label="Toggle Menu"
+          {/* ── Desktop links ── */}
+          <ul className="navbar-links" role="list">
+            {navLinks.map(({ id, label }) => (
+              <li key={id} className="navbar-item">
+                <button
+                  className={`navbar-btn ${active === id ? 'navbar-btn--active' : ''}`}
+                  onClick={() => scrollTo(id)}
+                >
+                  {label}
+                  {active === id && (
+                    <motion.span
+                      layoutId="pill"
+                      className="navbar-pill"
+                      transition={{ type: 'spring', stiffness: 420, damping: 34 }}
+                    />
+                  )}
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          {/* ── CTA ── */}
+          <a
+            href="#contact"
+            className="navbar-cta hidden md:inline-flex"
+            onClick={(e) => { e.preventDefault(); scrollTo('contact'); }}
           >
-            {toggle ? <X size={26} /> : <Menu size={26} />}
+            Hire Me
+          </a>
+
+          {/* ── Mobile hamburger ── */}
+          <button
+            className="navbar-hamburger md:hidden"
+            onClick={() => setToggle(!toggle)}
+            aria-label="Toggle menu"
+            aria-expanded={toggle}
+          >
+            <span className={`hamburger-bar ${toggle ? 'bar-top-open' : ''}`} />
+            <span className={`hamburger-bar ${toggle ? 'bar-mid-open' : ''}`} />
+            <span className={`hamburger-bar ${toggle ? 'bar-bot-open' : ''}`} />
           </button>
         </div>
-      </div>
+      </motion.nav>
 
-      {/* Mobile Drawer menu */}
+      {/* ── Mobile drawer ─────────────────────────────────── */}
       <AnimatePresence>
         {toggle && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="md:hidden bg-[#0b0f19]/95 backdrop-blur-xl border-b border-white/10 absolute top-full left-0 w-full overflow-hidden"
-          >
-            <ul className="list-none flex flex-col gap-3 p-6">
-              {navLinks.map((link) => (
-                <li key={link.id}>
-                  <a
-                    className={`block text-base py-2 font-heading tracking-wide transition-colors ${
-                      active === link.id ? 'text-cyan font-bold' : 'text-muted hover:text-white'
-                    }`}
-                    onClick={() => handleClick(link.id)}
+          <>
+            {/* backdrop */}
+            <motion.div
+              key="backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="navbar-backdrop"
+              onClick={() => setToggle(false)}
+            />
+
+            {/* drawer */}
+            <motion.aside
+              key="drawer"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', stiffness: 340, damping: 34 }}
+              className="navbar-drawer"
+            >
+              {/* drawer header */}
+              <div className="drawer-header">
+                <span className="navbar-monogram" style={{ fontSize: '1rem', width: 34, height: 34 }}>TY</span>
+                <span className="navbar-name" style={{ fontSize: '0.9rem' }}>Tanush Yadav</span>
+                <button className="drawer-close" onClick={() => setToggle(false)} aria-label="Close menu">✕</button>
+              </div>
+
+              <div className="drawer-divider" />
+
+              {/* links */}
+              <nav className="drawer-nav">
+                {navLinks.map(({ id, label }, i) => (
+                  <motion.button
+                    key={id}
+                    initial={{ x: 30, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.06 * i, duration: 0.3 }}
+                    className={`drawer-link ${active === id ? 'drawer-link--active' : ''}`}
+                    onClick={() => scrollTo(id)}
                   >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+                    <span className="drawer-link-num">0{i + 1}</span>
+                    {label}
+                  </motion.button>
+                ))}
+              </nav>
+
+              <div className="drawer-divider" />
+
+              <motion.a
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.36 }}
+                href="#contact"
+                className="navbar-cta drawer-cta"
+                onClick={(e) => { e.preventDefault(); scrollTo('contact'); }}
+              >
+                Hire Me
+              </motion.a>
+            </motion.aside>
+          </>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 }
