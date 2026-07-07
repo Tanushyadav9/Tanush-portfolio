@@ -43,76 +43,83 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const year = new Date().getFullYear();
+
+  const links = [
+    {
+      href: 'https://github.com/Tanushyadav9',
+      icon: <GithubIcon size={14} />,
+      label: 'GitHub',
+      hoverClass: 'hover:text-white'
+    },
+    {
+      href: 'https://www.linkedin.com/in/tanush-yadav-1893b338b',
+      icon: <LinkedinIcon size={14} />,
+      label: 'LinkedIn',
+      hoverClass: 'hover:text-cyan'
+    },
+    {
+      href: 'mailto:tanushyada0987@gmail.com',
+      icon: <Mail size={14} />,
+      label: 'Email',
+      hoverClass: 'hover:text-purple'
+    },
+    {
+      href: '/Tanush_Yadav_Resume.pdf',
+      icon: <FileText size={14} />,
+      label: 'Resume',
+      hoverClass: 'hover:text-cyan'
+    }
+  ];
+
   return (
-    <footer className="py-12 bg-[#0B0F19] border-t border-white-5 relative z-10 text-left">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
-        
-        {/* Left Side: Brand Branding */}
+    <footer className="relative z-10" style={{ background: '#0B0F19' }}>
+      {/* Gradient separator */}
+      <div className="footer-gradient-top" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-10 flex flex-col md:flex-row justify-between items-center gap-8">
+
+        {/* Left: Brand */}
         <div>
           <span className="text-lg font-extrabold tracking-wider text-gradient font-heading block mb-1">
             Tanush Yadav
           </span>
-          <span className="text-xs font-bold text-white/50 block mb-1 uppercase tracking-widest">
-            Software Engineer
+          <span className="text-xs font-bold text-white/40 block uppercase tracking-widest mb-0.5">
+            AI Engineer · Full Stack · IoT
           </span>
-          <span className="text-[10px] text-muted block mb-4 font-medium uppercase tracking-widest">
-            AI | Full Stack | IoT
-          </span>
-          <p className="text-[11px] text-white/30 font-medium">
-            Built with React + Vite &bull; Hosted on secure servers
+          <p className="text-[10px] text-white/25 font-medium mt-2">
+            Built with React + Vite · Deployed on Vercel
           </p>
         </div>
 
-        {/* Center: Quick Links */}
+        {/* Center: Nav links */}
         <div className="flex flex-wrap justify-center gap-6 text-xs text-muted">
-          <a 
-            href="https://github.com/Tanushyadav9" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 hover:text-cyan transition-colors decoration-transparent"
-          >
-            <GithubIcon size={14} />
-            <span>GitHub</span>
-          </a>
-          <a 
-            href="https://www.linkedin.com/in/tanush-yadav-1893b338b" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 hover:text-purple transition-colors decoration-transparent"
-          >
-            <LinkedinIcon size={14} />
-            <span>LinkedIn</span>
-          </a>
-          <a 
-            href="mailto:tanushyada0987@gmail.com" 
-            className="flex items-center gap-1.5 hover:text-cyan transition-colors decoration-transparent"
-          >
-            <Mail size={14} />
-            <span>Email</span>
-          </a>
-          <a 
-            href="/Tanush_Yadav_Resume.pdf" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 hover:text-purple transition-colors decoration-transparent"
-          >
-            <FileText size={14} />
-            <span>Resume</span>
-          </a>
+          {links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.href.startsWith('http') || link.href.endsWith('.pdf') ? '_blank' : undefined}
+              rel={link.href.startsWith('http') || link.href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
+              className={`flex items-center gap-1.5 transition-colors ${link.hoverClass}`}
+            >
+              {link.icon}
+              <span>{link.label}</span>
+            </a>
+          ))}
         </div>
 
-        {/* Right Side: Back to Top & Copyright */}
-        <div className="flex flex-col items-center md:items-end gap-4">
+        {/* Right: Back to top + copyright */}
+        <div className="flex flex-col items-center md:items-end gap-3">
           <button
             onClick={scrollToTop}
             aria-label="Scroll to Top"
-            className="p-2.5 bg-white-5 border border-white-10 text-white rounded-full hover:bg-purple-10 hover-border-purple transition-all flex items-center justify-center cursor-pointer"
+            className="p-2.5 bg-white/5 border border-white/10 text-white/60 rounded-full hover:bg-purple/10 hover:border-purple/30 hover:text-white transition-all flex items-center justify-center cursor-pointer"
           >
             <ArrowUp size={16} />
           </button>
-          
-          <p className="text-xs text-white/40 text-center md:text-right">
-            &copy; 2026 Tanush Yadav. All rights reserved.
+
+          <p className="text-xs text-white/30 text-center md:text-right">
+            &copy; {year} Tanush Yadav. All rights reserved.
           </p>
         </div>
 

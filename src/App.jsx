@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-
+import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
@@ -36,11 +36,12 @@ export default function App() {
       <Navbar />
 
       {/* Main Container Flow */}
-      <main className="relative z-10 flex flex-col gap-section">
+      <main className="relative z-10">
         {/* Home Block */}
         <Hero />
 
-
+        {/* About Block — profile photo, bio, highlights */}
+        <About />
 
         {/* Skills Block */}
         <Skills />
@@ -55,13 +56,13 @@ export default function App() {
         <Achievements />
 
         {/* Coding Workstation Activity */}
-        <div className="flex flex-col gap-section bg-white/[0.002] border-y border-white/5 py-12">
+        <div className="workstation-block">
           <Workstation />
           <GithubStats />
         </div>
 
         {/* Credentials & Academics */}
-        <div className="flex flex-col gap-section">
+        <div className="credentials-block">
           <Education />
           <Certifications />
         </div>

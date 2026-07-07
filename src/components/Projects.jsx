@@ -212,9 +212,12 @@ export default function Projects({ onBack }) {
             Showcase
           </p>
           <h2 className="text-3xl sm:text-4xl font-black text-white font-heading">
-            Engineering Projects & Case Studies
+            Engineering Projects &amp; Case Studies
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-purple to-cyan mx-auto mt-4 rounded-full" />
+          <p className="text-white/45 text-sm mt-5 max-w-xl mx-auto leading-relaxed">
+            Real-world projects built with hardware, AI, and modern web technologies — each with a documented case study.
+          </p>
         </div>
 
         {/* Grid Layout */}
@@ -231,9 +234,11 @@ export default function Projects({ onBack }) {
                 transition={{ duration: 0.5, delay: idx * 0.05 }}
                 className="flex"
               >
-                <Tilt 
-                  className={`glass-card p-6 h-full flex flex-col justify-between group w-full border border-white/10 hover:border-cyan/35 transition-all duration-300 ${
-                    isFeatured ? 'bg-gradient-to-b from-white/[0.03] to-transparent' : 'bg-white/[0.015]'
+              <Tilt
+                  className={`glass-card p-6 h-full flex flex-col justify-between group w-full transition-all duration-300 ${
+                    isFeatured
+                      ? 'border border-[#915EFF]/35 bg-gradient-to-b from-[#915EFF]/6 to-transparent hover:border-[#915EFF]/55 hover:shadow-[0_0_32px_rgba(145,94,255,0.15)]'
+                      : 'border border-white/10 bg-white/[0.015] hover:border-cyan/30'
                   }`}
                 >
                   <div className="w-full">
@@ -319,16 +324,27 @@ export default function Projects({ onBack }) {
                     </div>
 
                     <div className="w-full h-px bg-white/5 mb-4" />
-                    
 
-
-                    <button
-                      onClick={() => openCaseStudy(project)}
-                      className="w-full flex items-center justify-center gap-1.5 text-[10px] font-bold text-white bg-gradient-to-r from-purple/40 to-cyan/40 border border-white/10 hover-border-cyan py-2 rounded-lg transition-all hover:brightness-110 cursor-pointer"
-                    >
-                      <BookOpen size={11} className="text-cyan" />
-                      <span>Case Study Specs</span>
-                    </button>
+                    {/* Action row */}
+                    <div className="flex gap-2">
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-1.5 text-[10px] font-bold text-white/60 hover:text-white bg-white/5 border border-white/8 hover:border-white/20 py-2 rounded-lg transition-all"
+                        onClick={e => e.stopPropagation()}
+                      >
+                        <GithubIcon size={11} />
+                        <span>GitHub</span>
+                      </a>
+                      <button
+                        onClick={() => openCaseStudy(project)}
+                        className="flex-1 flex items-center justify-center gap-1.5 text-[10px] font-bold text-white bg-gradient-to-r from-purple/40 to-cyan/40 border border-white/10 hover:border-cyan/30 py-2 rounded-lg transition-all hover:brightness-110 cursor-pointer"
+                      >
+                        <BookOpen size={11} className="text-cyan" />
+                        <span>Case Study</span>
+                      </button>
+                    </div>
                   </div>
 
                 </Tilt>

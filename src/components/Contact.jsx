@@ -155,17 +155,23 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section-padding relative overflow-hidden">
+      {/* Background ambient */}
+      <div className="absolute top-[10%] right-[5%] w-[350px] h-[350px] bg-purple/5 rounded-full filter blur-3xl -z-10 pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        
+
         {/* Section Header */}
         <div className="text-center mb-16">
           <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-4 font-heading">
             Get In Touch
           </p>
           <h2 className="text-3xl sm:text-4xl font-black text-white font-heading">
-            Contact & Availability
+            Contact &amp; Availability
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-purple to-cyan mx-auto mt-4 rounded-full" />
+          <p className="text-white/50 text-sm mt-6 max-w-lg mx-auto leading-relaxed">
+            Open to internships, collaborations, and freelance projects. I usually respond within 24 hours.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-6xl mx-auto">
@@ -236,9 +242,10 @@ export default function Contact() {
           {/* Right Column (Form) */}
           <div className="lg:col-span-7 w-full">
             <Tilt className="glass-card p-6 md:p-8 border border-white/10">
-              <h3 className="text-base sm:text-lg font-bold text-white font-heading mb-6 text-left">
-                Send Direct Inquiry
+              <h3 className="text-lg font-bold text-white font-heading mb-2 text-left">
+                Send a Message
               </h3>
+              <p className="text-xs text-white/40 mb-6">Fill in the form and I'll get back to you shortly.</p>
               <form onSubmit={handleSubmit} className="flex flex-col text-left">
                 
                 <AnimatePresence>

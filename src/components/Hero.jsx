@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ArrowDown, FileText, Download, Send, Mail, MapPin, Briefcase, Sparkles } from 'lucide-react';
+import { ArrowDown, FileText, Download, Send, MapPin, Sparkles } from 'lucide-react';
 import profileAvatar from '../assets/profile_avatar.png';
 
 const GithubIcon = ({ size = 20, ...props }) => (
@@ -69,8 +69,8 @@ function CountUp({ to, suffix = "", duration = 1.2 }) {
 }
 
 const titles = [
-  "AI Engineer & Software Developer",
-  "Full-Stack Web Developer",
+  "AI Engineer & Full-Stack Developer",
+  "Embedded Systems & IoT Builder",
   "AI & Data Science Student"
 ];
 
@@ -114,109 +114,227 @@ export default function Hero() {
   };
 
   const stats = [
-    { number: '15', suffix: '+', label: 'Projects Completed' },
+    { number: '15', suffix: '+', label: 'Projects' },
     { number: '5', suffix: '+', label: 'Hackathons' },
     { number: '3', suffix: '', label: 'Certifications' },
     { number: '12', suffix: '+', label: 'Technologies' }
   ];
 
+  const socialLinks = [
+    {
+      href: 'https://github.com/Tanushyadav9',
+      icon: <GithubIcon size={18} />,
+      label: 'GitHub',
+      color: 'hover:text-white hover:border-white/40'
+    },
+    {
+      href: 'https://www.linkedin.com/in/tanush-yadav-1893b338b',
+      icon: <LinkedinIcon size={18} />,
+      label: 'LinkedIn',
+      color: 'hover:text-cyan hover:border-cyan/40'
+    },
+    {
+      href: 'mailto:tanushyada0987@gmail.com',
+      icon: <span style={{ fontSize: '18px' }}>✉</span>,
+      label: 'Email',
+      color: 'hover:text-purple hover:border-purple/40'
+    }
+  ];
+
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-[140px] pb-[100px]">
+    <section id="home" className="hero-section">
       {/* Radial overlay */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_rgba(145,94,255,0.08)_0%,_transparent_75%)] pointer-events-none" />
-      
-      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full flex items-center z-10 relative">
-        
-        {/* Content */}
-        <div className="w-full flex flex-col text-left items-start">
+      <div className="hero-radial-overlay" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10">
+        <div className="hero-grid">
+
+          {/* ── Left Column: Content ─────────────────── */}
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="w-full"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="hero-content"
           >
+            {/* Availability Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 }}
+              className="hero-availability-badge"
+            >
+              <span className="hero-availability-dot" />
+              <span>Open to Internships & Collaborations</span>
+              <Sparkles size={12} className="text-cyan opacity-70" />
+            </motion.div>
 
-
-            
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-5 font-heading">
-              Tanush Yadav
+            {/* Name */}
+            <h1 className="hero-name">
+              Tanush<br />
+              <span className="text-gradient">Yadav</span>
             </h1>
 
-            {/* Sub-Title */}
-            <div className="h-8 flex items-center mb-6">
-              <h2 className="text-lg sm:text-xl font-bold text-white/90 flex items-center font-heading">
-                <span className="text-cyan mr-2">&lt;</span>
-                <span className="border-r-2 border-cyan pr-2 animate-pulse min-h-[24px] inline-block text-white">
-                  {currentText}
-                </span>
-                <span className="text-cyan ml-1">/&gt;</span>
-              </h2>
+            {/* Animated title */}
+            <div className="hero-typewriter-wrap">
+              <span className="text-cyan text-lg">&lt;</span>
+              <span className="hero-typewriter-text border-r-2 border-cyan pr-2">
+                {currentText}
+              </span>
+              <span className="text-cyan text-lg">/&gt;</span>
             </div>
-            
-            <p className="text-white/70 text-sm sm:text-base leading-relaxed mb-8 max-w-2xl font-light">
-              Building scalable web applications, AI-powered software, and intelligent engineering solutions using React, JavaScript, Python, Firebase, and modern web technologies.
+
+            {/* Location */}
+            <div className="hero-location">
+              <MapPin size={13} className="text-cyan shrink-0" />
+              <span>Delhi, India — B.Tech AI & DS @ VIPS</span>
+            </div>
+
+            {/* Bio */}
+            <p className="hero-bio">
+              Building scalable web applications, AI-powered systems, and intelligent IoT solutions using React, Python, Firebase, and ESP32. Passionate about accessible technology that makes real impact.
             </p>
-            
-            {/* Actions */}
-            <div className="flex flex-wrap gap-4 items-center mb-12">
-              <a 
-                href="/Tanush_Yadav_Resume.pdf" 
-                target="_blank" 
+
+            {/* Action Buttons */}
+            <div className="hero-actions">
+              <a
+                href="/Tanush_Yadav_Resume.pdf"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-primary bg-gradient-to-r from-purple to-cyan text-xs font-bold decoration-transparent cursor-pointer shadow-lg hover:shadow-cyan/15 hover:brightness-110"
+                className="btn btn-primary"
+                id="hero-view-resume"
               >
-                <FileText size={14} />
+                <FileText size={15} />
                 <span>View Resume</span>
               </a>
-              <a 
-                href="/Tanush_Yadav_Resume.pdf" 
+              <a
+                href="/Tanush_Yadav_Resume.pdf"
                 download="Tanush_Yadav_Resume.pdf"
-                className="btn btn-secondary border-white/20 hover:border-cyan/30 text-xs font-bold decoration-transparent"
+                className="btn btn-secondary"
+                id="hero-download-resume"
               >
-                <Download size={14} />
-                <span>Download Resume</span>
+                <Download size={15} />
+                <span>Download CV</span>
               </a>
-              <button 
-                onClick={() => scrollToSection('contact')} 
-                className="btn btn-secondary border-white/20 hover:border-purple/30 text-xs font-bold cursor-pointer"
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="btn btn-ghost"
+                id="hero-contact-btn"
               >
-                <Send size={14} className="text-cyan" />
-                <span>Contact Me</span>
+                <Send size={15} className="text-cyan" />
+                <span>Hire Me</span>
               </button>
             </div>
 
-            {/* Stats list */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 border-t border-white/5 pt-8 w-full">
+            {/* Social Links */}
+            <div className="hero-socials">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={link.label}
+                  className={`hero-social-btn ${link.color}`}
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </div>
+
+            {/* Stats */}
+            <div className="hero-stats">
               {stats.map((stat, idx) => (
-                <div key={idx} className="text-left">
-                  <span className="text-2xl sm:text-3xl font-black text-gradient font-heading block mb-0.5">
+                <div key={idx} className="hero-stat-item">
+                  <span className="hero-stat-number text-gradient">
                     <CountUp to={stat.number} suffix={stat.suffix} />
                   </span>
-                  <span className="text-[10px] text-white/40 uppercase tracking-widest font-semibold block">
-                    {stat.label}
-                  </span>
+                  <span className="hero-stat-label">{stat.label}</span>
                 </div>
               ))}
             </div>
           </motion.div>
+
+          {/* ── Right Column: Profile Visual ─────────── */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="hero-avatar-col"
+          >
+            <div className="hero-avatar-wrapper">
+              {/* Rotating ring decoration */}
+              <svg className="hero-avatar-ring" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                <circle
+                  cx="200" cy="200" r="185"
+                  fill="none"
+                  stroke="url(#ring-gradient)"
+                  strokeWidth="1.5"
+                  strokeDasharray="8 14"
+                  strokeLinecap="round"
+                />
+                <defs>
+                  <linearGradient id="ring-gradient" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#915EFF" stopOpacity="0.6" />
+                    <stop offset="50%" stopColor="#00E5FF" stopOpacity="0.8" />
+                    <stop offset="100%" stopColor="#915EFF" stopOpacity="0.2" />
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              {/* Glow backdrop */}
+              <div className="hero-avatar-glow" />
+
+              {/* Photo frame */}
+              <div className="hero-avatar-frame">
+                <img
+                  src={profileAvatar}
+                  alt="Tanush Yadav — AI Engineer & Full-Stack Developer"
+                  className="hero-avatar-img"
+                />
+                {/* gradient overlay at bottom */}
+                <div className="hero-avatar-overlay" />
+              </div>
+
+              {/* Floating badge: Tech */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+                className="hero-float-badge hero-float-badge--top"
+              >
+                <span className="text-cyan text-sm">⚡</span>
+                <span className="text-xs font-bold text-white">AI Engineer</span>
+              </motion.div>
+
+              {/* Floating badge: Location */}
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut', delay: 1 }}
+                className="hero-float-badge hero-float-badge--bottom"
+              >
+                <span className="text-purple text-sm">🏆</span>
+                <span className="text-xs font-bold text-white">1st Place Winner</span>
+              </motion.div>
+            </div>
+          </motion.div>
+
         </div>
-
-
-
       </div>
 
       {/* Scroll Indicator */}
-      <div 
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 cursor-pointer z-10" 
-        onClick={() => scrollToSection('skills')}
+      <div
+        className="hero-scroll-indicator"
+        onClick={() => scrollToSection('about')}
+        role="button"
+        tabIndex={0}
+        aria-label="Scroll to About section"
       >
-        <span className="text-[9px] text-white/40 tracking-widest uppercase font-semibold">Scroll Down</span>
+        <span className="hero-scroll-text">Scroll</span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
           className="text-cyan"
         >
-          <ArrowDown size={14} />
+          <ArrowDown size={16} />
         </motion.div>
       </div>
     </section>

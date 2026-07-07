@@ -143,25 +143,35 @@ function SkillRow({ skill }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
+  const levelColor =
+    skill.level >= 90 ? 'text-emerald-400' :
+    skill.level >= 80 ? 'text-cyan' :
+    'text-purple';
+
   return (
-    <div ref={ref} className="flex items-center gap-2.5 py-2 border-b border-white/5 last:border-0">
-      <div className="p-1 bg-white/5 rounded-md border border-white/10 shrink-0 text-cyan">
-        {skill.icon}
-      </div>
-      <div className="flex-1 min-w-0">
-        <div className="flex justify-between items-center mb-1">
-          <span className="text-[11px] font-semibold text-white/90 truncate">{skill.name}</span>
-          <span className="text-[9px] font-bold text-cyan ml-2 shrink-0">{skill.level}%</span>
+    <div ref={ref} className="skill-row-wrap py-2.5 border-b border-white/5 last:border-0 cursor-default">
+      <div className="flex items-center gap-2.5">
+        <div className="p-1 bg-white/5 rounded-md border border-white/10 shrink-0 text-cyan">
+          {skill.icon}
         </div>
-        <div className="progress-bar-bg" style={{ marginTop: 0 }}>
-          <motion.div
-            className="progress-bar-fill"
-            initial={{ width: 0 }}
-            animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-            transition={{ duration: 1.0, ease: 'easeOut' }}
-          />
+        <div className="flex-1 min-w-0">
+          <div className="flex justify-between items-center mb-1">
+            <span className="text-xs font-semibold text-white/90 truncate">{skill.name}</span>
+            <span className={`text-[10px] font-bold ml-2 shrink-0 ${levelColor}`}>{skill.level}%</span>
+          </div>
+          <div className="progress-bar-bg">
+            <motion.div
+              className="progress-bar-fill"
+              initial={{ width: 0 }}
+              animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
+              transition={{ duration: 1.0, ease: 'easeOut' }}
+            />
+          </div>
         </div>
       </div>
+      {skill.desc && (
+        <p className="skill-desc-tooltip pl-8">{skill.desc}</p>
+      )}
     </div>
   );
 }

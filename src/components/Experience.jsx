@@ -9,6 +9,7 @@ const experiences = [
     company: 'Kenet Technologies',
     location: 'Delhi, India',
     duration: '2024 – Present',
+    isCurrent: true,
     companyLogo: <Cpu size={22} className="text-[#00E5FF]" />,
     bullets: [
       'Architecting low-level C++ firmware and schema integrations for ESP32 and Arduino-based platforms.',
@@ -23,6 +24,7 @@ const experiences = [
     company: 'Kenet Technologies',
     location: 'Delhi, India',
     duration: '2023 – 2024',
+    isCurrent: false,
     companyLogo: <Star size={22} className="text-[#915EFF]" />,
     bullets: [
       'Launched hardware prototyping brand staging custom microcontroller grids and automated sensor clusters.',
@@ -37,7 +39,7 @@ export default function Experience() {
   return (
     <section id="experience" className="section-padding relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        
+
         {/* Section Header */}
         <div className="text-center mb-16">
           <p className="text-cyan font-semibold text-sm tracking-widest uppercase mb-4">
@@ -57,32 +59,50 @@ export default function Experience() {
               initial={{ opacity: 0, x: -25 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
               className="relative pl-12 md:pl-16 mb-12 text-left"
             >
-              {/* timeline node */}
-              <div className="timeline-dot">
-                <span className="timeline-ping" />
-              </div>
+              {/* Timeline node */}
+              {exp.isCurrent ? (
+                <div className="timeline-dot-current">
+                  <span className="timeline-ping" />
+                </div>
+              ) : (
+                <div className="timeline-dot">
+                  <span className="timeline-ping" />
+                </div>
+              )}
 
               {/* Card */}
               <Tilt className="glass-card p-6 md:p-8 border border-white/10 hover:border-cyan/25 transition-all">
                 {/* Header Info */}
                 <div className="flex flex-wrap justify-between items-start gap-4 mb-6">
                   <div className="flex items-center gap-4">
-                    <div className="p-2.5 bg-white/5 rounded-xl border border-white/10 shrink-0 text-cyan">
+                    <div className={`p-2.5 rounded-xl border shrink-0 ${
+                      exp.isCurrent
+                        ? 'bg-cyan/10 border-cyan/25 text-cyan'
+                        : 'bg-white/5 border-white/10 text-cyan'
+                    }`}>
                       {exp.companyLogo}
                     </div>
                     <div>
-                      <h3 className="text-lg sm:text-xl font-bold text-white font-heading mb-1">
-                        {exp.role}
-                      </h3>
-                      <h4 className="text-sm font-semibold text-gradient">
+                      <div className="flex items-center gap-3 flex-wrap">
+                        <h3 className="text-lg sm:text-xl font-bold text-white font-heading">
+                          {exp.role}
+                        </h3>
+                        {exp.isCurrent && (
+                          <span className="text-[9px] tracking-widest font-bold uppercase text-emerald-400 border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 rounded-full flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                            Current
+                          </span>
+                        )}
+                      </div>
+                      <h4 className="text-sm font-semibold text-gradient mt-0.5">
                         {exp.company}
                       </h4>
                     </div>
                   </div>
-                  
+
                   {/* Meta Details */}
                   <div className="flex flex-wrap gap-2 text-xs text-white/40">
                     <div className="flex items-center gap-1.5 bg-white/5 px-3 py-1 rounded-full border border-white/5">
@@ -98,11 +118,11 @@ export default function Experience() {
 
                 <div className="w-full h-px bg-white/5 mb-6" />
 
-                {/* Major Contributions bullets */}
+                {/* Contributions */}
                 <div className="mb-6">
                   <ul className="flex flex-col gap-3 list-none">
                     {exp.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-white/70 leading-relaxed font-light">
+                      <li key={bIdx} className="flex items-start gap-2.5 text-sm text-white/70 leading-relaxed">
                         <span className="mt-1 text-cyan shrink-0">
                           <CheckCircle size={14} className="stroke-[2.5]" />
                         </span>
@@ -112,20 +132,18 @@ export default function Experience() {
                   </ul>
                 </div>
 
-                <div className="w-full h-px bg-white/5 mb-6" />
+                <div className="w-full h-px bg-white/5 mb-5" />
 
                 {/* Technologies */}
-                <div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {exp.techStack.map((tech, tIdx) => (
-                      <span 
-                        key={tIdx} 
-                        className="px-2.5 py-1 bg-white/5 border border-white/5 rounded-md text-[10px] font-semibold text-white/60"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                <div className="flex flex-wrap gap-2">
+                  {exp.techStack.map((tech, tIdx) => (
+                    <span
+                      key={tIdx}
+                      className="px-2.5 py-1 bg-white/5 border border-white/8 rounded-md text-[10px] font-semibold text-white/60 hover:border-cyan/30 hover:text-white/80 transition-all"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
 
               </Tilt>
