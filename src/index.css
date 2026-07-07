@@ -1411,7 +1411,7 @@ h1, h2, h3, h4 {
   pointer-events: none;
 }
 
-/* Two-column grid */
+/* Two-column grid — replaced by centered layout */
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1420,11 +1420,28 @@ h1, h2, h3, h4 {
   width: 100%;
 }
 
-@media (min-width: 900px) {
-  .hero-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-  }
+/* Centered single-column layout */
+.hero-centered-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* Decorative subtle grid lines */
+.hero-grid-lines {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(145, 94, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(145, 94, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  pointer-events: none;
 }
 
 /* ── Left Content ── */
@@ -1433,6 +1450,62 @@ h1, h2, h3, h4 {
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
+}
+
+/* Centered bio */
+.hero-bio--centered {
+  text-align: center;
+  max-width: 600px;
+}
+
+/* Centered actions */
+.hero-actions--centered {
+  justify-content: center;
+}
+
+/* Centered socials */
+.hero-socials--centered {
+  justify-content: center;
+}
+
+/* Centered stats */
+.hero-stats--centered {
+  justify-content: center;
+}
+
+.hero-stat-item--centered {
+  align-items: center;
+  text-align: center;
+}
+
+/* Floating tech badges row */
+.hero-tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.hero-tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  letter-spacing: 0.01em;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.hero-tech-badge:hover {
+  border-color: rgba(0, 229, 255, 0.3);
+  background: rgba(0, 229, 255, 0.05);
 }
 
 /* Availability badge */

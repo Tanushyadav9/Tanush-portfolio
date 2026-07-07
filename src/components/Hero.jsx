@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ArrowDown, FileText, Download, Send, MapPin, Sparkles } from 'lucide-react';
-import profileAvatar from '../assets/profile_avatar.png';
+import { ArrowDown, FileText, Download, Send, MapPin, Sparkles, Code2, Cpu, Brain } from 'lucide-react';
 
 const GithubIcon = ({ size = 20, ...props }) => (
   <svg
@@ -74,29 +73,31 @@ const titles = [
   "AI & Data Science Student"
 ];
 
+const floatingTechItems = [
+  { icon: <Code2 size={16} className="text-cyan" />, label: 'React.js', delay: 0 },
+  { icon: <Brain size={16} className="text-purple" />, label: 'Machine Learning', delay: 1.5 },
+  { icon: <Cpu size={16} className="text-cyan" />, label: 'ESP32 / IoT', delay: 3 },
+];
+
 export default function Hero() {
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
   const [reverse, setReverse] = useState(false);
   const [currentText, setCurrentText] = useState("");
 
-  // Typing effect cycle
   useEffect(() => {
     if (subIndex === titles[index].length + 1 && !reverse) {
       const timeout = setTimeout(() => setReverse(true), 2500);
       return () => clearTimeout(timeout);
     }
-
     if (subIndex === 0 && reverse) {
       setReverse(false);
       setIndex((prev) => (prev + 1) % titles.length);
       return;
     }
-
     const timeout = setTimeout(() => {
       setSubIndex((prev) => prev + (reverse ? -1 : 1));
     }, reverse ? 40 : 80);
-
     return () => clearTimeout(timeout);
   }, [subIndex, reverse, index]);
 
@@ -146,175 +147,161 @@ export default function Hero() {
       {/* Radial overlay */}
       <div className="hero-radial-overlay" />
 
+      {/* Decorative grid lines */}
+      <div className="hero-grid-lines" aria-hidden="true" />
+
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10">
-        <div className="hero-grid">
+        <div className="hero-centered-layout">
 
-          {/* ── Left Column: Content ─────────────────── */}
+          {/* ── Top: Availability badge ── */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="hero-content"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="hero-availability-badge"
           >
-            {/* Availability Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15 }}
-              className="hero-availability-badge"
-            >
-              <span className="hero-availability-dot" />
-              <span>Open to Internships & Collaborations</span>
-              <Sparkles size={12} className="text-cyan opacity-70" />
-            </motion.div>
-
-            {/* Name */}
-            <h1 className="hero-name">
-              Tanush<br />
-              <span className="text-gradient">Yadav</span>
-            </h1>
-
-            {/* Animated title */}
-            <div className="hero-typewriter-wrap">
-              <span className="text-cyan text-lg">&lt;</span>
-              <span className="hero-typewriter-text border-r-2 border-cyan pr-2">
-                {currentText}
-              </span>
-              <span className="text-cyan text-lg">/&gt;</span>
-            </div>
-
-            {/* Location */}
-            <div className="hero-location">
-              <MapPin size={13} className="text-cyan shrink-0" />
-              <span>Delhi, India — B.Tech AI & DS @ VIPS</span>
-            </div>
-
-            {/* Bio */}
-            <p className="hero-bio">
-              Building scalable web applications, AI-powered systems, and intelligent IoT solutions using React, Python, Firebase, and ESP32. Passionate about accessible technology that makes real impact.
-            </p>
-
-            {/* Action Buttons */}
-            <div className="hero-actions">
-              <a
-                href="/Tanush_Yadav_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary"
-                id="hero-view-resume"
-              >
-                <FileText size={15} />
-                <span>View Resume</span>
-              </a>
-              <a
-                href="/Tanush_Yadav_Resume.pdf"
-                download="Tanush_Yadav_Resume.pdf"
-                className="btn btn-secondary"
-                id="hero-download-resume"
-              >
-                <Download size={15} />
-                <span>Download CV</span>
-              </a>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="btn btn-ghost"
-                id="hero-contact-btn"
-              >
-                <Send size={15} className="text-cyan" />
-                <span>Hire Me</span>
-              </button>
-            </div>
-
-            {/* Social Links */}
-            <div className="hero-socials">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={link.label}
-                  className={`hero-social-btn ${link.color}`}
-                >
-                  {link.icon}
-                </a>
-              ))}
-            </div>
-
-            {/* Stats */}
-            <div className="hero-stats">
-              {stats.map((stat, idx) => (
-                <div key={idx} className="hero-stat-item">
-                  <span className="hero-stat-number text-gradient">
-                    <CountUp to={stat.number} suffix={stat.suffix} />
-                  </span>
-                  <span className="hero-stat-label">{stat.label}</span>
-                </div>
-              ))}
-            </div>
+            <span className="hero-availability-dot" />
+            <span>Open to Internships & Collaborations</span>
+            <Sparkles size={12} className="text-cyan opacity-70" />
           </motion.div>
 
-          {/* ── Right Column: Profile Visual ─────────── */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="hero-avatar-col"
+          {/* ── Name ── */}
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.18, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="hero-name"
           >
-            <div className="hero-avatar-wrapper">
-              {/* Rotating ring decoration */}
-              <svg className="hero-avatar-ring" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                <circle
-                  cx="200" cy="200" r="185"
-                  fill="none"
-                  stroke="url(#ring-gradient)"
-                  strokeWidth="1.5"
-                  strokeDasharray="8 14"
-                  strokeLinecap="round"
-                />
-                <defs>
-                  <linearGradient id="ring-gradient" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#915EFF" stopOpacity="0.6" />
-                    <stop offset="50%" stopColor="#00E5FF" stopOpacity="0.8" />
-                    <stop offset="100%" stopColor="#915EFF" stopOpacity="0.2" />
-                  </linearGradient>
-                </defs>
-              </svg>
+            Tanush <span className="text-gradient">Yadav</span>
+          </motion.h1>
 
-              {/* Glow backdrop */}
-              <div className="hero-avatar-glow" />
+          {/* ── Typewriter ── */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="hero-typewriter-wrap"
+          >
+            <span className="text-cyan text-lg">&lt;</span>
+            <span className="hero-typewriter-text">
+              {currentText}
+            </span>
+            <span className="text-cyan text-lg">/&gt;</span>
+          </motion.div>
 
-              {/* Photo frame */}
-              <div className="hero-avatar-frame">
-                <img
-                  src={profileAvatar}
-                  alt="Tanush Yadav — AI Engineer & Full-Stack Developer"
-                  className="hero-avatar-img"
-                />
-                {/* gradient overlay at bottom */}
-                <div className="hero-avatar-overlay" />
+          {/* ── Location ── */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.38 }}
+            className="hero-location"
+          >
+            <MapPin size={13} className="text-cyan shrink-0" />
+            <span>Delhi, India — B.Tech AI & DS @ VIPS</span>
+          </motion.div>
+
+          {/* ── Bio ── */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.44, duration: 0.6 }}
+            className="hero-bio hero-bio--centered"
+          >
+            Building scalable web applications, AI-powered systems, and intelligent IoT solutions using React, Python, Firebase, and ESP32. Passionate about accessible technology that makes real impact.
+          </motion.p>
+
+          {/* ── Action Buttons ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.52 }}
+            className="hero-actions hero-actions--centered"
+          >
+            <a
+              href="/Tanush_Yadav_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+              id="hero-view-resume"
+            >
+              <FileText size={15} />
+              <span>View Resume</span>
+            </a>
+            <a
+              href="/Tanush_Yadav_Resume.pdf"
+              download="Tanush_Yadav_Resume.pdf"
+              className="btn btn-secondary"
+              id="hero-download-resume"
+            >
+              <Download size={15} />
+              <span>Download CV</span>
+            </a>
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="btn btn-ghost"
+              id="hero-contact-btn"
+            >
+              <Send size={15} className="text-cyan" />
+              <span>Hire Me</span>
+            </button>
+          </motion.div>
+
+          {/* ── Social Links ── */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="hero-socials hero-socials--centered"
+          >
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={link.label}
+                className={`hero-social-btn ${link.color}`}
+              >
+                {link.icon}
+              </a>
+            ))}
+          </motion.div>
+
+          {/* ── Floating Tech Badges ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.66 }}
+            className="hero-tech-badges"
+          >
+            {floatingTechItems.map((item) => (
+              <motion.div
+                key={item.label}
+                animate={{ y: [0, -5, 0] }}
+                transition={{ repeat: Infinity, duration: 3 + item.delay * 0.4, ease: 'easeInOut', delay: item.delay }}
+                className="hero-tech-badge"
+              >
+                {item.icon}
+                <span>{item.label}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* ── Stats ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.72 }}
+            className="hero-stats hero-stats--centered"
+          >
+            {stats.map((stat, idx) => (
+              <div key={idx} className="hero-stat-item hero-stat-item--centered">
+                <span className="hero-stat-number text-gradient">
+                  <CountUp to={stat.number} suffix={stat.suffix} />
+                </span>
+                <span className="hero-stat-label">{stat.label}</span>
               </div>
-
-              {/* Floating badge: Tech */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-                className="hero-float-badge hero-float-badge--top"
-              >
-                <span className="text-cyan text-sm">⚡</span>
-                <span className="text-xs font-bold text-white">AI Engineer</span>
-              </motion.div>
-
-              {/* Floating badge: Location */}
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut', delay: 1 }}
-                className="hero-float-badge hero-float-badge--bottom"
-              >
-                <span className="text-purple text-sm">🏆</span>
-                <span className="text-xs font-bold text-white">1st Place Winner</span>
-              </motion.div>
-            </div>
+            ))}
           </motion.div>
 
         </div>
